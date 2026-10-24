@@ -1,5 +1,6 @@
 import { memo, useState, type ChangeEvent } from 'react';
 import Button from '@/components/Button';
+import Icon from '@/components/Icon';
 import { getErrorMessages } from '@/api/api';
 import type { Company, LegalForm } from '@/api/types';
 import styles from './CompanyEditRow.module.css';
@@ -71,8 +72,29 @@ const CompanyEditRow = ({ company, columnsCount, onSave, onDelete }: CompanyEdit
         <td><input value={draft.industry} onChange={handleChange('industry')} /></td>
         <td>
           <div className={styles.actions}>
-            <Button size="sm" onClick={handleSave} disabled={isSaving}>{isNew ? 'Добавить' : 'Сохранить'}</Button>
-            {!isNew && <Button variant="danger" size="sm" onClick={handleDelete} disabled={isSaving}>Удалить</Button>}
+            <Button
+              shape="square"
+              size="sm"
+              onClick={handleSave}
+              disabled={isSaving}
+              aria-label={isNew ? 'Добавить' : 'Сохранить'}
+              title={isNew ? 'Добавить' : 'Сохранить'}
+            >
+              <Icon name={isNew ? 'plus' : 'check'} />
+            </Button>
+            {!isNew && (
+              <Button
+                variant="dangerGhost"
+                shape="square"
+                size="sm"
+                onClick={handleDelete}
+                disabled={isSaving}
+                aria-label="Удалить"
+                title="Удалить"
+              >
+                <Icon name="trash" />
+              </Button>
+            )}
           </div>
         </td>
       </tr>

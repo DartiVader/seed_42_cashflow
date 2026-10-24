@@ -87,3 +87,16 @@
 .danger:hover:not(:disabled) {
   opacity: 0.9;
 }
+
+.dangerGhost {
+  background: transparent;
+  color: var(--color-danger);
+}
+
+.ghost.square:hover:not(:disabled) {
+  background: var(--color-primary-soft);
+}
+
+.dangerGhost:hover:not(:disabled) {
+  background: var(--color-danger-soft);
+}

@@ -8,7 +8,7 @@ const Header = () => {
     const navigate = useNavigate()
     const { pathname } = useLocation()
 
-    const homePath = pathname.startsWith('/dashboard') ? '/dashboard' : '/'
+    const homePath = pathname.startsWith('/dashboard') || pathname.startsWith('/forecast') ? '/forecast' : '/'
 
     return (
         <header className={styles.header}>
@@ -21,11 +21,17 @@ const Header = () => {
                     {user
                         ? (
                             <>
-                                <Button variant="secondary" onClick={() => navigate('/dashboard')}>Профиль</Button>
+                                <Button variant="secondary" onClick={() => navigate('/forecast')}>Прогноз</Button>
+                                <Button variant="secondary" onClick={() => navigate('/dashboard')}>Данные</Button>
                                 <Button onClick={logout}>Выйти</Button>
                             </>
                         )
-                        : <Button variant="secondary" onClick={() => navigate('/auth')}>Вход / Регистрация</Button>}
+                        : (
+                            <>
+                                <Button variant="ghost" onClick={() => navigate('/demo')}>Демо</Button>
+                                <Button variant="secondary" onClick={() => navigate('/auth')}>Вход / Регистрация</Button>
+                            </>
+                        )}
                 </nav>
             </div>
         </header>

@@ -6,7 +6,8 @@
 
 .inner {
   display: grid;
-  grid-template-columns: 1fr 23.75rem;
+  grid-template-columns: minmax(0, 36rem) 23.75rem;
+  justify-content: center;
   align-items: center;
   gap: 4rem;
   max-width: var(--content-width);

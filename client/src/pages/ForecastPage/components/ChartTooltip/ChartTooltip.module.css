@@ -1,0 +1,68 @@
+.tooltip {
+  min-width: 15rem;
+  max-width: 19rem;
+  padding: 0.75rem 0.875rem;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-popover);
+}
+
+.date {
+  margin-bottom: 0.25rem;
+  font-weight: 600;
+}
+
+.main {
+  margin-bottom: 0.25rem;
+  font-size: 0.9375rem;
+}
+
+.row {
+  color: var(--color-text-muted);
+}
+
+.scenario {
+  font-weight: 500;
+  color: var(--color-scenario);
+}
+
+.risk {
+  margin: 0.375rem 0 0.125rem;
+  font-weight: 500;
+}
+
+.risk[data-tone='ok'] {
+  color: var(--color-ok);
+}
+
+.risk[data-tone='warn'] {
+  color: var(--color-warning-text);
+}
+
+.risk[data-tone='bad'] {
+  color: var(--color-danger);
+}
+
+.events {
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  list-style: none;
+  border-top: 1px solid var(--color-border);
+}
+
+.events li {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.events b[data-sign='out'] {
+  color: var(--color-danger);
+}
+
+.events b[data-sign='in'] {
+  color: var(--color-ok);
+}

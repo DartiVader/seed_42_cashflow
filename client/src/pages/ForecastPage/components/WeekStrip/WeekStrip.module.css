@@ -1,0 +1,50 @@
+.weeks {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  gap: 0.5rem;
+}
+
+.week {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  padding: 0.75rem 0.875rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-left-width: 0.25rem;
+  border-radius: var(--radius-md);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.week:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-popover);
+}
+
+.week[data-tone='ok'] {
+  border-left-color: var(--color-ok);
+}
+
+.week[data-tone='warn'] {
+  background: var(--color-warning-soft);
+  border-left-color: var(--color-warning);
+}
+
+.week[data-tone='bad'] {
+  background: var(--color-danger-soft);
+  border-left-color: var(--color-danger);
+}
+
+.name {
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.dates {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+.verdict {
+  font-size: 0.9375rem;
+}
