@@ -1,0 +1,30 @@
+.form {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.form input {
+  flex: 1;
+  min-width: 0;
+}
+
+.suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+  margin-top: 0.75rem;
+}
+
+.answer {
+  margin-top: 0.75rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  background: var(--color-surface-warm);
+  border-left: 3px solid var(--color-primary);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.question {
+  margin-bottom: 0.25rem;
+  font-weight: 600;
+}

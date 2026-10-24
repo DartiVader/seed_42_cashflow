@@ -1,0 +1,73 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.chart {
+  height: 20rem;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+.legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.line,
+.scenario,
+.inner,
+.outer {
+  display: inline-block;
+  width: 1.25rem;
+}
+
+.line {
+  height: 3px;
+  background: var(--color-brand-700);
+}
+
+.scenario {
+  height: 0;
+  border-top: 3px dashed var(--color-scenario);
+}
+
+.inner {
+  height: 0.625rem;
+  background: var(--color-primary);
+  opacity: 0.32;
+}
+
+.outer {
+  height: 0.625rem;
+  background: var(--color-primary);
+  opacity: 0.12;
+}
+
+.dot {
+  display: inline-block;
+  width: 0.625rem;
+  height: 0.625rem;
+  border-radius: 50%;
+}
+
+.dot[data-kind='must'] {
+  background: var(--color-danger);
+}
+
+.dot[data-kind='optional'] {
+  background: var(--color-warning);
+}
+
+.dot[data-kind='income'] {
+  background: var(--color-primary);
+}

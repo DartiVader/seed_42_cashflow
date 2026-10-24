@@ -19,6 +19,9 @@
   --color-on-dark-muted: rgba(255, 255, 255, 0.72);
   --color-on-dark-tile: rgba(255, 255, 255, 0.08);
   --color-on-dark-line: rgba(255, 255, 255, 0.18);
+  --color-accent-on-dark-soft: rgba(200, 240, 60, 0.18);
+  --color-danger-on-dark: #FF9B9B;
+  --color-overlay: rgba(15, 43, 31, 0.55);
 
   --color-ok: #1E8E47;
   --color-ok-soft: #E6F2EA;
@@ -26,6 +29,9 @@
   --color-warning-soft: #FDF4DC;
   --color-danger: #D64545;
   --color-danger-soft: #FBE7E7;
+  --color-warning-text: #8A5A00;
+  --color-scenario: #C2410C;
+  --color-scenario-soft: #FFF4EC;
 
   --radius-sm: 0.5rem;
   --radius-md: 0.75rem;
@@ -36,6 +42,7 @@
 
   --gradient-dark: linear-gradient(135deg, var(--color-brand-900) 0%, var(--color-brand-700) 100%);
   --gradient-kpi: linear-gradient(135deg, var(--color-brand-700) 0%, var(--color-primary) 100%);
+  --gradient-danger-dark: linear-gradient(135deg, #3A1414 0%, #6B1F1F 100%);
 
   --font-sans: 'Inter', system-ui, sans-serif;
   --content-width: 110rem;

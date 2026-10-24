@@ -18,7 +18,7 @@ const COLUMNS: TableColumn[] = [
 
 const MIN_TEXT_COLUMN_REM = 5
 
-const ACTIONS_REM = 7
+const ACTIONS_REM = 5
 
 interface OperationsTableProps {
   data: Page<Operation> | null

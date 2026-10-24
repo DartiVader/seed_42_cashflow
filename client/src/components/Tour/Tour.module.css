@@ -1,0 +1,80 @@
+.root {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: var(--color-overlay);
+  pointer-events: auto;
+}
+
+.spotlight {
+  position: fixed;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 0 0 9999px var(--color-overlay);
+  outline: 3px solid var(--color-accent);
+  transition: top 0.25s, left 0.25s, width 0.25s, height 0.25s;
+  pointer-events: none;
+}
+
+.card {
+  position: fixed;
+  width: min(22.5rem, calc(100vw - 1.5rem));
+  padding: 1rem 1.125rem;
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-popover);
+  pointer-events: auto;
+  transition: top 0.25s, left 0.25s;
+}
+
+.progress {
+  font-size: 0.75rem;
+  color: var(--color-label);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.title {
+  margin: 0.25rem 0 0.375rem;
+  font-size: 1.0625rem;
+}
+
+.text {
+  font-size: 0.875rem;
+  color: var(--color-text);
+}
+
+.dots {
+  display: flex;
+  gap: 0.25rem;
+  margin: 0.75rem 0;
+}
+
+.dots i {
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 50%;
+  background: var(--color-border);
+}
+
+.dots i[data-active='true'] {
+  background: var(--color-primary);
+  width: 1rem;
+  border-radius: var(--radius-pill);
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav {
+  display: flex;
+  gap: 0.5rem;
+}

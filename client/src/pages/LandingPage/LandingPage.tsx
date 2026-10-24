@@ -15,7 +15,10 @@ const LandingPage = () => {
             Загрузите банковскую выписку — покажем остаток на каждый день на месяц вперёд
             и заранее предупредим, если денег может не хватить
           </p>
-          <Button className={styles.start} onClick={() => navigate('/auth')}>Начать</Button>
+          <div className={styles.actions}>
+            <Button onClick={() => navigate('/auth')}>Начать</Button>
+            <Button variant="secondary" onClick={() => navigate('/demo/C044')}>Посмотреть пример</Button>
+          </div>
         </div>
         <div className={styles.illustration}>
           <ForecastLine />

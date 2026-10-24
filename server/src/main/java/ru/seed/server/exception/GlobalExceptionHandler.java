@@ -10,13 +10,16 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.HandlerMethod;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.multipart.MaxUploadSizeExceededException;
 import org.springframework.web.multipart.support.MissingServletRequestPartException;
 import org.springframework.web.servlet.HandlerMapping;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
+import ru.seed.server.utils.ExternalErrorUtils;
 import ru.seed.server.utils.ResponseUtils;
 
 import java.util.ArrayList;
@@ -31,6 +34,19 @@ public class GlobalExceptionHandler {
                                                                     HttpServletRequest request) {
         return ResponseEntity.status(exception.getHttpStatus())
                 .body(ResponseUtils.responseError(methodName(request), exception));
+    }
+
+    @ExceptionHandler(WebCustomClientException.class)
+    public ResponseEntity<Response<Void>> handleWebCustomClientException(WebCustomClientException exception,
+                                                                         HttpServletRequest request) {
+        log.warn("External service error, status={}", exception.getStatusCode().value());
+        if (exception.getStatusCode().is4xxClientError()) {
+            String message = ExternalErrorUtils.extractMessage(exception.getResponseBody(),
+                    "Не удалось построить прогноз по этой выписке");
+            return ResponseEntity.status(exception.getStatusCode())
+                    .body(ResponseUtils.responseError(methodName(request), new BadRequestException(message)));
+        }
+        return handleValidationException(new ServiceUnavailableException(exception.getUnavailableMessage()), request);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
@@ -48,6 +64,20 @@ public class GlobalExceptionHandler {
     public ResponseEntity<Response<Void>> handleHttpMessageNotReadableException(HttpMessageNotReadableException exception,
                                                                                 HttpServletRequest request) {
         return handleValidationException(new BadRequestException("Не удалось прочитать данные запроса"), request);
+    }
+
+    @ExceptionHandler(MissingServletRequestParameterException.class)
+    public ResponseEntity<Response<Void>> handleMissingServletRequestParameterException(MissingServletRequestParameterException exception,
+                                                                                        HttpServletRequest request) {
+        return handleValidationException(
+                new InvalidFieldException(exception.getParameterName(), "Не указан параметр " + exception.getParameterName()), request);
+    }
+
+    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
+    public ResponseEntity<Response<Void>> handleMethodArgumentTypeMismatchException(MethodArgumentTypeMismatchException exception,
+                                                                                    HttpServletRequest request) {
+        return handleValidationException(
+                new InvalidFieldException(exception.getName(), "Неверное значение параметра " + exception.getName()), request);
     }
 
     @ExceptionHandler(AuthenticationException.class)
