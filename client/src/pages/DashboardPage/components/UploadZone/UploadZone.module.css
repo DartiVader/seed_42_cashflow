@@ -1,0 +1,92 @@
+.zone {
+  padding: 0.625rem;
+  background: var(--gradient-kpi);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 3rem 1.5rem;
+  border: 1px dashed var(--color-on-dark-muted);
+  border-radius: var(--radius-md);
+  transition: padding 0.4s ease, gap 0.4s ease, background-color 0.2s, border-color 0.2s;
+}
+
+.mascot {
+  width: 7.5rem;
+  height: 9.375rem;
+  transition: width 0.4s ease, height 0.4s ease;
+}
+
+.pick {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 3rem;
+  padding: 0 1.75rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-brand-900);
+  background: var(--color-surface);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.pick:hover,
+.pick:focus-within {
+  background: var(--color-primary-soft);
+}
+
+.pickDisabled {
+  opacity: 0.7;
+  cursor: progress;
+}
+
+.fileInput {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.hint {
+  font-size: 0.875rem;
+  color: var(--color-on-dark-muted);
+  text-align: center;
+}
+
+.compact .inner {
+  gap: 0.625rem;
+  padding: 1rem 1.5rem;
+}
+
+.compact .mascot {
+  width: 3rem;
+  height: 3.75rem;
+}
+
+.dragging .inner {
+  background: var(--color-on-dark-tile);
+  border-style: solid;
+  border-color: var(--color-accent);
+}
+
+@media (max-width: 640px) {
+  .inner {
+    padding: 2rem 1rem;
+  }
+
+  .pick {
+    padding: 0 1.25rem;
+    font-size: 0.8125rem;
+  }
+}

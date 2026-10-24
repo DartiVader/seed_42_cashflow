@@ -1,0 +1,58 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: 1.0625rem;
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.fields input,
+.fields select,
+.sort select {
+  height: 2.375rem;
+  font-size: 0.875rem;
+}
+
+.sort {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.sort > div {
+  display: flex;
+}
+
+.sort > div button {
+  flex: 1;
+  padding: 0 0.5rem;
+  white-space: nowrap;
+}
+
+@media (max-width: 1100px) {
+  .fields {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(11.25rem, 1fr));
+  }
+}

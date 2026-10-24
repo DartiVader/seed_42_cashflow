@@ -16,12 +16,6 @@ frontend/.env
 
 AGENTS.md
 CLAUDE.md
-docs/team.md
-docs/case.md
-docs/data.md
-docs/architecture.md
-docs/ml-contract.md
-docs/backend.md
-docs/frontend.md
+docs/
 # Secrets
 .env
