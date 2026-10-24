@@ -1,0 +1,28 @@
+:root,
+[data-theme='light'] {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f5f7;
+
+  --text-primary: #111114;
+  --text-secondary: #55555e;
+  --text-tertiary: #8e8e98;
+
+  --border-primary: #e2e2e7;
+
+  --accent: #6d4aff;
+  --danger: #e5484d;
+}
+
+[data-theme='dark'] {
+  --bg-primary: #111114;
+  --bg-secondary: #1c1c21;
+
+  --text-primary: #f2f2f5;
+  --text-secondary: #a9a9b3;
+  --text-tertiary: #6e6e78;
+
+  --border-primary: #2e2e35;
+
+  --accent: #8b70ff;
+  --danger: #ff6369;
+}
