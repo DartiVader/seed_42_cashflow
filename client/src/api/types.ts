@@ -38,6 +38,8 @@ export interface ImportReport {
   errors: ImportError[]
 }
 
+export type ListFilters = Record<string, string>
+
 export interface Page<T> {
   items: T[]
   page: number

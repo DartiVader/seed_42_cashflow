@@ -24,6 +24,12 @@ export const usePagedList = <T>(
   const [errors, setErrors] = useState<string[]>([])
   const [version, setVersion] = useState(0)
   const [finishedRequestKey, setFinishedRequestKey] = useState<string | null>(null)
+  const [previousLoad, setPreviousLoad] = useState(() => load)
+
+  if (load !== previousLoad) {
+    setPreviousLoad(() => load)
+    setPage(0)
+  }
 
   const requestKey = `${page}:${refreshKey}:${version}`
 

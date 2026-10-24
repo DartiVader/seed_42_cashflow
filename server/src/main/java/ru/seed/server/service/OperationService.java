@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.seed.server.dto.OperationDTO;
+import ru.seed.server.dto.OperationFilter;
 import ru.seed.server.dto.OperationRequest;
 import ru.seed.server.dto.PageDTO;
 import ru.seed.server.exception.AlreadyExistsException;
@@ -32,13 +33,12 @@ public class OperationService {
     private final CounterpartyService counterpartyService;
 
     @Transactional(readOnly = true)
-    public Response<PageDTO<OperationDTO>> getOperations(Long userId, String companyId, int page, int size) {
-        String companyFilter = companyId == null ? null : CsvUtils.optional(companyId);
+    public Response<PageDTO<OperationDTO>> getOperations(Long userId, OperationFilter filter, int page, int size) {
         int pageNumber = PageUtils.normalizePage(page);
         int pageSize = PageUtils.normalizeSize(size);
         List<OperationDTO> items = operationRepository.findPage(
-                userId, companyFilter, pageSize, PageUtils.offset(pageNumber, pageSize));
-        long total = operationRepository.count(userId, companyFilter);
+                userId, filter, pageSize, PageUtils.offset(pageNumber, pageSize));
+        long total = operationRepository.count(userId, filter);
         return ResponseUtils.responseSuccess("getOperations", PageUtils.of(items, pageNumber, pageSize, total));
     }
 

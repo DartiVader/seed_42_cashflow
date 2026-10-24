@@ -2,6 +2,7 @@ import { memo, useState, type ChangeEvent } from 'react';
 import Button from '@/components/Button';
 import { getErrorMessages } from '@/api/api';
 import type { Direction, Operation, OperationPayload } from '@/api/types';
+import styles from './OperationEditRow.module.css';
 
 const EMPTY_OPERATION: OperationPayload = {
   companyId: '',
@@ -85,13 +86,15 @@ const OperationEditRow = ({ operation, columnsCount, onSave, onDelete }: Operati
         <td><input value={draft.counterpartyInn} onChange={handleChange('counterpartyInn')} inputMode="numeric" /></td>
         <td><input value={draft.paymentPurpose} onChange={handleChange('paymentPurpose')} /></td>
         <td>
-          <Button onClick={handleSave} disabled={isSaving}>{isNew ? 'Добавить' : 'Сохранить'}</Button>
-          {!isNew && <Button onClick={handleDelete} disabled={isSaving}>Удалить</Button>}
+          <div className={styles.actions}>
+            <Button size="sm" onClick={handleSave} disabled={isSaving}>{isNew ? 'Добавить' : 'Сохранить'}</Button>
+            {!isNew && <Button variant="danger" size="sm" onClick={handleDelete} disabled={isSaving}>Удалить</Button>}
+          </div>
         </td>
       </tr>
       {errors.length > 0 && (
         <tr>
-          <td colSpan={columnsCount}>{errors.map((error) => <p key={error}>{error}</p>)}</td>
+          <td colSpan={columnsCount} className={styles.errors}>{errors.map((error) => <p key={error}>{error}</p>)}</td>
         </tr>
       )}
     </>

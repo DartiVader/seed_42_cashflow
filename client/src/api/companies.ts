@@ -1,9 +1,14 @@
 import { $api } from "@/api/api";
-import type { ApiResponse, Company, Page } from "@/api/types";
+import type { ApiResponse, Company, ListFilters, Page } from "@/api/types";
 
 export const companiesApi = {
-  list: async (page: number, size: number): Promise<Page<Company>> => {
-    const response = await $api.get<ApiResponse<Page<Company>>>('/companies', { params: { page, size } })
+  list: async (page: number, size: number, filters: ListFilters): Promise<Page<Company>> => {
+    const response = await $api.get<ApiResponse<Page<Company>>>('/companies', { params: { ...filters, page, size } })
+    return response.data.data
+  },
+
+  listAll: async (): Promise<Company[]> => {
+    const response = await $api.get<ApiResponse<Company[]>>('/companies/all')
     return response.data.data
   },
 

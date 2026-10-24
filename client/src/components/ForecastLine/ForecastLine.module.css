@@ -1,0 +1,48 @@
+.svg {
+  display: block;
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+}
+
+.ring {
+  fill: none;
+  stroke: var(--color-on-dark-tile);
+}
+
+.axis {
+  stroke: var(--color-on-dark-line);
+  stroke-dasharray: 4 6;
+}
+
+.history {
+  fill: none;
+  stroke: var(--color-primary);
+  stroke-width: 2;
+}
+
+.point {
+  fill: var(--color-primary);
+}
+
+.forecast {
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 2;
+  stroke-dasharray: 6 6;
+}
+
+.hollow {
+  fill: var(--color-brand-900);
+  stroke: var(--color-accent);
+  stroke-width: 2;
+  stroke-dasharray: 3 3;
+}
+
+.gap {
+  fill: var(--color-accent);
+}
+
+.gapCore {
+  fill: var(--color-brand-900);
+}

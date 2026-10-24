@@ -4,8 +4,19 @@ import type { Company, Page } from '@/api/types';
 import CompanyRow from '@/components/CompanyRow';
 import CompanyEditRow from '@/components/CompanyEditRow';
 import Pagination from '@/components/Pagination';
+import { getTableMinWidth, toRem, type TableColumn } from '@/utils/tableColumns';
 
-const COLUMNS = ['Код', 'Название', 'ИНН', 'Форма', 'Вид деятельности']
+const COLUMNS: TableColumn[] = [
+  { title: 'Код', widthRem: 5 },
+  { title: 'Название', widthRem: null },
+  { title: 'ИНН', widthRem: 8.5 },
+  { title: 'Форма', widthRem: 5.5 },
+  { title: 'Вид деятельности', widthRem: null },
+]
+
+const MIN_TEXT_COLUMN_REM = 9
+
+const ACTIONS_REM = 7
 
 interface CompaniesTableProps {
   data: Page<Company> | null
@@ -43,10 +54,16 @@ const CompaniesTable = ({ data, page, isLoading, errors, isEditing, onPageChange
 
   return (
     <>
-      <table>
+      <table style={{ minWidth: getTableMinWidth(COLUMNS, MIN_TEXT_COLUMN_REM, isEditing ? ACTIONS_REM : 0) }}>
+        <colgroup>
+          {COLUMNS.map((column) => (
+            <col key={column.title} style={{ width: column.widthRem === null ? undefined : toRem(column.widthRem) }} />
+          ))}
+          {isEditing && <col style={{ width: toRem(ACTIONS_REM) }} />}
+        </colgroup>
         <thead>
           <tr>
-            {COLUMNS.map((column) => <th key={column}>{column}</th>)}
+            {COLUMNS.map((column) => <th key={column.title}>{column.title}</th>)}
             {isEditing && <th />}
           </tr>
         </thead>

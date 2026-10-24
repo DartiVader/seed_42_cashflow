@@ -6,12 +6,15 @@ import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.stereotype.Repository;
 import ru.seed.server.dto.OperationCsvRow;
 import ru.seed.server.dto.OperationDTO;
+import ru.seed.server.dto.OperationFilter;
 import ru.seed.server.dto.OperationRequest;
+import ru.seed.server.utils.SqlConditions;
 
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 
@@ -33,22 +36,31 @@ public class OperationRepository {
             where c.user_id = :userId and not o.is_future
             """;
 
-    private static final String COMPANY_FILTER_SQL = " and o.company_id = :companyId";
+    private static final Map<String, String> SORT_COLUMNS = Map.of(
+            "date", "o.date",
+            "companyId", "o.company_id",
+            "operationId", "o.source_operation_id",
+            "amount", "o.amount",
+            "direction", "d.name",
+            "counterpartyName", "cp.name",
+            "counterpartyInn", "cp.inn",
+            "paymentPurpose", "o.payment_purpose");
 
     private final JdbcClient jdbcClient;
     private final JdbcTemplate jdbcTemplate;
 
-    public List<OperationDTO> findPage(Long userId, String companyId, int limit, long offset) {
+    public List<OperationDTO> findPage(Long userId, OperationFilter filter, int limit, long offset) {
+        SqlConditions conditions = buildConditions(userId, filter)
+                .param("limit", limit)
+                .param("offset", offset);
+        String orderBy = SqlConditions.orderBy(SORT_COLUMNS, filter.getSortField(), filter.getSortDirection(),
+                "o.date desc, o.id desc", "o.id");
         String sql = """
                 select o.id, o.company_id, o.source_operation_id, o.date, o.amount, d.name as direction,
                        cp.inn as counterparty_inn, cp.name as counterparty_name, o.payment_purpose
-                """ + FROM_USER_OPERATIONS_SQL + companyFilter(companyId)
-                + " order by o.date desc, o.id desc limit :limit offset :offset";
+                """ + FROM_USER_OPERATIONS_SQL + conditions.getSql() + orderBy + " limit :limit offset :offset";
         return jdbcClient.sql(sql)
-                .param("userId", userId)
-                .param("companyId", companyId)
-                .param("limit", limit)
-                .param("offset", offset)
+                .params(conditions.getParams())
                 .query((resultSet, rowNumber) -> new OperationDTO(
                         resultSet.getLong("id"),
                         resultSet.getString("company_id"),
@@ -62,10 +74,10 @@ public class OperationRepository {
                 .list();
     }
 
-    public long count(Long userId, String companyId) {
-        return jdbcClient.sql("select count(*) " + FROM_USER_OPERATIONS_SQL + companyFilter(companyId))
-                .param("userId", userId)
-                .param("companyId", companyId)
+    public long count(Long userId, OperationFilter filter) {
+        SqlConditions conditions = buildConditions(userId, filter);
+        return jdbcClient.sql("select count(*) " + FROM_USER_OPERATIONS_SQL + conditions.getSql())
+                .params(conditions.getParams())
                 .query(Long.class)
                 .single();
     }
@@ -155,10 +167,18 @@ public class OperationRepository {
                 .update();
     }
 
-    private String companyFilter(String companyId) {
-        if (companyId == null) {
-            return "";
-        }
-        return COMPANY_FILTER_SQL;
+    private SqlConditions buildConditions(Long userId, OperationFilter filter) {
+        return new SqlConditions()
+                .param("userId", userId)
+                .equalTo("o.company_id", "companyId", filter.getCompanyId())
+                .contains("o.source_operation_id", "operationId", filter.getOperationId())
+                .contains("cp.name", "counterpartyName", filter.getCounterpartyName())
+                .contains("cp.inn", "counterpartyInn", filter.getCounterpartyInn())
+                .contains("o.payment_purpose", "paymentPurpose", filter.getPaymentPurpose())
+                .equalTo("d.name", "direction", filter.getDirection())
+                .atLeast("o.amount", "amountFrom", filter.getAmountFrom())
+                .atMost("o.amount", "amountTo", filter.getAmountTo())
+                .atLeast("o.date", "dateFrom", filter.getDateFrom())
+                .atMost("o.date", "dateTo", filter.getDateTo());
     }
 }

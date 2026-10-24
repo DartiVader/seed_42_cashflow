@@ -2,6 +2,7 @@ import { memo, useState, type ChangeEvent } from 'react';
 import Button from '@/components/Button';
 import { getErrorMessages } from '@/api/api';
 import type { Company, LegalForm } from '@/api/types';
+import styles from './CompanyEditRow.module.css';
 
 const EMPTY_COMPANY: Company = {
   companyId: '',
@@ -69,13 +70,15 @@ const CompanyEditRow = ({ company, columnsCount, onSave, onDelete }: CompanyEdit
         </td>
         <td><input value={draft.industry} onChange={handleChange('industry')} /></td>
         <td>
-          <Button onClick={handleSave} disabled={isSaving}>{isNew ? 'Добавить' : 'Сохранить'}</Button>
-          {!isNew && <Button onClick={handleDelete} disabled={isSaving}>Удалить</Button>}
+          <div className={styles.actions}>
+            <Button size="sm" onClick={handleSave} disabled={isSaving}>{isNew ? 'Добавить' : 'Сохранить'}</Button>
+            {!isNew && <Button variant="danger" size="sm" onClick={handleDelete} disabled={isSaving}>Удалить</Button>}
+          </div>
         </td>
       </tr>
       {errors.length > 0 && (
         <tr>
-          <td colSpan={columnsCount}>{errors.map((error) => <p key={error}>{error}</p>)}</td>
+          <td colSpan={columnsCount} className={styles.errors}>{errors.map((error) => <p key={error}>{error}</p>)}</td>
         </tr>
       )}
     </>

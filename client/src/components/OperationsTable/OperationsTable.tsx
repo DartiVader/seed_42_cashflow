@@ -4,8 +4,21 @@ import type { Operation, OperationPayload, Page } from '@/api/types';
 import OperationRow from '@/components/OperationRow';
 import OperationEditRow from '@/components/OperationEditRow';
 import Pagination from '@/components/Pagination';
+import { getTableMinWidth, toRem, type TableColumn } from '@/utils/tableColumns';
 
-const COLUMNS = ['Дата', 'Компания', 'Номер', 'Сумма', 'Контрагент', 'ИНН контрагента', 'Назначение платежа']
+const COLUMNS: TableColumn[] = [
+  { title: 'Дата', widthRem: 8.5 },
+  { title: 'Компания', widthRem: 6.75 },
+  { title: 'Номер', widthRem: 8 },
+  { title: 'Сумма', widthRem: 9 },
+  { title: 'Контрагент', widthRem: null },
+  { title: 'ИНН контрагента', widthRem: 8 },
+  { title: 'Назначение платежа', widthRem: null },
+]
+
+const MIN_TEXT_COLUMN_REM = 5
+
+const ACTIONS_REM = 7
 
 interface OperationsTableProps {
   data: Page<Operation> | null
@@ -43,10 +56,16 @@ const OperationsTable = ({ data, page, isLoading, errors, isEditing, onPageChang
 
   return (
     <>
-      <table>
+      <table style={{ minWidth: getTableMinWidth(COLUMNS, MIN_TEXT_COLUMN_REM, isEditing ? ACTIONS_REM : 0) }}>
+        <colgroup>
+          {COLUMNS.map((column) => (
+            <col key={column.title} style={{ width: column.widthRem === null ? undefined : toRem(column.widthRem) }} />
+          ))}
+          {isEditing && <col style={{ width: toRem(ACTIONS_REM) }} />}
+        </colgroup>
         <thead>
           <tr>
-            {COLUMNS.map((column) => <th key={column}>{column}</th>)}
+            {COLUMNS.map((column) => <th key={column.title}>{column.title}</th>)}
             {isEditing && <th />}
           </tr>
         </thead>

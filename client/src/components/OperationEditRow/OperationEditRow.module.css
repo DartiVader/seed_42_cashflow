@@ -1,0 +1,15 @@
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.actions button {
+  width: 100%;
+}
+
+.errors {
+  color: var(--color-danger);
+  background: var(--color-danger-soft);
+  font-size: 0.8125rem;
+}

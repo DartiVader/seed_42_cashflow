@@ -12,15 +12,7 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      manifest: {
-        name: 'Seed 42',
-        short_name: 'Seed 42',
-        lang: 'ru',
-        start_url: '/',
-        display: 'standalone',
-        background_color: '#ffffff',
-        theme_color: '#6d4aff',
-      },
+      manifest: false,
       workbox: {
         navigateFallbackDenylist: [/^\/api/],
       },

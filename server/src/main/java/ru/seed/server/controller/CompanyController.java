@@ -7,6 +7,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -16,10 +17,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import ru.seed.server.dto.CompanyDTO;
+import ru.seed.server.dto.CompanyFilter;
 import ru.seed.server.dto.CompanyRequest;
 import ru.seed.server.dto.PageDTO;
 import ru.seed.server.exception.Response;
 import ru.seed.server.service.CompanyService;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/companies")
@@ -30,9 +34,15 @@ public class CompanyController {
 
     @GetMapping
     public Response<PageDTO<CompanyDTO>> getCompanies(@AuthenticationPrincipal Jwt jwt,
+                                                      @ModelAttribute CompanyFilter filter,
                                                       @RequestParam(defaultValue = "0") int page,
                                                       @RequestParam(defaultValue = "50") int size) {
-        return companyService.getCompanies(Long.valueOf(jwt.getSubject()), page, size);
+        return companyService.getCompanies(Long.valueOf(jwt.getSubject()), filter, page, size);
+    }
+
+    @GetMapping("/all")
+    public Response<List<CompanyDTO>> getAllCompanies(@AuthenticationPrincipal Jwt jwt) {
+        return companyService.getAllCompanies(Long.valueOf(jwt.getSubject()));
     }
 
     @PostMapping

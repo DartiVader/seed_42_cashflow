@@ -1,21 +1,17 @@
-import { useState, type ChangeEvent, type FormEvent } from 'react';
-import Button from '@/components/Button';
+import { useState } from 'react';
 import DataPanel from '@/components/DataPanel';
 import { getErrorMessages } from '@/api/api';
 import { importsApi } from '@/api/imports';
-import type { ImportFileType, ImportReport } from '@/api/types';
+import type { ImportReport } from '@/api/types';
 import { useAuth } from '@/context/AuthContext';
 import { reportStorage } from '@/utils/reportStorage';
-
-const FILE_TITLES: Record<ImportFileType, string> = {
-  COMPANIES: 'Справочник компаний',
-  OPERATIONS: 'Выписка операций',
-}
+import UploadZone from '@/pages/DashboardPage/components/UploadZone';
+import UploadProgress from '@/pages/DashboardPage/components/UploadProgress';
+import styles from './DashboardPage.module.css';
 
 const DashboardPage = () => {
   const { user } = useAuth()
   const userId = user?.id ?? 0
-  const [file, setFile] = useState<File | null>(null)
   const [progress, setProgress] = useState<number | null>(null)
   const [report, setReport] = useState<ImportReport | null>(() => reportStorage.get(userId))
   const [errors, setErrors] = useState<string[]>([])
@@ -23,16 +19,7 @@ const DashboardPage = () => {
 
   const isUploading = progress !== null
 
-  const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setFile(event.target.files?.[0] ?? null)
-    setErrors([])
-  }
-
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    if (!file) {
-      return
-    }
+  const uploadFile = async (file: File) => {
     setErrors([])
     setProgress(0)
     // TODO: временный замер времени загрузки файла — убрать после проверки производительности (начало)
@@ -64,40 +51,20 @@ const DashboardPage = () => {
   }
 
   return (
-    <main>
-      <h1>Дашборд</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Файл CSV: выписка или справочник компаний
-          <input type="file" accept=".csv" onChange={handleFileChange} disabled={isUploading} />
-        </label>
-        <Button type="submit" disabled={!file || isUploading}>Загрузить</Button>
-      </form>
-      {progress !== null && (
-        <p>{progress < 100 ? `Отправляем файл: ${progress}%` : 'Файл отправлен, проверяем и сохраняем строки…'}</p>
-      )}
-      {errors.map((error) => <p key={error}>{error}</p>)}
-      {report && (
-        <section>
-          <h2>{FILE_TITLES[report.fileType]}: последняя загрузка</h2>
-          <p>Строк в файле: {report.total}</p>
-          <p>Сохранено: {report.accepted}</p>
-          <p>Уже были загружены раньше: {report.skipped}</p>
-          <p>Не приняты: {report.rejected}</p>
-          {report.errors.length > 0 && (
-            <ul>
-              {report.errors.map((error) => (
-                <li key={error.lineNumber}>Строка {error.lineNumber}: {error.message}</li>
-              ))}
-            </ul>
-          )}
-          {report.rejected > report.errors.length && (
-            <p>Показаны первые {report.errors.length} ошибок из {report.rejected}</p>
-          )}
-        </section>
-      )}
-      <DataPanel refreshKey={refreshKey} />
-    </main>
+    <>
+      <UploadProgress progress={progress} />
+      <main className={styles.page}>
+        <div className={styles.heading}>
+          <h1>Анализ денежных потоков</h1>
+          <p className={styles.subtitle}>
+            Загрузите банковскую выписку или справочник компаний — операции и компании появятся в таблице ниже
+          </p>
+        </div>
+        <UploadZone isCompact={report !== null} isUploading={isUploading} onFileSelect={uploadFile} />
+        {errors.map((error) => <p key={error} className={styles.error}>{error}</p>)}
+        <DataPanel refreshKey={refreshKey} />
+      </main>
+    </>
   )
 }
 

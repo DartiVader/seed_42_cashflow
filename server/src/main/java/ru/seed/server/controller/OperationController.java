@@ -7,6 +7,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import ru.seed.server.dto.OperationDTO;
+import ru.seed.server.dto.OperationFilter;
 import ru.seed.server.dto.OperationRequest;
 import ru.seed.server.dto.PageDTO;
 import ru.seed.server.exception.Response;
@@ -30,10 +32,10 @@ public class OperationController {
 
     @GetMapping
     public Response<PageDTO<OperationDTO>> getOperations(@AuthenticationPrincipal Jwt jwt,
-                                                         @RequestParam(required = false) String companyId,
+                                                         @ModelAttribute OperationFilter filter,
                                                          @RequestParam(defaultValue = "0") int page,
                                                          @RequestParam(defaultValue = "50") int size) {
-        return operationService.getOperations(Long.valueOf(jwt.getSubject()), companyId, page, size);
+        return operationService.getOperations(Long.valueOf(jwt.getSubject()), filter, page, size);
     }
 
     @PostMapping

@@ -1,0 +1,20 @@
+.track {
+  height: 0.25rem;
+  overflow: hidden;
+}
+
+.bar {
+  height: 100%;
+  background: var(--gradient-kpi);
+  transition: width 0.2s ease;
+}
+
+.processing {
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.4;
+  }
+}

@@ -1,9 +1,9 @@
 import { $api } from "@/api/api";
-import type { ApiResponse, Operation, OperationPayload, Page } from "@/api/types";
+import type { ApiResponse, ListFilters, Operation, OperationPayload, Page } from "@/api/types";
 
 export const operationsApi = {
-  list: async (page: number, size: number): Promise<Page<Operation>> => {
-    const response = await $api.get<ApiResponse<Page<Operation>>>('/operations', { params: { page, size } })
+  list: async (page: number, size: number, filters: ListFilters): Promise<Page<Operation>> => {
+    const response = await $api.get<ApiResponse<Page<Operation>>>('/operations', { params: { ...filters, page, size } })
     return response.data.data
   },
 

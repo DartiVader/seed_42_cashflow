@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.seed.server.dto.CompanyDTO;
+import ru.seed.server.dto.CompanyFilter;
 import ru.seed.server.dto.CompanyRequest;
 import ru.seed.server.dto.PageDTO;
 import ru.seed.server.exception.AlreadyExistsException;
@@ -29,13 +30,18 @@ public class CompanyService {
     private final LegalFormRepository legalFormRepository;
 
     @Transactional(readOnly = true)
-    public Response<PageDTO<CompanyDTO>> getCompanies(Long userId, int page, int size) {
+    public Response<PageDTO<CompanyDTO>> getCompanies(Long userId, CompanyFilter filter, int page, int size) {
         int pageNumber = PageUtils.normalizePage(page);
         int pageSize = PageUtils.normalizeSize(size);
-        List<CompanyDTO> items = companyRepository.findPageByUserId(
-                userId, pageSize, PageUtils.offset(pageNumber, pageSize));
-        long total = companyRepository.countByUserId(userId);
+        List<CompanyDTO> items = companyRepository.findPage(
+                userId, filter, pageSize, PageUtils.offset(pageNumber, pageSize));
+        long total = companyRepository.count(userId, filter);
         return ResponseUtils.responseSuccess("getCompanies", PageUtils.of(items, pageNumber, pageSize, total));
+    }
+
+    @Transactional(readOnly = true)
+    public Response<List<CompanyDTO>> getAllCompanies(Long userId) {
+        return ResponseUtils.responseSuccess("getAllCompanies", companyRepository.findAllByUserId(userId));
     }
 
     @Transactional

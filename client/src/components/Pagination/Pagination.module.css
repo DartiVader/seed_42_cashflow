@@ -1,0 +1,14 @@
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  margin-top: 1rem;
+}
+
+.gap {
+  width: 1.5rem;
+  text-align: center;
+  color: var(--color-text-muted);
+}

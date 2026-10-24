@@ -1,0 +1,119 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: 1.0625rem;
+}
+
+.monthBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.month {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.arrow {
+  width: 2rem;
+  height: 2rem;
+  font: inherit;
+  font-size: 1.125rem;
+  color: var(--color-text);
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.arrow:hover {
+  background: var(--color-primary-soft);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  row-gap: 2px;
+}
+
+.weekday {
+  height: 2rem;
+  line-height: 2rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-align: center;
+  background: var(--color-surface-warm);
+}
+
+.day {
+  position: relative;
+  height: 2.25rem;
+  font: inherit;
+  font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.day:hover {
+  background: var(--color-bg);
+}
+
+.outside {
+  color: var(--color-border);
+}
+
+.today::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0.25rem;
+  width: 0.25rem;
+  height: 0.25rem;
+  margin-left: -0.125rem;
+  background: var(--color-primary);
+  border-radius: 50%;
+}
+
+.inRange,
+.inRange:hover {
+  background: var(--color-primary-soft);
+  border-radius: 0;
+}
+
+.selected,
+.selected:hover {
+  color: var(--color-on-dark);
+  background: var(--color-primary);
+  font-weight: 600;
+}
+
+.selected.today::after {
+  background: var(--color-on-dark);
+}
+
+.status {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  text-align: center;
+}

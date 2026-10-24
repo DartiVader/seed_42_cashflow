@@ -1,0 +1,59 @@
+.leafFilled {
+  fill: var(--color-accent);
+}
+
+.leafOutline {
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 4;
+  stroke-linejoin: round;
+}
+
+.stem {
+  stroke: var(--color-accent);
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+
+.file {
+  fill: var(--color-surface);
+}
+
+.fold {
+  fill: var(--color-primary-soft);
+}
+
+.lens {
+  fill: var(--color-primary-soft);
+  stroke: var(--color-brand-900);
+  stroke-width: 3;
+}
+
+.frame {
+  stroke: var(--color-brand-900);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.eye {
+  fill: var(--color-brand-900);
+}
+
+.smile {
+  fill: none;
+  stroke: var(--color-brand-900);
+  stroke-width: 3.5;
+  stroke-linecap: round;
+}
+
+.badge {
+  fill: var(--color-primary);
+}
+
+.badgeText {
+  fill: var(--color-on-dark);
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
