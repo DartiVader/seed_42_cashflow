@@ -13,6 +13,8 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.HandlerMethod;
+import org.springframework.web.multipart.MaxUploadSizeExceededException;
+import org.springframework.web.multipart.support.MissingServletRequestPartException;
 import org.springframework.web.servlet.HandlerMapping;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
 import ru.seed.server.utils.ResponseUtils;
@@ -73,6 +75,20 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.METHOD_NOT_ALLOWED)
                 .body(ResponseUtils.responseError(methodName(request),
                         new BadRequestException("Этот метод запроса не поддерживается")));
+    }
+
+    @ExceptionHandler(MaxUploadSizeExceededException.class)
+    public ResponseEntity<Response<Void>> handleMaxUploadSizeExceededException(MaxUploadSizeExceededException exception,
+                                                                               HttpServletRequest request) {
+        return ResponseEntity.status(HttpStatus.CONTENT_TOO_LARGE)
+                .body(ResponseUtils.responseError(methodName(request),
+                        new BadRequestException("Файл больше 100 МБ, разделите его на части")));
+    }
+
+    @ExceptionHandler(MissingServletRequestPartException.class)
+    public ResponseEntity<Response<Void>> handleMissingServletRequestPartException(MissingServletRequestPartException exception,
+                                                                                   HttpServletRequest request) {
+        return handleValidationException(new BadRequestException("Выберите файл для загрузки"), request);
     }
 
     @ExceptionHandler(Exception.class)
