@@ -5,6 +5,10 @@
 
 ![Архитектура](architecture.png)
 
+## Деплой
+
+https://193-233-246-163.sslip.io/auth
+
 ## Демо
 
 https://github.com/user-attachments/assets/a4d0b54a-5322-4021-b393-ef65b636a07e
