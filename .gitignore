@@ -36,3 +36,7 @@ state/
 # Модели (ml-model/models) и отчёты для шлюза и страницы «Качество модели» — в репозитории.
 ml-model/cashflow_data/
 ml-model/dist/
+
+# Агентские инструкции в репозиторий не кладём (из master)
+AGENTS.md
+CLAUDE.md

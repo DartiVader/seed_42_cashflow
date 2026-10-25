@@ -5,6 +5,16 @@
 
 ![Архитектура](architecture.png)
 
+## Демо
+
+https://github.com/user-attachments/assets/a4d0b54a-5322-4021-b393-ef65b636a07e
+
+https://github.com/user-attachments/assets/20a28927-8fa7-4ace-a125-cf847b43aaf6
+
+https://github.com/user-attachments/assets/f98328e4-1520-4d84-ba65-73707bcdca51
+
+https://github.com/user-attachments/assets/5d3bfd4a-093f-46c6-9ed7-05716d8b337a
+
 ## Состав репозитория
 
 | Папка | Что это |
@@ -18,6 +28,9 @@
 | `scripts/seed_demo.py` | заливка демо-пользователей и компаний через API |
 | `tests/` | тесты бэкенда; `service/tests`, `llm_service/tests` — тесты сервисов |
 | `docs/`, `reports/e2e/` | скриншоты и отчёт E2E-проверки |
+| `db/` | схема БД команды: миграции `V00x`, представления и `get_operations_period` (`db/migrate.sh`) |
+| `mock_marketplace_api.py`, `examples/` | мок API маркетплейсов OZON / WB / Яндекс Маркет с примерами ответов (`MARKETPLACE_URL`) |
+| `server/` | первая версия бэкенда на Spring — заменена бэкендом на FastAPI (`app/`), оставлена для истории |
 
 ## Запуск
 

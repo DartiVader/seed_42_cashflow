@@ -1,0 +1,122 @@
+[
+  {
+    "reportId": 2024093001,
+    "rrdId": 100000001,
+    "transactionDate": "2024-09-30",
+    "transactionType": "SALE",
+    "supplierOperName": "Продажа",
+    "amount": "45000.00",
+    "currency": "RUB",
+    "inn": "0048401219",
+    "counterpartyName": "ООО «Элеватор-242»",
+    "paymentPurpose": "Реализация товара по заказу 4521"
+  },
+  {
+    "reportId": 2024093001,
+    "rrdId": 100000002,
+    "transactionDate": "2024-09-30",
+    "transactionType": "SALE",
+    "supplierOperName": "Продажа",
+    "amount": "57892.06",
+    "currency": "RUB",
+    "inn": "0053443398",
+    "counterpartyName": "ООО «Дистрибьютор-307»",
+    "paymentPurpose": "Реализация товара по заказу 4522"
+  },
+  {
+    "reportId": 2024093001,
+    "rrdId": 100000003,
+    "transactionDate": "2024-10-01",
+    "transactionType": "SALE",
+    "supplierOperName": "Продажа",
+    "amount": "62000.00",
+    "currency": "RUB",
+    "inn": "0003878234",
+    "counterpartyName": "ООО «Завод-548»",
+    "paymentPurpose": "Реализация товара по заказу 4523"
+  },
+  {
+    "reportId": 2024093001,
+    "rrdId": 100000004,
+    "transactionDate": "2024-10-02",
+    "transactionType": "SALE",
+    "supplierOperName": "Продажа",
+    "amount": "38000.00",
+    "currency": "RUB",
+    "inn": "0068275202",
+    "counterpartyName": "ПАО «Банк»",
+    "paymentPurpose": "Реализация товара по заказу 4524"
+  },
+  {
+    "reportId": 2024093001,
+    "rrdId": 100000005,
+    "transactionDate": "2024-10-03",
+    "transactionType": "SALE",
+    "supplierOperName": "Продажа",
+    "amount": "80000.00",
+    "currency": "RUB",
+    "inn": "0034781419",
+    "counterpartyName": "ООО «Элеватор-936»",
+    "paymentPurpose": "Реализация товара по заказу 4525"
+  },
+  {
+    "reportId": 2024093001,
+    "rrdId": 100000006,
+    "transactionDate": "2024-10-04",
+    "transactionType": "SERVICE",
+    "supplierOperName": "Логистика",
+    "amount": "-53000.00",
+    "currency": "RUB",
+    "inn": "0056213787",
+    "counterpartyName": "ООО «Система взимания платы-516»",
+    "paymentPurpose": "Услуги доставки за период"
+  },
+  {
+    "reportId": 2024093001,
+    "rrdId": 100000007,
+    "transactionDate": "2024-10-04",
+    "transactionType": "SERVICE",
+    "supplierOperName": "Хранение",
+    "amount": "-3125.40",
+    "currency": "RUB",
+    "inn": "",
+    "counterpartyName": "Wildberries",
+    "paymentPurpose": "Оплата хранения за период"
+  },
+  {
+    "reportId": 2024093001,
+    "rrdId": 100000008,
+    "transactionDate": "2024-10-05",
+    "transactionType": "SERVICE",
+    "supplierOperName": "Приёмка",
+    "amount": "-243.81",
+    "currency": "RUB",
+    "inn": "",
+    "counterpartyName": "Wildberries",
+    "paymentPurpose": "Платная приёмка товара"
+  },
+  {
+    "reportId": 2024093001,
+    "rrdId": 100000009,
+    "transactionDate": "2024-10-05",
+    "transactionType": "SERVICE",
+    "supplierOperName": "Удержания",
+    "amount": "-8452.34",
+    "currency": "RUB",
+    "inn": "",
+    "counterpartyName": "Wildberries",
+    "paymentPurpose": "Удержания по договору оферты"
+  },
+  {
+    "reportId": 2024093001,
+    "rrdId": 100000010,
+    "transactionDate": "2024-10-06",
+    "transactionType": "SERVICE",
+    "supplierOperName": "Штрафы",
+    "amount": "-890.56",
+    "currency": "RUB",
+    "inn": "",
+    "counterpartyName": "Wildberries",
+    "paymentPurpose": "Штрафы за нарушение условий"
+  }
+]
