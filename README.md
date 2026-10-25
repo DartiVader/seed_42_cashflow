@@ -13,7 +13,7 @@ https://193-233-246-163.sslip.io/auth
 
 https://github.com/user-attachments/assets/429117f7-7c16-48e1-9e6d-fd776eb7146e
 
-https://github.com/user-attachments/assets/20a28927-8fa7-4ace-a125-cf847b43aaf6
+https://github.com/user-attachments/assets/ec1ce6a0-2c2a-49cc-a109-5e34ac1276e4
 
 https://github.com/user-attachments/assets/f98328e4-1520-4d84-ba65-73707bcdca51
 
