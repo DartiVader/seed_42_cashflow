@@ -11,7 +11,7 @@ https://193-233-246-163.sslip.io/auth
 
 ## Демо
 
-https://github.com/user-attachments/assets/a4d0b54a-5322-4021-b393-ef65b636a07e
+https://github.com/user-attachments/assets/429117f7-7c16-48e1-9e6d-fd776eb7146e
 
 https://github.com/user-attachments/assets/20a28927-8fa7-4ace-a125-cf847b43aaf6
 
