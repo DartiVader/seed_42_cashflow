@@ -1,0 +1,54 @@
+.matrix {
+  table-layout: fixed;
+}
+
+.matrix th {
+  padding: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+.matrix th[scope='row'] {
+  width: 26%;
+  text-align: left;
+}
+
+.cell {
+  padding: 0.75rem;
+  text-align: center;
+  border: 0.25rem solid var(--color-surface);
+  border-radius: var(--radius-md);
+}
+
+.cell[data-tone='ok'] {
+  background: var(--color-ok-soft);
+}
+
+.cell[data-tone='bad'] {
+  background: var(--color-danger-soft);
+}
+
+.label,
+.value,
+.share {
+  display: block;
+}
+
+.label {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+
+.value {
+  margin: 0.25rem 0;
+  font-size: 1.375rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.share {
+  font-size: 0.8125rem;
+  font-weight: 600;
+}

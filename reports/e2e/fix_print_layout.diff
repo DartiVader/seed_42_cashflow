@@ -1,0 +1,24 @@
+--- reports/e2e/.ForecastPage.css.orig	2026-10-25 02:10:22.861447524 +0300
++++ client/src/pages/ForecastPage/ForecastPage.module.css	2026-10-25 02:10:22.876447240 +0300
+@@ -123,7 +123,9 @@
+     display: none;
+   }
+ 
++  /* боковая панель в печати скрыта — без сетки под неё отчёт занимает всю ширину листа */
+   .page {
++    display: block;
+     padding: 0;
+   }
+ }
+--- reports/e2e/.Header.css.orig	2026-10-25 02:10:22.862447505 +0300
++++ client/src/layouts/Header/Header.module.css	2026-10-25 02:10:22.876447240 +0300
+@@ -98,3 +98,9 @@
+     font-size: 0.8125rem;
+   }
+ }
++
++@media print {
++  .header {
++    display: none;
++  }
++}

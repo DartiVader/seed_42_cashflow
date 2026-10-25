@@ -1,0 +1,35 @@
+--- reports/e2e/.Tour.orig	2026-10-25 02:02:23.524112852 +0300
++++ client/src/components/Tour/Tour.tsx	2026-10-25 02:02:23.535112654 +0300
+@@ -24,6 +24,8 @@
+ }
+ 
+ const PAD = 8
++const TARGET_WAIT_STEP_MS = 60
++const TARGET_WAIT_ATTEMPTS = 25
+ 
+ const Tour = ({ steps, isOpen, onClose, onTab }: TourProps) => {
+   const [index, setIndex] = useState(0)
+@@ -51,11 +53,20 @@
+   useLayoutEffect(() => {
+     if (!isOpen || !step) return
+     if (step.tab && onTab) onTab(step.tab)
+-    const timer = window.setTimeout(() => {
++    // Вкладка меняется с анимацией: ждём, пока цель шага появится, и только потом прокручиваем к ней
++    let attempts = 0
++    let timer = 0
++    const focusTarget = () => {
+       const el = document.querySelector<HTMLElement>(`[data-tour="${step.target}"]`)
++      if (!el && attempts < TARGET_WAIT_ATTEMPTS) {
++        attempts += 1
++        timer = window.setTimeout(focusTarget, TARGET_WAIT_STEP_MS)
++        return
++      }
+       el?.scrollIntoView({ block: 'center', behavior: 'smooth' })
+-      window.setTimeout(measure, 350)
+-    }, 80)
++      timer = window.setTimeout(measure, 350)
++    }
++    timer = window.setTimeout(focusTarget, 80)
+     return () => window.clearTimeout(timer)
+   }, [isOpen, step, onTab, measure])
+ 

@@ -1,0 +1,56 @@
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+  align-items: start;
+  gap: 1rem;
+}
+
+.full {
+  grid-column: 1 / -1;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem 1rem;
+  margin-top: 0.75rem;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+.legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.dot,
+.gap {
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+}
+
+.dot[data-kind='must'],
+.gap {
+  background: var(--color-danger);
+}
+
+.dot[data-kind='optional'] {
+  background: var(--color-warning);
+}
+
+.dot[data-kind='income'] {
+  background: var(--color-primary);
+}
+
+.gap {
+  box-shadow: 0 0 0 3px var(--color-danger-soft);
+}
+
+@media (max-width: 1000px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

@@ -1,0 +1,903 @@
+client-1  | npm warn deprecated glob@11.1.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+client-1  | 
+postgres-1  | The files belonging to this database system will be owned by user "postgres".
+postgres-1  | This user must also own the server process.
+postgres-1  | 
+postgres-1  | The database cluster will be initialized with locale "en_US.utf8".
+postgres-1  | The default database encoding has accordingly been set to "UTF8".
+postgres-1  | The default text search configuration will be set to "english".
+postgres-1  | 
+postgres-1  | Data page checksums are disabled.
+postgres-1  | 
+postgres-1  | fixing permissions on existing directory /var/lib/postgresql/data ... ok
+postgres-1  | creating subdirectories ... ok
+postgres-1  | selecting dynamic shared memory implementation ... posix
+postgres-1  | selecting default max_connections ... 100
+postgres-1  | selecting default shared_buffers ... 128MB
+postgres-1  | selecting default time zone ... UTC
+postgres-1  | creating configuration files ... ok
+postgres-1  | running bootstrap script ... ok
+postgres-1  | sh: locale: not found
+postgres-1  | 2026-10-24 22:44:51.425 UTC [35] WARNING:  no usable system locales were found
+postgres-1  | performing post-bootstrap initialization ... ok
+postgres-1  | initdb: warning: enabling "trust" authentication for local connections
+postgres-1  | initdb: hint: You can change this by editing pg_hba.conf or using the option -A, or --auth-local and --auth-host, the next time you run initdb.
+postgres-1  | syncing data to disk ... ok
+postgres-1  | 
+client-1    | added 403 packages, and audited 404 packages in 19s
+client-1    | 
+client-1    | 106 packages are looking for funding
+client-1    |   run `npm fund` for details
+client-1    | 
+client-1    | found 0 vulnerabilities
+client-1    | npm notice
+client-1    | npm notice New major version of npm available! 10.9.9 -> 12.2.1
+client-1    | npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+client-1    | npm notice To update run: npm install -g npm@12.2.1
+client-1    | npm notice
+client-1    | 
+client-1    | > frontend@0.0.0 dev
+client-1    | > vite --host 0.0.0.0 --port 5173
+client-1    | 
+ml-1        | INFO:     Started server process [1]
+ml-1        | INFO:     Waiting for application startup.
+ml-1        | INFO:     Application startup complete.
+ml-1        | INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+ml-1        | 2026-10-24 22:44:57,894 INFO ml.api: request_id=7b64afede58a GET /ml/health -> 200 0ms
+ml-1        | 2026-10-24 22:45:00,628 INFO ml.worker: context loaded version=lgbm_net-v2 companies=150 sec=6.8
+ml-1        | 2026-10-24 22:45:00,628 INFO ml.worker: context loaded version=lgbm_net-v2 companies=150 sec=6.8
+ml-1        | 2026-10-24 22:45:00,628 INFO ml.api: workers ready n=2 version=lgbm_net-v2
+ml-1        | 2026-10-24 22:45:00,919 INFO ml.api: request_id=38a89b3fc82e GET /ml/health -> 200 0ms
+ml-1        | 2026-10-24 22:45:03,961 INFO ml.api: request_id=793c0098d972 GET /ml/health -> 200 1ms
+ml-1        | 2026-10-24 22:45:07,003 INFO ml.api: request_id=97d61b0c0e19 GET /ml/health -> 200 0ms
+ml-1        | 2026-10-24 22:45:18,766 INFO ml.api: request_id=4db860c7641b GET /ml/health -> 200 0ms
+ml-1        | 2026-10-24 22:47:10,815 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 22:47:10,823 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:47:11,178 INFO ml.api: request_id=7e5340ede681 POST /ml/companies/C044/forecast -> 200 448ms
+ml-1        | 2026-10-24 22:49:33,966 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 22:49:33,973 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:49:33,987 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 22:49:33,994 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:49:34,385 INFO ml.api: request_id=4ec2bf55-99dd-460f-bbb0-30b1f5c38973 POST /ml/companies/C044/forecast -> 200 528ms
+postgres-1  | 
+postgres-1  | Success. You can now start the database server using:
+postgres-1  | 
+ml-1        | 2026-10-24 22:49:34,388 INFO ml.api: request_id=025fc8d6-2271-4cb0-9d9e-0695d06c1734 POST /ml/companies/C044/forecast -> 200 501ms
+ml-1        | 2026-10-24 22:49:34,459 INFO categorizer: rules: 2028 / 2028 (100.0%)
+llm-1       | INFO:     Started server process [1]
+postgres-1  |     pg_ctl -D /var/lib/postgresql/data -l logfile start
+postgres-1  | 
+postgres-1  | waiting for server to start....2026-10-24 22:44:52.055 UTC [41] LOG:  starting PostgreSQL 16.15 on x86_64-pc-linux-musl, compiled by gcc (Alpine 15.2.0) 15.2.0, 64-bit
+postgres-1  | 2026-10-24 22:44:52.058 UTC [41] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+postgres-1  | 2026-10-24 22:44:52.069 UTC [44] LOG:  database system was shut down at 2026-10-24 22:44:51 UTC
+llm-1       | INFO:     Waiting for application startup.
+llm-1       | INFO:     Application startup complete.
+llm-1       | INFO:     Uvicorn running on http://0.0.0.0:8100 (Press CTRL+C to quit)
+llm-1       | INFO:     127.0.0.1:33322 - "GET /health HTTP/1.1" 200 OK
+ml-1        | 2026-10-24 22:49:34,467 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:49:34,837 INFO ml.api: request_id=5a5db14b-d474-46be-9b3e-063e30e8aed0 POST /ml/companies/C044/forecast -> 200 902ms
+ml-1        | 2026-10-24 22:49:35,025 INFO categorizer: rules: 1987 / 1987 (100.0%)
+ml-1        | 2026-10-24 22:49:35,034 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:49:35,499 INFO categorizer: rules: 1987 / 1987 (100.0%)
+ml-1        | 2026-10-24 22:49:35,507 INFO categorizer: counterparty: 0
+backend-1   | INFO:     Started server process [1]
+postgres-1  | 2026-10-24 22:44:52.074 UTC [41] LOG:  database system is ready to accept connections
+ml-1        | 2026-10-24 22:49:35,802 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 22:49:35,810 INFO categorizer: counterparty: 0
+client-1    | (!) Your Vite config uses features that are unsupported by `configLoader: 'native'`, which is planned to become the default in a future major version of Vite:
+llm-1       | INFO:     Shutting down
+client-1    |   - `__dirname` (vite.config.ts:24:25). Use `import.meta.dirname` instead
+client-1    | Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.
+postgres-1  |  done
+backend-1   | INFO:     Waiting for application startup.
+backend-1   | 2026-10-25 02:08:15,046 INFO [-] backend.db migrations applied: 2
+backend-1   | INFO:     Application startup complete.
+backend-1   | INFO:     Uvicorn running on http://0.0.0.0:8080 (Press CTRL+C to quit)
+backend-1   | 2026-10-25 02:08:35,899 INFO [2a3bb7d3-b9b6-4338-861d-f119c97930f8] backend GET /openapi.json status=200 user_id=None took_ms=23
+backend-1   | 2026-10-25 02:08:35,944 INFO [25d8ba4c-82cf-4798-9b02-a87e2ca32934] backend GET /api/me status=401 user_id=None took_ms=1
+backend-1   | 2026-10-25 02:08:35,991 INFO [26a57e62-99a5-459e-bd44-466115359fd8] backend GET /api/companies status=401 user_id=None took_ms=1
+backend-1   | 2026-10-25 02:08:36,034 INFO [e3ca66da-cbf0-460f-8836-65ecfd93ee15] backend POST /api/companies status=401 user_id=None took_ms=2
+backend-1   | 2026-10-25 02:08:36,079 INFO [aba62930-9845-4621-bba0-2b6602af154c] backend GET /api/companies/all status=401 user_id=None took_ms=0
+backend-1   | 2026-10-25 02:08:36,125 INFO [e0742783-7faf-4c88-bd98-9a8ef5b098a5] backend PUT /api/companies/1 status=401 user_id=None took_ms=1
+backend-1   | 2026-10-25 02:08:36,176 INFO [51eca227-e3e7-40f0-9ce0-406042a0ab87] backend DELETE /api/companies/1 status=401 user_id=None took_ms=0
+backend-1   | 2026-10-25 02:08:36,229 INFO [83a8c619-87e2-4bb5-a9c5-0c7e435bdac7] backend GET /api/operations status=401 user_id=None took_ms=0
+backend-1   | 2026-10-25 02:08:36,293 INFO [45a5b80e-b31d-404d-aca0-8e69a6bf79f3] backend POST /api/operations status=401 user_id=None took_ms=1
+backend-1   | 2026-10-25 02:08:36,395 INFO [661797e2-54c2-49a5-a7ab-e27f31242bf3] backend PUT /api/operations/1 status=401 user_id=None took_ms=1
+backend-1   | 2026-10-25 02:08:36,459 INFO [d6935abc-5f01-4b7e-9ef4-e4180bb016a4] backend DELETE /api/operations/1 status=401 user_id=None took_ms=0
+backend-1   | 2026-10-25 02:08:36,508 INFO [97f2faba-e01d-4975-b0b2-e1dd41724aef] backend POST /api/imports status=401 user_id=None took_ms=0
+backend-1   | 2026-10-25 02:08:36,536 INFO [701db967-21db-49ef-957f-6bc2c771c423] backend GET /api/me status=200 user_id=1 took_ms=1
+backend-1   | 2026-10-25 02:08:36,545 INFO [9c856908-bb1a-4db0-9fdc-04c46cac9625] backend GET /api/me status=200 user_id=1 took_ms=1
+backend-1   | 2026-10-25 02:08:36,573 INFO [0e2b17d7-c404-4274-bb2e-df6fb9cb3580] backend POST /api/imports/dataset status=401 user_id=None took_ms=0
+backend-1   | 2026-10-25 02:08:36,601 INFO [81d3436d-098f-443b-b613-aac2e51cc317] backend GET /api/quality status=200 user_id=1 took_ms=6
+backend-1   | 2026-10-25 02:08:36,611 INFO [9a3adb6a-14e6-488c-bffd-2dd1393f91a7] backend GET /api/quality status=200 user_id=1 took_ms=6
+backend-1   | 2026-10-25 02:08:36,670 INFO [f93201db-5b37-4ea3-8191-0792e971aed7] backend GET /api/marketplaces status=401 user_id=None took_ms=0
+backend-1   | 2026-10-25 02:08:36,714 INFO [ca43b85d-5289-4542-86d3-c952fb1b122f] backend POST /api/marketplaces status=401 user_id=None took_ms=0
+backend-1   | 2026-10-25 02:08:36,754 INFO [4840caba-a552-42f8-9644-a0884eb1f2a9] backend DELETE /api/marketplaces/1 status=401 user_id=None took_ms=0
+ml-1        | 2026-10-24 22:49:36,053 INFO ml.forecast.plan_fact: план-факт C044: дней 14, событий 5, missed 0/1, вне коридора 1
+client-1    | 
+client-1    |   VITE v8.3.5  ready in 362 ms
+postgres-1  | server started
+ml-1        | 2026-10-24 22:49:36,054 INFO ml.api: request_id=2bd3ebb7-c2ed-473a-ac04-ba0961897629 GET /ml/companies/C044/plan-fact -> 200 1157ms
+postgres-1  | CREATE DATABASE
+ml-1        | 2026-10-24 22:50:30,648 INFO categorizer: rules: 2028 / 2028 (100.0%)
+backend-1   | 2026-10-25 02:08:36,795 INFO [687bf6d5-589c-491d-a503-8ca63596f223] backend POST /api/marketplaces/1/sync status=401 user_id=None took_ms=1
+ml-1        | 2026-10-24 22:50:30,649 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 22:50:30,656 INFO categorizer: counterparty: 0
+postgres-1  | 
+backend-1   | 2026-10-25 02:08:36,834 INFO [3be1a190-5e39-4604-a2ef-52be7269b4f1] backend POST /api/companies/1/forecast status=401 user_id=None took_ms=1
+postgres-1  | 
+postgres-1  | /usr/local/bin/docker-entrypoint.sh: ignoring /docker-entrypoint-initdb.d/*
+client-1    | 
+client-1    |   ➜  Local:   http://localhost:5173/
+client-1    |   ➜  Network: http://172.21.0.2:5173/  eth0
+backend-1   | 2026-10-25 02:08:36,975 INFO [73240df7-1634-4058-8dfb-5b52d0246e91] backend POST /api/companies/1/explain status=401 user_id=None took_ms=0
+backend-1   | 2026-10-25 02:08:37,045 INFO [6f13af80-d27d-4f0e-a1d0-92ca0f6519b1] backend GET /api/companies/1/plan-fact status=401 user_id=None took_ms=0
+backend-1   | 2026-10-25 02:08:37,100 INFO [69ab7b99-0215-410b-ab21-a3218d009125] backend GET /api/quality status=401 user_id=None took_ms=0
+backend-1   | 2026-10-25 02:08:37,139 INFO [e2c9ae40-d693-4794-a53b-160a390e198e] backend GET /api/quality/files/1 status=401 user_id=None took_ms=0
+backend-1   | 2026-10-25 02:08:37,177 INFO [9a73eaa1-317d-495e-bd34-5c7b1eee8614] backend GET /api/admin/models status=401 user_id=None took_ms=0
+backend-1   | 2026-10-25 02:08:37,215 INFO [3ac0422c-822d-446c-adad-385b42198982] backend POST /api/admin/models/1/activate status=401 user_id=None took_ms=1
+backend-1   | 2026-10-25 02:08:37,252 INFO [c90a04e0-a40e-438d-9461-85cc24c10a40] backend POST /api/admin/models/retrain status=401 user_id=None took_ms=0
+backend-1   | 2026-10-25 02:08:37,334 INFO [1191b747-2f47-4238-8105-adbba1fd3d18] backend GET /api/admin/jobs/1 status=401 user_id=None took_ms=0
+backend-1   | 2026-10-25 02:08:37,647 INFO [3f207155-bb36-492e-9550-08f04054ed72] backend.auth user created user_id=3 is_admin=False
+backend-1   | 2026-10-25 02:08:37,648 INFO [3f207155-bb36-492e-9550-08f04054ed72] backend POST /api/auth/register status=201 user_id=None took_ms=254
+ml-1        | 2026-10-24 22:50:30,657 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:50:31,069 INFO ml.api: request_id=a3434370-35df-45ac-8eaf-30c611a045e2 POST /ml/companies/C044/forecast -> 200 531ms
+ml-1        | 2026-10-24 22:50:31,078 INFO ml.api: request_id=3a5343dc-5276-4ef4-a5ee-b61bc17a3902 POST /ml/companies/C044/forecast -> 200 541ms
+ml-1        | 2026-10-24 22:50:31,144 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 22:50:31,151 INFO categorizer: counterparty: 0
+postgres-1  | 
+postgres-1  | waiting for server to shut down....2026-10-24 22:44:52.203 UTC [41] LOG:  received fast shutdown request
+postgres-1  | 2026-10-24 22:44:52.206 UTC [41] LOG:  aborting any active transactions
+postgres-1  | 2026-10-24 22:44:52.207 UTC [41] LOG:  background worker "logical replication launcher" (PID 47) exited with exit code 1
+postgres-1  | 2026-10-24 22:44:52.207 UTC [42] LOG:  shutting down
+postgres-1  | 2026-10-24 22:44:52.210 UTC [42] LOG:  checkpoint starting: shutdown immediate
+postgres-1  | 2026-10-24 22:44:52.267 UTC [42] LOG:  checkpoint complete: wrote 926 buffers (5.7%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.015 s, sync=0.030 s, total=0.060 s; sync files=301, longest=0.012 s, average=0.001 s; distance=4283 kB, estimate=4283 kB; lsn=0/1925D58, redo lsn=0/1925D58
+postgres-1  | 2026-10-24 22:44:52.272 UTC [41] LOG:  database system is shut down
+postgres-1  |  done
+postgres-1  | server stopped
+postgres-1  | 
+postgres-1  | PostgreSQL init process complete; ready for start up.
+postgres-1  | 
+postgres-1  | 2026-10-24 22:44:52.324 UTC [1] LOG:  starting PostgreSQL 16.15 on x86_64-pc-linux-musl, compiled by gcc (Alpine 15.2.0) 15.2.0, 64-bit
+postgres-1  | 2026-10-24 22:44:52.324 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+postgres-1  | 2026-10-24 22:44:52.324 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+postgres-1  | 2026-10-24 22:44:52.330 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+postgres-1  | 2026-10-24 22:44:52.338 UTC [57] LOG:  database system was shut down at 2026-10-24 22:44:52 UTC
+postgres-1  | 2026-10-24 22:44:52.344 UTC [1] LOG:  database system is ready to accept connections
+postgres-1  | 2026-10-24 22:49:52.132 UTC [55] LOG:  checkpoint starting: time
+postgres-1  | 2026-10-24 22:54:22.066 UTC [55] LOG:  checkpoint complete: wrote 8767 buffers (53.5%); 0 WAL file(s) added, 0 removed, 14 recycled; write=269.866 s, sync=0.010 s, total=269.934 s; sync files=135, longest=0.003 s, average=0.001 s; distance=227838 kB, estimate=227838 kB; lsn=0/1A44B4B8, redo lsn=0/F7A5690
+postgres-1  | 2026-10-24 22:59:52.195 UTC [55] LOG:  checkpoint starting: time
+postgres-1  | 2026-10-24 23:04:22.127 UTC [55] LOG:  checkpoint complete: wrote 3622 buffers (22.1%); 0 WAL file(s) added, 0 removed, 11 recycled; write=269.860 s, sync=0.007 s, total=269.933 s; sync files=35, longest=0.002 s, average=0.001 s; distance=176799 kB, estimate=222734 kB; lsn=0/1EE27F18, redo lsn=0/1A44D590
+postgres-1  | 2026-10-24 23:04:52.157 UTC [55] LOG:  checkpoint starting: time
+ml-1        | 2026-10-24 22:50:31,532 INFO ml.api: request_id=45680841-c41a-4d1b-aa44-04885f248e5e POST /ml/companies/C044/forecast -> 200 965ms
+ml-1        | 2026-10-24 22:50:31,861 INFO categorizer: rules: 1987 / 1987 (100.0%)
+ml-1        | 2026-10-24 22:50:31,869 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:50:32,318 INFO categorizer: rules: 1987 / 1987 (100.0%)
+ml-1        | 2026-10-24 22:50:32,325 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:50:32,613 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 22:50:32,621 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:50:32,864 INFO ml.forecast.plan_fact: план-факт C044: дней 14, событий 5, missed 0/1, вне коридора 1
+ml-1        | 2026-10-24 22:50:32,865 INFO ml.api: request_id=e6a4537c-4050-4988-8d0d-27dee11b0cc0 GET /ml/companies/C044/plan-fact -> 200 1131ms
+ml-1        | 2026-10-24 22:52:43,899 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 22:52:43,907 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:52:44,266 INFO ml.api: request_id=afc987cd-fee0-4ba5-bfaf-553829e742ae POST /ml/companies/C044/forecast -> 200 467ms
+ml-1        | 2026-10-24 22:52:47,989 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 22:52:47,997 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:52:48,382 INFO ml.api: request_id=3e651d6f-c24f-44fe-ac58-b9bed6c1bc18 POST /ml/companies/C044/forecast -> 200 492ms
+ml-1        | 2026-10-24 22:52:52,102 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 22:52:52,110 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:52:52,492 INFO ml.api: request_id=67a1a8ff-0557-4e5a-b847-1c82dff68b4b POST /ml/companies/C044/forecast -> 200 492ms
+ml-1        | 2026-10-24 22:53:16,660 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 22:53:16,667 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 22:53:16,668 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:53:16,675 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:53:17,084 INFO ml.api: request_id=aca9be59-f17f-478f-b26c-344e17cdf887 POST /ml/companies/C044/forecast -> 200 532ms
+ml-1        | 2026-10-24 22:53:17,123 INFO ml.api: request_id=b8c1b81a-2167-4298-ab53-c4b7f394d6fb POST /ml/companies/C044/forecast -> 200 572ms
+ml-1        | 2026-10-24 22:53:17,163 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 22:53:17,171 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:53:17,567 INFO ml.api: request_id=2c5f226a-a4f3-495f-9a0c-a69b68113dfa POST /ml/companies/C044/forecast -> 200 977ms
+ml-1        | 2026-10-24 22:53:17,763 INFO categorizer: rules: 1987 / 1987 (100.0%)
+ml-1        | 2026-10-24 22:53:17,771 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:53:18,244 INFO categorizer: rules: 1987 / 1987 (100.0%)
+ml-1        | 2026-10-24 22:53:18,252 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:53:18,554 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 22:53:18,562 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:53:18,815 INFO ml.forecast.plan_fact: план-факт C044: дней 14, событий 5, missed 0/1, вне коридора 1
+ml-1        | 2026-10-24 22:53:18,815 INFO ml.api: request_id=a8ca3c4e-d892-4036-bea1-67e875282123 GET /ml/companies/C044/plan-fact -> 200 1182ms
+ml-1        | 2026-10-24 22:53:41,685 INFO categorizer: rules: 1063 / 1063 (100.0%)
+ml-1        | 2026-10-24 22:53:41,690 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:53:42,034 INFO ml.api: request_id=94dee266-b42f-4850-8d6c-d0f8eff8cf8b POST /ml/companies/C001/forecast -> 200 425ms
+ml-1        | 2026-10-24 22:53:42,135 INFO categorizer: rules: 1096 / 1096 (100.0%)
+ml-1        | 2026-10-24 22:53:42,141 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:53:42,471 INFO ml.api: request_id=0fb4a880-999f-42d8-a9d6-cd85e0d7090a POST /ml/companies/C002/forecast -> 200 409ms
+ml-1        | 2026-10-24 22:53:42,539 INFO categorizer: rules: 500 / 500 (100.0%)
+ml-1        | 2026-10-24 22:53:42,542 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:53:42,826 INFO ml.api: request_id=2683d7c1-ab17-45f7-ad9f-4b6ce71dedd8 POST /ml/companies/C003/forecast -> 200 337ms
+ml-1        | 2026-10-24 22:53:42,920 INFO categorizer: rules: 1497 / 1531 (97.8%)
+ml-1        | 2026-10-24 22:53:42,928 INFO categorizer: counterparty: 6
+ml-1        | 2026-10-24 22:53:43,247 INFO ml.api: request_id=35d13ae1-bd62-4cf4-8b19-461448e0a08e POST /ml/companies/C004/forecast -> 200 388ms
+ml-1        | 2026-10-24 22:53:43,328 INFO categorizer: rules: 460 / 460 (100.0%)
+ml-1        | 2026-10-24 22:53:43,332 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:53:43,609 INFO ml.api: request_id=9aa566d4-b53c-4d4c-bfa0-e6c5294b881c POST /ml/companies/C005/forecast -> 200 344ms
+ml-1        | 2026-10-24 22:53:43,723 INFO categorizer: rules: 1139 / 1140 (99.9%)
+ml-1        | 2026-10-24 22:53:43,729 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:53:44,107 INFO ml.api: request_id=ed5a014f-4d53-4cf0-aed3-8147ae2ff600 POST /ml/companies/C006/forecast -> 200 471ms
+ml-1        | 2026-10-24 22:53:44,176 INFO categorizer: rules: 236 / 236 (100.0%)
+ml-1        | 2026-10-24 22:53:44,179 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:53:44,457 INFO ml.api: request_id=f8f6f576-74c2-4c07-aaac-bf527a264f51 POST /ml/companies/C007/forecast -> 200 336ms
+ml-1        | 2026-10-24 22:53:44,597 INFO categorizer: rules: 2122 / 2122 (100.0%)
+ml-1        | 2026-10-24 22:53:44,605 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:53:44,977 INFO ml.api: request_id=4a6ace88-9b92-472d-a7c5-fbf5ef527c3c POST /ml/companies/C008/forecast -> 200 476ms
+ml-1        | 2026-10-24 22:53:45,172 INFO categorizer: rules: 3210 / 3210 (100.0%)
+ml-1        | 2026-10-24 22:53:45,183 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:53:45,610 INFO ml.api: request_id=cc86c945-91c5-4c96-8474-7738e0f819d5 POST /ml/companies/C009/forecast -> 200 572ms
+ml-1        | 2026-10-24 22:53:45,755 INFO categorizer: rules: 2300 / 2301 (100.0%)
+ml-1        | 2026-10-24 22:53:45,764 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:53:46,168 INFO ml.api: request_id=c8649a46-a622-425e-bab4-f604dba24698 POST /ml/companies/C010/forecast -> 200 512ms
+ml-1        | 2026-10-24 22:53:46,288 INFO categorizer: rules: 1609 / 1610 (99.9%)
+ml-1        | 2026-10-24 22:53:46,295 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:53:46,681 INFO ml.api: request_id=47b28c60-a1f6-4968-962e-0aa3a2fd5be2 POST /ml/companies/C011/forecast -> 200 479ms
+ml-1        | 2026-10-24 22:53:46,845 INFO categorizer: rules: 2791 / 2791 (100.0%)
+ml-1        | 2026-10-24 22:53:46,856 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:53:47,341 INFO ml.api: request_id=5f2340fc-19fe-472b-b820-6ad34cf5bbb9 POST /ml/companies/C012/forecast -> 200 610ms
+ml-1        | 2026-10-24 22:53:47,421 INFO categorizer: rules: 457 / 457 (100.0%)
+ml-1        | 2026-10-24 22:53:47,425 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:53:47,714 INFO ml.api: request_id=3a56b5b0-0a8e-40cb-abb3-a75db09cb03e POST /ml/companies/C013/forecast -> 200 355ms
+ml-1        | 2026-10-24 22:53:47,869 INFO categorizer: rules: 2296 / 2297 (100.0%)
+ml-1        | 2026-10-24 22:53:47,877 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:53:48,360 INFO ml.api: request_id=a533a23a-c296-443d-9967-1cc7e8483ed3 POST /ml/companies/C014/forecast -> 200 602ms
+ml-1        | 2026-10-24 22:53:48,511 INFO categorizer: rules: 2426 / 2426 (100.0%)
+ml-1        | 2026-10-24 22:53:48,520 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:53:48,907 INFO ml.api: request_id=797f9d57-8e66-400e-9b26-de898d8713f2 POST /ml/companies/C015/forecast -> 200 500ms
+ml-1        | 2026-10-24 22:53:48,996 INFO categorizer: rules: 738 / 738 (100.0%)
+ml-1        | 2026-10-24 22:53:49,000 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:53:49,285 INFO ml.api: request_id=8fd9d3f9-31b8-4423-98a7-7200991cb414 POST /ml/companies/C016/forecast -> 200 357ms
+ml-1        | 2026-10-24 22:53:49,420 INFO categorizer: rules: 2283 / 2283 (100.0%)
+ml-1        | 2026-10-24 22:53:49,429 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:53:49,804 INFO ml.api: request_id=9183260e-619b-4b40-9743-2ba6b58bb217 POST /ml/companies/C017/forecast -> 200 475ms
+ml-1        | 2026-10-24 22:53:49,920 INFO categorizer: rules: 1978 / 1978 (100.0%)
+ml-1        | 2026-10-24 22:53:49,928 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:53:50,319 INFO ml.api: request_id=d7c4d3e3-a9cb-43a3-998e-8b3a58f566ad POST /ml/companies/C018/forecast -> 200 475ms
+ml-1        | 2026-10-24 22:53:50,447 INFO categorizer: rules: 2017 / 2017 (100.0%)
+ml-1        | 2026-10-24 22:53:50,455 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:53:50,806 INFO ml.api: request_id=125dfb1b-c1b0-46e5-a481-be612dc6cf15 POST /ml/companies/C019/forecast -> 200 446ms
+ml-1        | 2026-10-24 22:53:50,963 INFO categorizer: rules: 2404 / 2404 (100.0%)
+ml-1        | 2026-10-24 22:53:50,971 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:53:51,359 INFO ml.api: request_id=3d0a9bf2-ac02-4664-bc69-767d0d87dd22 POST /ml/companies/C020/forecast -> 200 504ms
+ml-1        | 2026-10-24 22:53:51,534 INFO categorizer: rules: 2777 / 2777 (100.0%)
+ml-1        | 2026-10-24 22:53:51,544 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:53:52,097 INFO ml.api: request_id=d3ebff4e-fcb2-4d13-b828-fd753c86084a POST /ml/companies/C021/forecast -> 200 682ms
+ml-1        | 2026-10-24 22:53:52,171 INFO categorizer: rules: 427 / 427 (100.0%)
+ml-1        | 2026-10-24 22:53:52,174 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:53:52,450 INFO ml.api: request_id=736c7452-ca9a-473a-bb32-57e9da40ed9e POST /ml/companies/C022/forecast -> 200 335ms
+ml-1        | 2026-10-24 22:53:52,599 INFO categorizer: rules: 2243 / 2243 (100.0%)
+ml-1        | 2026-10-24 22:53:52,608 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:53:53,018 INFO ml.api: request_id=c63862f1-d0ca-44dc-95e9-dec89f61bbbd POST /ml/companies/C023/forecast -> 200 521ms
+ml-1        | 2026-10-24 22:53:53,231 INFO categorizer: rules: 3273 / 3336 (98.1%)
+ml-1        | 2026-10-24 22:53:53,248 INFO categorizer: counterparty: 40
+ml-1        | 2026-10-24 22:53:53,682 INFO ml.api: request_id=7e42781a-f273-466d-98be-e074a2649f7c POST /ml/companies/C024/forecast -> 200 598ms
+ml-1        | 2026-10-24 22:53:53,755 INFO ml.api: request_id=9a49f43f-0c20-492e-9da4-f2b6c42af86f POST /ml/companies/C025/forecast -> 422 41ms
+ml-1        | 2026-10-24 22:53:53,919 INFO categorizer: rules: 2957 / 2957 (100.0%)
+ml-1        | 2026-10-24 22:53:53,929 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:53:54,443 INFO ml.api: request_id=312c298f-9b54-4724-b8ab-8c4f014d07f2 POST /ml/companies/C026/forecast -> 200 634ms
+ml-1        | 2026-10-24 22:53:54,499 INFO categorizer: rules: 378 / 379 (99.7%)
+ml-1        | 2026-10-24 22:53:54,502 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:53:54,768 INFO ml.api: request_id=bc2c53fc-84bf-46d7-9f0e-8446d6f3f0ed POST /ml/companies/C027/forecast -> 200 310ms
+ml-1        | 2026-10-24 22:53:54,911 INFO categorizer: rules: 2324 / 2326 (99.9%)
+ml-1        | 2026-10-24 22:53:54,920 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:53:55,292 INFO ml.api: request_id=db761f5e-2c8e-421c-8eb7-23b7798e1334 POST /ml/companies/C028/forecast -> 200 481ms
+ml-1        | 2026-10-24 22:53:55,366 INFO categorizer: rules: 378 / 379 (99.7%)
+ml-1        | 2026-10-24 22:53:55,370 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:53:55,643 INFO ml.api: request_id=a3ab81b3-e2f9-4ac1-b668-981bc598b9c8 POST /ml/companies/C029/forecast -> 200 336ms
+ml-1        | 2026-10-24 22:53:55,857 INFO categorizer: rules: 3158 / 3222 (98.0%)
+ml-1        | 2026-10-24 22:53:55,873 INFO categorizer: counterparty: 32
+ml-1        | 2026-10-24 22:53:56,293 INFO ml.api: request_id=762cb89d-8b2f-4ab6-83be-c19805f18811 POST /ml/companies/C030/forecast -> 200 587ms
+ml-1        | 2026-10-24 22:53:56,500 INFO categorizer: rules: 3115 / 3115 (100.0%)
+ml-1        | 2026-10-24 22:53:56,511 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:53:56,935 INFO ml.api: request_id=342879a6-7574-4325-b291-4f8c19109b7f POST /ml/companies/C031/forecast -> 200 584ms
+ml-1        | 2026-10-24 22:53:57,011 INFO categorizer: rules: 395 / 395 (100.0%)
+ml-1        | 2026-10-24 22:53:57,015 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:53:57,277 INFO ml.api: request_id=43f0d719-7464-4a8d-ab82-7acccecfd920 POST /ml/companies/C032/forecast -> 200 327ms
+ml-1        | 2026-10-24 22:53:57,357 INFO categorizer: rules: 938 / 938 (100.0%)
+ml-1        | 2026-10-24 22:53:57,362 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:53:57,686 INFO ml.api: request_id=5bb4ef46-b782-431a-b02d-5ca1504e321e POST /ml/companies/C033/forecast -> 200 386ms
+ml-1        | 2026-10-24 22:53:57,811 INFO categorizer: rules: 2135 / 2135 (100.0%)
+ml-1        | 2026-10-24 22:53:57,819 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:53:58,185 INFO ml.api: request_id=247fe2e8-90c4-4ce6-862d-f1cc75292e34 POST /ml/companies/C034/forecast -> 200 457ms
+ml-1        | 2026-10-24 22:53:58,371 INFO categorizer: rules: 2789 / 2789 (100.0%)
+ml-1        | 2026-10-24 22:53:58,381 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:53:58,792 INFO ml.api: request_id=b9f51078-0ad5-4db2-9644-ed58a17190ab POST /ml/companies/C035/forecast -> 200 551ms
+ml-1        | 2026-10-24 22:53:58,866 INFO ml.api: request_id=3d32d205-8bdb-4bfb-8864-c987cc380fe8 POST /ml/companies/C036/forecast -> 422 33ms
+ml-1        | 2026-10-24 22:53:58,948 INFO categorizer: rules: 861 / 861 (100.0%)
+ml-1        | 2026-10-24 22:53:58,952 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:53:59,229 INFO ml.api: request_id=0b29ffb3-a6aa-4ae6-98f2-ad6d220de145 POST /ml/companies/C037/forecast -> 200 343ms
+ml-1        | 2026-10-24 22:53:59,361 INFO categorizer: rules: 2022 / 2022 (100.0%)
+ml-1        | 2026-10-24 22:53:59,369 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:53:59,772 INFO ml.api: request_id=7347cc6f-df4b-45b8-83f0-ec9810b1c6d1 POST /ml/companies/C038/forecast -> 200 501ms
+ml-1        | 2026-10-24 22:53:59,837 INFO categorizer: rules: 160 / 160 (100.0%)
+ml-1        | 2026-10-24 22:53:59,839 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:00,083 INFO ml.api: request_id=86aede10-482d-4837-8af4-6d8e675536ed POST /ml/companies/C039/forecast -> 200 298ms
+ml-1        | 2026-10-24 22:54:00,147 INFO categorizer: rules: 537 / 537 (100.0%)
+ml-1        | 2026-10-24 22:54:00,151 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:00,418 INFO ml.api: request_id=1bcb03d5-a357-425c-a6ec-8f3631cf11a6 POST /ml/companies/C040/forecast -> 200 317ms
+ml-1        | 2026-10-24 22:54:00,561 INFO categorizer: rules: 2315 / 2316 (100.0%)
+ml-1        | 2026-10-24 22:54:00,570 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:00,988 INFO ml.api: request_id=a4b20150-a9a6-4fcc-8a66-c36ad6181d87 POST /ml/companies/C041/forecast -> 200 522ms
+ml-1        | 2026-10-24 22:54:01,069 INFO categorizer: rules: 593 / 602 (98.5%)
+ml-1        | 2026-10-24 22:54:01,074 INFO categorizer: counterparty: 8
+ml-1        | 2026-10-24 22:54:01,346 INFO ml.api: request_id=e928d593-e070-4ed9-89fa-4746a60cdce3 POST /ml/companies/C042/forecast -> 200 339ms
+ml-1        | 2026-10-24 22:54:01,425 INFO categorizer: rules: 442 / 442 (100.0%)
+ml-1        | 2026-10-24 22:54:01,428 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:01,709 INFO ml.api: request_id=5bf3297f-9174-478d-8b52-1a8c4abd9f67 POST /ml/companies/C043/forecast -> 200 346ms
+ml-1        | 2026-10-24 22:54:01,844 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 22:54:01,852 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:02,212 INFO ml.api: request_id=1b67500a-bb28-4d6f-920c-0e13c36d07c3 POST /ml/companies/C044/forecast -> 200 461ms
+ml-1        | 2026-10-24 22:54:02,378 INFO categorizer: rules: 2404 / 2404 (100.0%)
+ml-1        | 2026-10-24 22:54:02,386 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:02,853 INFO ml.api: request_id=bbe33502-2f8f-4a64-8f38-33be40ed161a POST /ml/companies/C045/forecast -> 200 594ms
+ml-1        | 2026-10-24 22:54:02,917 INFO categorizer: rules: 135 / 135 (100.0%)
+ml-1        | 2026-10-24 22:54:02,919 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:03,156 INFO ml.api: request_id=d806b215-6b8a-4b00-be8b-561ea0897a1d POST /ml/companies/C046/forecast -> 200 289ms
+ml-1        | 2026-10-24 22:54:03,223 INFO categorizer: rules: 592 / 592 (100.0%)
+ml-1        | 2026-10-24 22:54:03,227 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:03,550 INFO ml.api: request_id=ff1dc61f-ac80-4fba-a070-eb6a4d216ff2 POST /ml/companies/C047/forecast -> 200 375ms
+ml-1        | 2026-10-24 22:54:03,640 INFO categorizer: rules: 1230 / 1230 (100.0%)
+ml-1        | 2026-10-24 22:54:03,646 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:03,996 INFO ml.api: request_id=a9964c68-8dc8-47be-80db-34ccc09cf71c POST /ml/companies/C048/forecast -> 200 418ms
+ml-1        | 2026-10-24 22:54:04,051 INFO categorizer: rules: 62 / 62 (100.0%)
+ml-1        | 2026-10-24 22:54:04,054 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:04,270 INFO ml.api: request_id=7c61e5c6-81c6-4578-ac26-158a01c8f51d POST /ml/companies/C049/forecast -> 200 263ms
+ml-1        | 2026-10-24 22:54:04,431 INFO categorizer: rules: 2468 / 2468 (100.0%)
+ml-1        | 2026-10-24 22:54:04,440 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:04,870 INFO ml.api: request_id=aa8b63e9-33a8-4d45-bdb2-9bc8d8ef080f POST /ml/companies/C050/forecast -> 200 549ms
+ml-1        | 2026-10-24 22:54:05,012 INFO categorizer: rules: 2176 / 2194 (99.2%)
+ml-1        | 2026-10-24 22:54:05,022 INFO categorizer: counterparty: 7
+ml-1        | 2026-10-24 22:54:05,426 INFO ml.api: request_id=1d75e62f-58f7-4a9d-975d-81b30afccdd3 POST /ml/companies/C051/forecast -> 200 511ms
+ml-1        | 2026-10-24 22:54:05,498 INFO categorizer: rules: 391 / 391 (100.0%)
+ml-1        | 2026-10-24 22:54:05,501 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:05,769 INFO ml.api: request_id=e79e56f7-6419-40b5-8e49-3554c84c6ebf POST /ml/companies/C052/forecast -> 200 326ms
+ml-1        | 2026-10-24 22:54:05,910 INFO categorizer: rules: 2358 / 2358 (100.0%)
+ml-1        | 2026-10-24 22:54:05,919 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:06,388 INFO ml.api: request_id=a1a30b6c-1a6d-4e65-b4d7-7fe03b501c22 POST /ml/companies/C053/forecast -> 200 570ms
+ml-1        | 2026-10-24 22:54:06,517 INFO categorizer: rules: 2173 / 2188 (99.3%)
+ml-1        | 2026-10-24 22:54:06,526 INFO categorizer: counterparty: 2
+ml-1        | 2026-10-24 22:54:06,906 INFO ml.api: request_id=f657e626-2792-47f1-8ab6-514e4c321169 POST /ml/companies/C054/forecast -> 200 475ms
+ml-1        | 2026-10-24 22:54:07,119 INFO categorizer: rules: 3214 / 3214 (100.0%)
+ml-1        | 2026-10-24 22:54:07,131 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:07,570 INFO ml.api: request_id=cad16b74-a996-4936-a67a-955e94a31612 POST /ml/companies/C055/forecast -> 200 602ms
+ml-1        | 2026-10-24 22:54:07,645 INFO categorizer: rules: 506 / 506 (100.0%)
+ml-1        | 2026-10-24 22:54:07,649 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:07,914 INFO ml.api: request_id=bcafe95e-b1e2-4760-a9c4-d67419011296 POST /ml/companies/C056/forecast -> 200 326ms
+ml-1        | 2026-10-24 22:54:08,049 INFO categorizer: rules: 2190 / 2190 (100.0%)
+ml-1        | 2026-10-24 22:54:08,058 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:08,439 INFO ml.api: request_id=f43e817a-f1f4-41d1-9e1c-cf6c3da38544 POST /ml/companies/C057/forecast -> 200 480ms
+ml-1        | 2026-10-24 22:54:08,504 INFO categorizer: rules: 462 / 462 (100.0%)
+ml-1        | 2026-10-24 22:54:08,507 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:08,804 INFO ml.api: request_id=eb80c0ec-6347-4f74-abb7-b38bb5fa10d9 POST /ml/companies/C058/forecast -> 200 346ms
+ml-1        | 2026-10-24 22:54:08,868 INFO categorizer: rules: 368 / 368 (100.0%)
+ml-1        | 2026-10-24 22:54:08,871 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:09,124 INFO ml.api: request_id=479a1d8e-f878-474a-a85c-f9fcf935d9f0 POST /ml/companies/C059/forecast -> 200 306ms
+ml-1        | 2026-10-24 22:54:09,264 INFO categorizer: rules: 1988 / 1988 (100.0%)
+ml-1        | 2026-10-24 22:54:09,272 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:09,624 INFO ml.api: request_id=80a70fd0-f238-4b90-919d-8e342b2c5eb5 POST /ml/companies/C060/forecast -> 200 456ms
+ml-1        | 2026-10-24 22:54:09,693 INFO ml.api: request_id=2912d04d-9b12-493a-80f5-5d81adeafb55 POST /ml/companies/C061/forecast -> 422 33ms
+ml-1        | 2026-10-24 22:54:09,786 INFO categorizer: rules: 877 / 877 (100.0%)
+ml-1        | 2026-10-24 22:54:09,790 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:10,136 INFO ml.api: request_id=88584c5d-9e80-4750-a1c0-51c6d2eb9b0f POST /ml/companies/C062/forecast -> 200 421ms
+ml-1        | 2026-10-24 22:54:10,256 INFO categorizer: rules: 2041 / 2041 (100.0%)
+ml-1        | 2026-10-24 22:54:10,264 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:10,627 INFO ml.api: request_id=a224e600-28cc-4b7c-b698-e99c20f2353b POST /ml/companies/C063/forecast -> 200 448ms
+ml-1        | 2026-10-24 22:54:10,749 INFO categorizer: rules: 1981 / 1981 (100.0%)
+ml-1        | 2026-10-24 22:54:10,756 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:11,110 INFO ml.api: request_id=7bb9bdcb-2d32-426e-bfe5-dc6cfdbd24b1 POST /ml/companies/C064/forecast -> 200 437ms
+ml-1        | 2026-10-24 22:54:11,269 INFO categorizer: rules: 2395 / 2395 (100.0%)
+ml-1        | 2026-10-24 22:54:11,278 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:11,675 INFO ml.api: request_id=208676cc-171f-4519-832d-82abeacb1f21 POST /ml/companies/C065/forecast -> 200 515ms
+ml-1        | 2026-10-24 22:54:11,743 INFO categorizer: rules: 311 / 311 (100.0%)
+ml-1        | 2026-10-24 22:54:11,746 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:12,017 INFO ml.api: request_id=024a590e-1a4e-416a-81eb-508c8205a589 POST /ml/companies/C066/forecast -> 200 327ms
+ml-1        | 2026-10-24 22:54:12,153 INFO categorizer: rules: 2233 / 2233 (100.0%)
+ml-1        | 2026-10-24 22:54:12,161 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:12,561 INFO ml.api: request_id=99fdafa8-6b87-4917-b727-5592fb0e2edc POST /ml/companies/C067/forecast -> 200 501ms
+ml-1        | 2026-10-24 22:54:12,621 INFO categorizer: rules: 77 / 77 (100.0%)
+ml-1        | 2026-10-24 22:54:12,623 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:12,830 INFO ml.api: request_id=6f7d8714-7355-4429-a7ed-22bec3fc4504 POST /ml/companies/C068/forecast -> 200 259ms
+ml-1        | 2026-10-24 22:54:12,915 INFO categorizer: rules: 770 / 770 (100.0%)
+ml-1        | 2026-10-24 22:54:12,920 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:13,248 INFO ml.api: request_id=7c47a8d6-c0bd-4c27-a02d-45f0752995ef POST /ml/companies/C069/forecast -> 200 395ms
+ml-1        | 2026-10-24 22:54:13,414 INFO categorizer: rules: 2125 / 2125 (100.0%)
+ml-1        | 2026-10-24 22:54:13,423 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:13,794 INFO ml.api: request_id=6e050424-a09b-4d5a-8c9c-e1d220cc4e63 POST /ml/companies/C070/forecast -> 200 504ms
+ml-1        | 2026-10-24 22:54:13,878 INFO categorizer: rules: 581 / 581 (100.0%)
+ml-1        | 2026-10-24 22:54:13,882 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:14,199 INFO ml.api: request_id=7a0e66dc-2c07-4f40-a5de-8e20b97cf21c POST /ml/companies/C071/forecast -> 200 385ms
+ml-1        | 2026-10-24 22:54:14,363 INFO categorizer: rules: 2918 / 2919 (100.0%)
+ml-1        | 2026-10-24 22:54:14,374 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:14,939 INFO ml.api: request_id=4a24951b-7691-4750-b229-bc1397e71f07 POST /ml/companies/C072/forecast -> 200 681ms
+ml-1        | 2026-10-24 22:54:15,097 INFO categorizer: rules: 2407 / 2439 (98.7%)
+ml-1        | 2026-10-24 22:54:15,110 INFO categorizer: counterparty: 18
+ml-1        | 2026-10-24 22:54:15,535 INFO ml.api: request_id=deb2257d-3661-432b-a523-b9a2971b9e8a POST /ml/companies/C073/forecast -> 200 548ms
+ml-1        | 2026-10-24 22:54:15,680 INFO categorizer: rules: 2286 / 2287 (100.0%)
+ml-1        | 2026-10-24 22:54:15,689 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:16,073 INFO ml.api: request_id=2484b4cf-66b4-4701-8d7c-149e068e1411 POST /ml/companies/C074/forecast -> 200 491ms
+ml-1        | 2026-10-24 22:54:16,159 INFO categorizer: rules: 601 / 601 (100.0%)
+ml-1        | 2026-10-24 22:54:16,163 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:16,451 INFO ml.api: request_id=5370774d-0554-4abc-81d6-60e228b7c187 POST /ml/companies/C075/forecast -> 200 358ms
+ml-1        | 2026-10-24 22:54:16,571 INFO categorizer: rules: 2046 / 2075 (98.6%)
+ml-1        | 2026-10-24 22:54:16,585 INFO categorizer: counterparty: 28
+ml-1        | 2026-10-24 22:54:16,961 INFO ml.api: request_id=14864d7b-f1e9-43c5-bbdd-f21bf9bceb1e POST /ml/companies/C076/forecast -> 200 471ms
+ml-1        | 2026-10-24 22:54:17,030 INFO categorizer: rules: 480 / 480 (100.0%)
+ml-1        | 2026-10-24 22:54:17,034 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:17,305 INFO ml.api: request_id=dca2e2d7-a77b-42c5-a2ef-ca619e811987 POST /ml/companies/C077/forecast -> 200 327ms
+ml-1        | 2026-10-24 22:54:17,397 INFO categorizer: rules: 764 / 770 (99.2%)
+ml-1        | 2026-10-24 22:54:17,401 INFO categorizer: counterparty: 2
+ml-1        | 2026-10-24 22:54:17,700 INFO ml.api: request_id=d99951ee-a149-4b7b-9584-300f52ce934b POST /ml/companies/C078/forecast -> 200 374ms
+ml-1        | 2026-10-24 22:54:17,855 INFO categorizer: rules: 2323 / 2323 (100.0%)
+ml-1        | 2026-10-24 22:54:17,864 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:18,299 INFO ml.api: request_id=9557374f-5dd0-4644-acbc-9a7b5580ac94 POST /ml/companies/C079/forecast -> 200 550ms
+ml-1        | 2026-10-24 22:54:18,378 INFO categorizer: rules: 411 / 411 (100.0%)
+ml-1        | 2026-10-24 22:54:18,381 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:18,691 INFO ml.api: request_id=64af3dd9-dc34-4e2c-82f4-f7b0d9d685d3 POST /ml/companies/C080/forecast -> 200 373ms
+ml-1        | 2026-10-24 22:54:18,754 INFO categorizer: rules: 167 / 169 (98.8%)
+ml-1        | 2026-10-24 22:54:18,757 INFO categorizer: counterparty: 1
+ml-1        | 2026-10-24 22:54:18,938 INFO ml.api: request_id=ba9f9c50-a171-4108-91fe-47e2da1f60b8 POST /ml/companies/C081/forecast -> 200 235ms
+ml-1        | 2026-10-24 22:54:19,011 INFO categorizer: rules: 540 / 540 (100.0%)
+ml-1        | 2026-10-24 22:54:19,015 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:19,316 INFO ml.api: request_id=add686ae-1153-4f93-96bb-aaef8f91f87b POST /ml/companies/C082/forecast -> 200 360ms
+ml-1        | 2026-10-24 22:54:19,494 INFO categorizer: rules: 2920 / 2921 (100.0%)
+ml-1        | 2026-10-24 22:54:19,505 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:20,071 INFO ml.api: request_id=5184148d-29d2-4f30-93bd-018aff7265ce POST /ml/companies/C083/forecast -> 200 699ms
+ml-1        | 2026-10-24 22:54:20,304 INFO categorizer: rules: 3325 / 3325 (100.0%)
+ml-1        | 2026-10-24 22:54:20,316 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:20,766 INFO ml.api: request_id=3b35b72c-3eef-4b55-8eca-b98a68c58b41 POST /ml/companies/C084/forecast -> 200 628ms
+ml-1        | 2026-10-24 22:54:20,924 INFO categorizer: rules: 2512 / 2512 (100.0%)
+ml-1        | 2026-10-24 22:54:20,934 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:21,425 INFO ml.api: request_id=0f57598a-8c0c-4ee5-857d-45dec972ef4a POST /ml/companies/C085/forecast -> 200 611ms
+ml-1        | 2026-10-24 22:54:21,563 INFO categorizer: rules: 1990 / 2018 (98.6%)
+ml-1        | 2026-10-24 22:54:21,573 INFO categorizer: counterparty: 12
+ml-1        | 2026-10-24 22:54:21,933 INFO ml.api: request_id=e953d77a-fb30-4e1e-899e-b134372c8be8 POST /ml/companies/C086/forecast -> 200 467ms
+ml-1        | 2026-10-24 22:54:22,014 INFO categorizer: rules: 606 / 606 (100.0%)
+ml-1        | 2026-10-24 22:54:22,017 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:22,315 INFO ml.api: request_id=74d54bfa-e51b-4d15-a941-da816214050c POST /ml/companies/C087/forecast -> 200 364ms
+ml-1        | 2026-10-24 22:54:22,360 INFO categorizer: rules: 82 / 82 (100.0%)
+ml-1        | 2026-10-24 22:54:22,363 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:22,597 INFO ml.api: request_id=afaa8028-14e9-4505-98be-b0ad045f4f4e POST /ml/companies/C088/forecast -> 200 268ms
+ml-1        | 2026-10-24 22:54:22,663 INFO categorizer: rules: 463 / 470 (98.5%)
+ml-1        | 2026-10-24 22:54:22,667 INFO categorizer: counterparty: 3
+ml-1        | 2026-10-24 22:54:22,948 INFO ml.api: request_id=79c2cc9d-921d-457f-b82a-5402aae54327 POST /ml/companies/C089/forecast -> 200 334ms
+ml-1        | 2026-10-24 22:54:23,107 INFO categorizer: rules: 2359 / 2359 (100.0%)
+ml-1        | 2026-10-24 22:54:23,116 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:23,523 INFO ml.api: request_id=91bfcf5f-fa01-479d-8a35-2c7978ac3bdd POST /ml/companies/C090/forecast -> 200 527ms
+ml-1        | 2026-10-24 22:54:23,642 INFO categorizer: rules: 1480 / 1496 (98.9%)
+ml-1        | 2026-10-24 22:54:23,651 INFO categorizer: counterparty: 16
+ml-1        | 2026-10-24 22:54:24,067 INFO ml.api: request_id=3ea3e137-6eed-4a91-9713-c8e1947120c4 POST /ml/companies/C091/forecast -> 200 510ms
+ml-1        | 2026-10-24 22:54:24,149 INFO categorizer: rules: 542 / 542 (100.0%)
+ml-1        | 2026-10-24 22:54:24,153 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:24,482 INFO ml.api: request_id=28e2698a-edce-40c4-9102-3d925c2a7511 POST /ml/companies/C092/forecast -> 200 392ms
+ml-1        | 2026-10-24 22:54:24,516 INFO ml.api: request_id=0242efe4-f526-4de5-bb72-beaee494d52c POST /ml/companies/C093/forecast -> 422 20ms
+ml-1        | 2026-10-24 22:54:24,646 INFO categorizer: rules: 2022 / 2022 (100.0%)
+ml-1        | 2026-10-24 22:54:24,654 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:25,019 INFO ml.api: request_id=8afdb7d2-de44-4bf5-9dd5-c67fd7fbb0f9 POST /ml/companies/C094/forecast -> 200 457ms
+ml-1        | 2026-10-24 22:54:25,157 INFO categorizer: rules: 2023 / 2075 (97.5%)
+ml-1        | 2026-10-24 22:54:25,166 INFO categorizer: counterparty: 3
+ml-1        | 2026-10-24 22:54:25,533 INFO ml.api: request_id=daed7ff8-434c-45e7-b01c-2584de8f6893 POST /ml/companies/C095/forecast -> 200 470ms
+ml-1        | 2026-10-24 22:54:25,616 INFO categorizer: rules: 580 / 580 (100.0%)
+ml-1        | 2026-10-24 22:54:25,620 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:25,909 INFO ml.api: request_id=44a11aab-b3ae-454a-abaa-06d5ea409fd8 POST /ml/companies/C096/forecast -> 200 355ms
+ml-1        | 2026-10-24 22:54:25,964 INFO categorizer: rules: 416 / 416 (100.0%)
+ml-1        | 2026-10-24 22:54:25,967 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:26,249 INFO ml.api: request_id=d4822084-7692-496e-abb0-182af05055fe POST /ml/companies/C097/forecast -> 200 326ms
+ml-1        | 2026-10-24 22:54:26,281 INFO ml.api: request_id=36d144ef-eb87-4726-82d4-d2612de5f808 POST /ml/companies/C098/forecast -> 422 18ms
+ml-1        | 2026-10-24 22:54:26,390 INFO categorizer: rules: 1306 / 1323 (98.7%)
+ml-1        | 2026-10-24 22:54:26,399 INFO categorizer: counterparty: 15
+ml-1        | 2026-10-24 22:54:26,773 INFO ml.api: request_id=e4ad0764-7bb3-40af-b1b9-7efd1f1ef889 POST /ml/companies/C099/forecast -> 200 464ms
+ml-1        | 2026-10-24 22:54:26,923 INFO categorizer: rules: 2216 / 2216 (100.0%)
+ml-1        | 2026-10-24 22:54:26,931 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:27,304 INFO ml.api: request_id=18b398cc-e9e0-46aa-a9a9-84f6695ddfe8 POST /ml/companies/C100/forecast -> 200 484ms
+ml-1        | 2026-10-24 22:54:27,357 INFO ml.api: request_id=ad88aae0-b090-42de-8718-1fcfd5d76689 POST /ml/companies/C101/forecast -> 422 34ms
+ml-1        | 2026-10-24 22:54:27,489 INFO categorizer: rules: 2401 / 2401 (100.0%)
+ml-1        | 2026-10-24 22:54:27,498 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:27,893 INFO ml.api: request_id=a5815074-10fa-4acd-bd93-4aea9038cb13 POST /ml/companies/C102/forecast -> 200 493ms
+ml-1        | 2026-10-24 22:54:27,956 INFO categorizer: rules: 440 / 447 (98.4%)
+ml-1        | 2026-10-24 22:54:27,961 INFO categorizer: counterparty: 5
+ml-1        | 2026-10-24 22:54:28,254 INFO ml.api: request_id=c625019b-8160-4612-a1d2-26810e4d750b POST /ml/companies/C103/forecast -> 200 345ms
+ml-1        | 2026-10-24 22:54:28,395 INFO categorizer: rules: 2215 / 2215 (100.0%)
+ml-1        | 2026-10-24 22:54:28,404 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:28,804 INFO ml.api: request_id=25861633-c495-4140-a3ed-ca30f396eaae POST /ml/companies/C104/forecast -> 200 506ms
+ml-1        | 2026-10-24 22:54:28,882 INFO categorizer: rules: 460 / 464 (99.1%)
+ml-1        | 2026-10-24 22:54:28,886 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:29,154 INFO ml.api: request_id=3c15c78e-8f28-4e75-bd9c-8aed2821b30e POST /ml/companies/C105/forecast -> 200 332ms
+ml-1        | 2026-10-24 22:54:29,276 INFO categorizer: rules: 1911 / 1929 (99.1%)
+ml-1        | 2026-10-24 22:54:29,287 INFO categorizer: counterparty: 18
+ml-1        | 2026-10-24 22:54:29,666 INFO ml.api: request_id=12e650a7-90a3-4675-87cd-42acb76c34d6 POST /ml/companies/C106/forecast -> 200 471ms
+ml-1        | 2026-10-24 22:54:29,803 INFO categorizer: rules: 2217 / 2217 (100.0%)
+ml-1        | 2026-10-24 22:54:29,812 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:30,217 INFO ml.api: request_id=43d1a7e4-5dc3-43b8-89f3-f3bf5949f250 POST /ml/companies/C107/forecast -> 200 506ms
+ml-1        | 2026-10-24 22:54:30,332 INFO categorizer: rules: 1451 / 1473 (98.5%)
+ml-1        | 2026-10-24 22:54:30,342 INFO categorizer: counterparty: 21
+ml-1        | 2026-10-24 22:54:30,698 INFO ml.api: request_id=ef4530c9-7218-40b1-a792-17277e52f42f POST /ml/companies/C108/forecast -> 200 449ms
+ml-1        | 2026-10-24 22:54:30,807 INFO categorizer: rules: 1118 / 1118 (100.0%)
+ml-1        | 2026-10-24 22:54:30,812 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:31,181 INFO ml.api: request_id=99fdd16d-7b3e-466b-ab39-49b73a913807 POST /ml/companies/C109/forecast -> 200 455ms
+ml-1        | 2026-10-24 22:54:31,242 INFO categorizer: rules: 145 / 145 (100.0%)
+ml-1        | 2026-10-24 22:54:31,244 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:31,416 INFO ml.api: request_id=23a16eec-2b65-44ad-a8a2-c6e8595a91d3 POST /ml/companies/C110/forecast -> 200 222ms
+ml-1        | 2026-10-24 22:54:31,497 INFO categorizer: rules: 498 / 498 (100.0%)
+ml-1        | 2026-10-24 22:54:31,500 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:31,785 INFO ml.api: request_id=418dd682-0f2c-46f5-851f-b2f630562a20 POST /ml/companies/C111/forecast -> 200 351ms
+ml-1        | 2026-10-24 22:54:31,855 INFO categorizer: rules: 634 / 634 (100.0%)
+ml-1        | 2026-10-24 22:54:31,860 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:32,192 INFO ml.api: request_id=cca50e26-acfc-4fee-84b6-5190d7d1050d POST /ml/companies/C112/forecast -> 200 387ms
+backend-1   | 2026-10-25 02:08:37,656 INFO [outsider-check-1] backend POST /api/companies/C044/forecast status=404 user_id=3 took_ms=5
+backend-1   | 2026-10-25 02:08:37,658 INFO [c9aab7e7-f173-4899-92c4-b44dfc8dcef8] backend GET /api/quality/files/../../etc/passwd status=404 user_id=None took_ms=0
+ml-1        | 2026-10-24 22:54:32,347 INFO categorizer: rules: 2293 / 2293 (100.0%)
+ml-1        | 2026-10-24 22:54:32,356 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:32,760 INFO ml.api: request_id=a17b0867-e550-4ab9-bad0-8a1791ac2f04 POST /ml/companies/C113/forecast -> 200 520ms
+ml-1        | 2026-10-24 22:54:32,841 INFO categorizer: rules: 472 / 477 (99.0%)
+ml-1        | 2026-10-24 22:54:32,845 INFO categorizer: counterparty: 3
+ml-1        | 2026-10-24 22:54:33,121 INFO ml.api: request_id=26f0db08-efbd-4275-b5ff-a8c67c71e243 POST /ml/companies/C114/forecast -> 200 343ms
+ml-1        | 2026-10-24 22:54:33,182 INFO categorizer: rules: 480 / 480 (100.0%)
+ml-1        | 2026-10-24 22:54:33,185 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:33,489 INFO ml.api: request_id=71d9296a-0191-44fa-a472-98463bf98ea9 POST /ml/companies/C115/forecast -> 200 349ms
+ml-1        | 2026-10-24 22:54:33,619 INFO categorizer: rules: 2120 / 2120 (100.0%)
+ml-1        | 2026-10-24 22:54:33,628 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:34,006 INFO ml.api: request_id=29729138-d502-4705-9246-cc6b9c4c41cd POST /ml/companies/C116/forecast -> 200 475ms
+ml-1        | 2026-10-24 22:54:34,087 INFO categorizer: rules: 463 / 463 (100.0%)
+ml-1        | 2026-10-24 22:54:34,090 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:34,378 INFO ml.api: request_id=2fa1dec4-4f9d-4d65-9dde-63b3ef250c4f POST /ml/companies/C117/forecast -> 200 352ms
+ml-1        | 2026-10-24 22:54:34,528 INFO categorizer: rules: 2216 / 2216 (100.0%)
+ml-1        | 2026-10-24 22:54:34,537 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:34,937 INFO ml.api: request_id=7218d492-fdcc-4a46-a0cf-c5fdc1c3f2a6 POST /ml/companies/C118/forecast -> 200 513ms
+ml-1        | 2026-10-24 22:54:35,077 INFO categorizer: rules: 2115 / 2115 (100.0%)
+ml-1        | 2026-10-24 22:54:35,084 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:35,498 INFO ml.api: request_id=6ea5ff5b-0b21-44e8-a18c-eafb1dc322c9 POST /ml/companies/C119/forecast -> 200 517ms
+ml-1        | 2026-10-24 22:54:35,641 INFO categorizer: rules: 2131 / 2132 (100.0%)
+ml-1        | 2026-10-24 22:54:35,649 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:36,033 INFO ml.api: request_id=687c4e06-dac3-4174-a7d2-95e95f056d08 POST /ml/companies/C120/forecast -> 200 489ms
+ml-1        | 2026-10-24 22:54:36,125 INFO categorizer: rules: 985 / 988 (99.7%)
+ml-1        | 2026-10-24 22:54:36,131 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:36,450 INFO ml.api: request_id=75301281-698e-4d62-8c69-a892d76d7fdb POST /ml/companies/C121/forecast -> 200 392ms
+ml-1        | 2026-10-24 22:54:36,479 INFO ml.api: request_id=29cc1f6b-53fc-4939-90f6-a115230f9163 POST /ml/companies/C122/forecast -> 422 15ms
+ml-1        | 2026-10-24 22:54:36,594 INFO categorizer: rules: 1591 / 1591 (100.0%)
+ml-1        | 2026-10-24 22:54:36,601 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:36,970 INFO ml.api: request_id=9bdee20f-4cc5-43b5-b712-9e800378fd6d POST /ml/companies/C123/forecast -> 200 461ms
+ml-1        | 2026-10-24 22:54:37,048 INFO categorizer: rules: 499 / 501 (99.6%)
+ml-1        | 2026-10-24 22:54:37,051 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:37,352 INFO ml.api: request_id=f072420d-58bb-4a65-92bd-f4b52fc9a919 POST /ml/companies/C124/forecast -> 200 363ms
+ml-1        | 2026-10-24 22:54:37,490 INFO categorizer: rules: 1982 / 1983 (99.9%)
+ml-1        | 2026-10-24 22:54:37,498 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:37,879 INFO ml.api: request_id=603b23e1-8459-4894-b74b-ec9630de65e1 POST /ml/companies/C125/forecast -> 200 486ms
+ml-1        | 2026-10-24 22:54:38,092 INFO categorizer: rules: 3223 / 3223 (100.0%)
+ml-1        | 2026-10-24 22:54:38,104 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:38,586 INFO ml.api: request_id=911c7f49-6b09-4193-8f2f-2f4d456265d3 POST /ml/companies/C126/forecast -> 200 641ms
+ml-1        | 2026-10-24 22:54:38,720 INFO categorizer: rules: 1849 / 1849 (100.0%)
+ml-1        | 2026-10-24 22:54:38,728 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:39,078 INFO ml.api: request_id=45ec6348-f312-4b7d-b559-808c7557687c POST /ml/companies/C127/forecast -> 200 450ms
+ml-1        | 2026-10-24 22:54:39,161 INFO categorizer: rules: 551 / 551 (100.0%)
+ml-1        | 2026-10-24 22:54:39,165 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:39,468 INFO ml.api: request_id=a7fd583b-c9c9-46b7-93e8-1d5981cc6a60 POST /ml/companies/C128/forecast -> 200 371ms
+ml-1        | 2026-10-24 22:54:39,584 INFO categorizer: rules: 1979 / 1979 (100.0%)
+ml-1        | 2026-10-24 22:54:39,592 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:39,940 INFO ml.api: request_id=b67f241b-e82c-4974-9425-8caab7413334 POST /ml/companies/C129/forecast -> 200 430ms
+ml-1        | 2026-10-24 22:54:40,090 INFO categorizer: rules: 2318 / 2318 (100.0%)
+ml-1        | 2026-10-24 22:54:40,099 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:40,522 INFO ml.api: request_id=ba35f56b-0fdd-4b61-84ae-74ab3021787f POST /ml/companies/C130/forecast -> 200 532ms
+ml-1        | 2026-10-24 22:54:40,600 INFO categorizer: rules: 482 / 482 (100.0%)
+ml-1        | 2026-10-24 22:54:40,604 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:40,892 INFO ml.api: request_id=cb645588-cf55-4bb2-a911-2055f075fd8d POST /ml/companies/C131/forecast -> 200 351ms
+ml-1        | 2026-10-24 22:54:41,087 INFO categorizer: rules: 2815 / 2874 (97.9%)
+ml-1        | 2026-10-24 22:54:41,101 INFO categorizer: counterparty: 25
+ml-1        | 2026-10-24 22:54:41,518 INFO ml.api: request_id=f57b4e83-2c16-40c8-a0d8-8f9f837fb6e3 POST /ml/companies/C132/forecast -> 200 566ms
+ml-1        | 2026-10-24 22:54:41,593 INFO categorizer: rules: 477 / 477 (100.0%)
+ml-1        | 2026-10-24 22:54:41,596 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:41,895 INFO ml.api: request_id=a0d8b0a3-7fe2-45ca-aba5-7e8714d46b73 POST /ml/companies/C133/forecast -> 200 358ms
+ml-1        | 2026-10-24 22:54:41,971 INFO categorizer: rules: 459 / 459 (100.0%)
+ml-1        | 2026-10-24 22:54:41,975 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:42,261 INFO ml.api: request_id=8a50b590-c0d5-4c25-bc20-05ba7118de75 POST /ml/companies/C134/forecast -> 200 349ms
+ml-1        | 2026-10-24 22:54:42,349 INFO categorizer: rules: 903 / 903 (100.0%)
+ml-1        | 2026-10-24 22:54:42,353 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:42,643 INFO ml.api: request_id=fe39fe73-401e-4c9d-bae9-574f34931f36 POST /ml/companies/C135/forecast -> 200 359ms
+ml-1        | 2026-10-24 22:54:42,719 INFO categorizer: rules: 490 / 490 (100.0%)
+ml-1        | 2026-10-24 22:54:42,722 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:43,001 INFO ml.api: request_id=d75b47a3-bed3-4e2d-89fd-a06b4e73f44c POST /ml/companies/C136/forecast -> 200 342ms
+ml-1        | 2026-10-24 22:54:43,209 INFO categorizer: rules: 3198 / 3199 (100.0%)
+ml-1        | 2026-10-24 22:54:43,220 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:43,641 INFO ml.api: request_id=195a4a1b-8f45-498d-8400-32f63acd89f9 POST /ml/companies/C137/forecast -> 200 581ms
+ml-1        | 2026-10-24 22:54:43,716 INFO categorizer: rules: 413 / 413 (100.0%)
+ml-1        | 2026-10-24 22:54:43,719 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:43,989 INFO ml.api: request_id=35d07d22-78c7-4241-af97-66ae0eaa4e60 POST /ml/companies/C138/forecast -> 200 332ms
+ml-1        | 2026-10-24 22:54:44,056 INFO categorizer: rules: 421 / 421 (100.0%)
+ml-1        | 2026-10-24 22:54:44,059 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:44,345 INFO ml.api: request_id=c6378af2-2c06-422e-b851-9723b0a58a13 POST /ml/companies/C139/forecast -> 200 340ms
+ml-1        | 2026-10-24 22:54:44,478 INFO categorizer: rules: 2136 / 2136 (100.0%)
+ml-1        | 2026-10-24 22:54:44,487 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:44,867 INFO ml.api: request_id=ff4a35d4-cdd2-4a77-b5c3-02534cc8acc3 POST /ml/companies/C140/forecast -> 200 478ms
+ml-1        | 2026-10-24 22:54:45,013 INFO categorizer: rules: 2110 / 2110 (100.0%)
+ml-1        | 2026-10-24 22:54:45,021 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:45,470 INFO ml.api: request_id=97146e0a-d252-454a-bf68-56231a1ee4f2 POST /ml/companies/C141/forecast -> 200 559ms
+ml-1        | 2026-10-24 22:54:45,541 INFO categorizer: rules: 427 / 427 (100.0%)
+ml-1        | 2026-10-24 22:54:45,544 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:45,831 INFO ml.api: request_id=cd463d15-dab2-41ec-9513-47a091367a40 POST /ml/companies/C142/forecast -> 200 345ms
+ml-1        | 2026-10-24 22:54:45,925 INFO categorizer: rules: 988 / 991 (99.7%)
+ml-1        | 2026-10-24 22:54:45,930 INFO categorizer: counterparty: 1
+ml-1        | 2026-10-24 22:54:46,230 INFO ml.api: request_id=327f4b83-1a18-4de5-9714-31f048e491a0 POST /ml/companies/C143/forecast -> 200 376ms
+ml-1        | 2026-10-24 22:54:46,381 INFO categorizer: rules: 2352 / 2352 (100.0%)
+ml-1        | 2026-10-24 22:54:46,390 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:46,770 INFO ml.api: request_id=70796b11-d105-44dd-a694-0b9546c730dd POST /ml/companies/C144/forecast -> 200 492ms
+ml-1        | 2026-10-24 22:54:46,848 INFO categorizer: rules: 481 / 481 (100.0%)
+ml-1        | 2026-10-24 22:54:46,852 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:47,128 INFO ml.api: request_id=88c70ce0-2afc-4f07-b84c-6229ec413b00 POST /ml/companies/C145/forecast -> 200 340ms
+ml-1        | 2026-10-24 22:54:47,246 INFO categorizer: rules: 1946 / 1946 (100.0%)
+ml-1        | 2026-10-24 22:54:47,254 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:47,602 INFO ml.api: request_id=05cbdb62-023f-41f4-b45e-3297b09a5913 POST /ml/companies/C146/forecast -> 200 435ms
+ml-1        | 2026-10-24 22:54:47,736 INFO categorizer: rules: 2334 / 2334 (100.0%)
+ml-1        | 2026-10-24 22:54:47,745 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:48,135 INFO ml.api: request_id=66c6eee3-db79-4885-93c5-66ef94203768 POST /ml/companies/C147/forecast -> 200 486ms
+ml-1        | 2026-10-24 22:54:48,252 INFO categorizer: rules: 1427 / 1457 (97.9%)
+ml-1        | 2026-10-24 22:54:48,263 INFO categorizer: counterparty: 29
+ml-1        | 2026-10-24 22:54:48,623 INFO ml.api: request_id=9fbec32e-e93b-402e-bca7-3fc75743c0aa POST /ml/companies/C148/forecast -> 200 455ms
+ml-1        | 2026-10-24 22:54:48,716 INFO categorizer: rules: 893 / 893 (100.0%)
+ml-1        | 2026-10-24 22:54:48,720 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:49,032 INFO ml.api: request_id=8bafd095-b6b7-4e4e-9ce7-224208a3e976 POST /ml/companies/C149/forecast -> 200 385ms
+ml-1        | 2026-10-24 22:54:49,179 INFO categorizer: rules: 2205 / 2205 (100.0%)
+ml-1        | 2026-10-24 22:54:49,188 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:54:49,563 INFO ml.api: request_id=9be2e307-41d0-4309-afec-ef018280cd01 POST /ml/companies/C150/forecast -> 200 485ms
+ml-1        | 2026-10-24 22:55:09,810 INFO categorizer: rules: 457 / 457 (100.0%)
+ml-1        | 2026-10-24 22:55:09,813 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:55:09,823 INFO categorizer: rules: 457 / 457 (100.0%)
+ml-1        | 2026-10-24 22:55:09,827 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:55:10,136 INFO ml.api: request_id=b949dfc1-8d47-4d1a-aaa1-248d42787539 POST /ml/companies/C013/forecast -> 200 394ms
+ml-1        | 2026-10-24 22:55:10,150 INFO ml.api: request_id=1e0aca76-a956-48ab-be9d-6981fc70ab61 POST /ml/companies/C013/forecast -> 200 399ms
+ml-1        | 2026-10-24 22:55:10,190 INFO categorizer: rules: 457 / 457 (100.0%)
+ml-1        | 2026-10-24 22:55:10,193 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:55:10,492 INFO ml.api: request_id=6a20075e-bb0f-4c0c-816c-ccf74e04044f POST /ml/companies/C013/forecast -> 200 705ms
+ml-1        | 2026-10-24 22:55:10,632 INFO categorizer: rules: 451 / 451 (100.0%)
+ml-1        | 2026-10-24 22:55:10,635 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:55:11,010 INFO categorizer: rules: 451 / 451 (100.0%)
+ml-1        | 2026-10-24 22:55:11,013 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:55:11,213 INFO categorizer: rules: 457 / 457 (100.0%)
+ml-1        | 2026-10-24 22:55:11,217 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:55:11,379 INFO ml.forecast.plan_fact: план-факт C013: дней 14, событий 5, missed 3/0, вне коридора 0
+ml-1        | 2026-10-24 22:55:11,380 INFO ml.api: request_id=70501277-c2ba-4001-9427-f505e707b5f7 GET /ml/companies/C013/plan-fact -> 200 828ms
+ml-1        | 2026-10-24 22:55:47,743 INFO categorizer: rules: 457 / 457 (100.0%)
+ml-1        | 2026-10-24 22:55:47,747 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:55:48,071 INFO ml.api: request_id=5c8cda53-6cdd-4aa2-9ee5-b0b8a57c033c POST /ml/companies/C013/forecast -> 200 399ms
+ml-1        | 2026-10-24 22:55:51,888 INFO categorizer: rules: 457 / 457 (100.0%)
+ml-1        | 2026-10-24 22:55:51,892 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:55:52,191 INFO ml.api: request_id=d5c4990b-b94d-43f4-a26d-9d5a4d0ba410 POST /ml/companies/C013/forecast -> 200 371ms
+ml-1        | 2026-10-24 22:55:56,019 INFO categorizer: rules: 457 / 457 (100.0%)
+ml-1        | 2026-10-24 22:55:56,022 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:55:56,326 INFO ml.api: request_id=f59ff366-3fb5-4481-a154-c9feb316c904 POST /ml/companies/C013/forecast -> 200 377ms
+ml-1        | 2026-10-24 22:56:00,514 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 22:56:00,522 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:56:00,542 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 22:56:00,550 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:56:00,937 INFO ml.api: request_id=9773b880-a2ec-4f14-97f8-d454ba4ddd6b POST /ml/companies/C044/forecast -> 200 525ms
+ml-1        | 2026-10-24 22:56:00,960 INFO ml.api: request_id=19d4a586-3812-4349-aca8-83a3d9763315 POST /ml/companies/C044/forecast -> 200 524ms
+ml-1        | 2026-10-24 22:56:01,021 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 22:56:01,029 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:56:01,426 INFO ml.api: request_id=688efb26-c38d-4fb4-9a57-626ac9921b16 POST /ml/companies/C044/forecast -> 200 952ms
+ml-1        | 2026-10-24 22:56:01,605 INFO categorizer: rules: 1987 / 1987 (100.0%)
+ml-1        | 2026-10-24 22:56:01,613 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:56:02,111 INFO categorizer: rules: 1987 / 1987 (100.0%)
+ml-1        | 2026-10-24 22:56:02,119 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:56:02,436 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 22:56:02,445 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:56:02,705 INFO ml.forecast.plan_fact: план-факт C044: дней 14, событий 5, missed 0/1, вне коридора 1
+ml-1        | 2026-10-24 22:56:02,706 INFO ml.api: request_id=68066935-6503-4f30-a0e0-ff1c0d0ea472 GET /ml/companies/C044/plan-fact -> 200 1229ms
+ml-1        | 2026-10-24 22:56:09,539 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 22:56:09,547 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:56:09,926 INFO ml.api: request_id=bab061c4-dedc-4d3b-90c1-44cc6033f5e3 POST /ml/companies/C044/forecast -> 200 488ms
+ml-1        | 2026-10-24 22:56:13,651 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 22:56:13,659 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:56:14,036 INFO ml.api: request_id=8ee8fd62-04a7-4c5c-a884-c9bfb139bbf8 POST /ml/companies/C044/forecast -> 200 483ms
+ml-1        | 2026-10-24 22:56:17,793 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 22:56:17,801 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:56:18,187 INFO ml.api: request_id=0d9f1934-c074-49f2-9c80-c49edc26bac3 POST /ml/companies/C044/forecast -> 200 499ms
+ml-1        | 2026-10-24 22:56:22,080 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 22:56:22,088 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:56:22,442 INFO ml.api: request_id=f7f73c85-750d-48a4-b8e4-1f31be112ff3 POST /ml/companies/C044/forecast -> 200 457ms
+ml-1        | 2026-10-24 22:56:29,448 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 22:56:29,456 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:56:29,833 INFO ml.api: request_id=724569e0-6033-4d4b-8348-1923f8dcc143 POST /ml/companies/C044/forecast -> 200 491ms
+ml-1        | 2026-10-24 22:56:33,577 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 22:56:33,585 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:56:33,970 INFO ml.api: request_id=9f7b697a-d2b8-4a5c-a74b-dda0280d2cc7 POST /ml/companies/C044/forecast -> 200 494ms
+ml-1        | 2026-10-24 22:56:39,641 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 22:56:39,649 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:56:40,014 INFO ml.api: request_id=d2f4fca8-458d-44aa-98de-aa05b572951e POST /ml/companies/C044/forecast -> 200 469ms
+ml-1        | 2026-10-24 22:56:43,750 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 22:56:43,758 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:56:44,142 INFO ml.api: request_id=ef499200-82c4-4fe6-99fd-1989acaa59cc POST /ml/companies/C044/forecast -> 200 498ms
+ml-1        | 2026-10-24 22:56:47,893 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 22:56:47,901 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:56:48,286 INFO ml.api: request_id=de1489b8-ac19-4bdf-a4fc-bb78e7e881ca POST /ml/companies/C044/forecast -> 200 492ms
+ml-1        | 2026-10-24 22:57:01,503 INFO categorizer: rules: 457 / 457 (100.0%)
+ml-1        | 2026-10-24 22:57:01,507 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:57:01,507 INFO categorizer: rules: 457 / 457 (100.0%)
+ml-1        | 2026-10-24 22:57:01,511 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:57:01,846 INFO ml.api: request_id=40b44ac1-efa6-45a9-ade6-1def88128e8f POST /ml/companies/C013/forecast -> 200 415ms
+ml-1        | 2026-10-24 22:57:01,847 INFO ml.api: request_id=57d1e15d-676b-4ae5-81d4-a6d097ce38f2 POST /ml/companies/C013/forecast -> 200 417ms
+ml-1        | 2026-10-24 22:57:01,893 INFO categorizer: rules: 457 / 457 (100.0%)
+ml-1        | 2026-10-24 22:57:01,896 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:57:02,201 INFO ml.api: request_id=277e3fe6-6338-4aa6-b549-3c92cce860e6 POST /ml/companies/C013/forecast -> 200 731ms
+ml-1        | 2026-10-24 22:57:02,338 INFO categorizer: rules: 451 / 451 (100.0%)
+ml-1        | 2026-10-24 22:57:02,341 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:57:02,708 INFO categorizer: rules: 451 / 451 (100.0%)
+ml-1        | 2026-10-24 22:57:02,712 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:57:02,906 INFO categorizer: rules: 457 / 457 (100.0%)
+ml-1        | 2026-10-24 22:57:02,909 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:57:03,104 INFO ml.forecast.plan_fact: план-факт C013: дней 14, событий 5, missed 3/0, вне коридора 0
+ml-1        | 2026-10-24 22:57:03,104 INFO ml.api: request_id=946addea-34a0-40f6-9ee8-577cbd14d0d4 GET /ml/companies/C013/plan-fact -> 200 843ms
+ml-1        | 2026-10-24 22:57:12,064 INFO categorizer: rules: 457 / 457 (100.0%)
+ml-1        | 2026-10-24 22:57:12,067 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 22:57:12,367 INFO ml.api: request_id=eb92092a-b07e-4cd6-9de1-a96e9cb53ae4 POST /ml/companies/C013/forecast -> 200 368ms
+ml-1        | 2026-10-24 23:00:06,476 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 23:00:06,479 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 23:00:06,484 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 23:00:06,488 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 23:00:06,886 INFO ml.api: request_id=897e73b4-48f2-4b44-896f-81b1a2ed4ef7 POST /ml/companies/C044/forecast -> 200 522ms
+ml-1        | 2026-10-24 23:00:06,907 INFO ml.api: request_id=e7df2db2-04b2-4f8c-a0bc-b9d34748bffe POST /ml/companies/C044/forecast -> 200 542ms
+ml-1        | 2026-10-24 23:00:06,962 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 23:00:06,970 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 23:00:07,342 INFO ml.api: request_id=0a07c135-f58d-4089-82e3-f9280c52401f POST /ml/companies/C044/forecast -> 200 931ms
+ml-1        | 2026-10-24 23:00:07,649 INFO categorizer: rules: 1987 / 1987 (100.0%)
+ml-1        | 2026-10-24 23:00:07,657 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 23:00:08,159 INFO categorizer: rules: 1987 / 1987 (100.0%)
+ml-1        | 2026-10-24 23:00:08,167 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 23:00:08,479 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 23:00:08,488 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 23:00:08,739 INFO ml.forecast.plan_fact: план-факт C044: дней 14, событий 5, missed 0/1, вне коридора 1
+ml-1        | 2026-10-24 23:00:08,740 INFO ml.api: request_id=760e7e0f-b8e3-4dc2-b623-2776a74c6e16 GET /ml/companies/C044/plan-fact -> 200 1216ms
+ml-1        | 2026-10-24 23:00:47,659 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 23:00:47,667 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 23:00:47,686 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 23:00:47,693 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 23:00:48,067 INFO ml.api: request_id=29abc49a-b12d-41db-86f5-fd6b7c296608 POST /ml/companies/C044/forecast -> 200 510ms
+ml-1        | 2026-10-24 23:00:48,137 INFO ml.api: request_id=5b98451e-eaa0-40e2-9f4a-41adbe8ec6ca POST /ml/companies/C044/forecast -> 200 552ms
+ml-1        | 2026-10-24 23:00:48,139 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 23:00:48,147 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 23:00:48,513 INFO ml.api: request_id=653c2173-0b6c-4b2b-9f95-4f4480a1e49d POST /ml/companies/C044/forecast -> 200 903ms
+ml-1        | 2026-10-24 23:00:48,693 INFO categorizer: rules: 1987 / 1987 (100.0%)
+ml-1        | 2026-10-24 23:00:48,701 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 23:00:49,169 INFO categorizer: rules: 1987 / 1987 (100.0%)
+ml-1        | 2026-10-24 23:00:49,177 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 23:00:49,473 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 23:00:49,481 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 23:00:49,728 INFO ml.forecast.plan_fact: план-факт C044: дней 14, событий 5, missed 0/1, вне коридора 1
+ml-1        | 2026-10-24 23:00:49,729 INFO ml.api: request_id=a1ceb025-3ef8-489e-803b-418058b58bdf GET /ml/companies/C044/plan-fact -> 200 1163ms
+ml-1        | 2026-10-24 23:01:18,386 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 23:01:18,388 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 23:01:18,393 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 23:01:18,396 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 23:01:18,819 INFO ml.api: request_id=cb3cacbe-8c65-49f7-835f-17554bfae815 POST /ml/companies/C044/forecast -> 200 542ms
+ml-1        | 2026-10-24 23:01:18,819 INFO ml.api: request_id=f12e4c61-e19e-4de6-903d-c653db2fbde3 POST /ml/companies/C044/forecast -> 200 542ms
+ml-1        | 2026-10-24 23:01:18,892 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 23:01:18,899 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 23:01:19,290 INFO ml.api: request_id=62e18511-386d-4ac9-b1e0-3aaf1dadb9b1 POST /ml/companies/C044/forecast -> 200 974ms
+ml-1        | 2026-10-24 23:01:19,479 INFO categorizer: rules: 1987 / 1987 (100.0%)
+ml-1        | 2026-10-24 23:01:19,487 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 23:01:19,960 INFO categorizer: rules: 1987 / 1987 (100.0%)
+ml-1        | 2026-10-24 23:01:19,968 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 23:01:20,283 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 23:01:20,291 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 23:01:20,553 INFO ml.forecast.plan_fact: план-факт C044: дней 14, событий 5, missed 0/1, вне коридора 1
+ml-1        | 2026-10-24 23:01:20,554 INFO ml.api: request_id=68480280-01ca-4871-a110-3709b15ee612 GET /ml/companies/C044/plan-fact -> 200 1199ms
+ml-1        | 2026-10-24 23:02:28,044 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 23:02:28,047 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 23:02:28,052 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 23:02:28,055 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 23:02:28,447 INFO ml.api: request_id=02333d81-2004-4ed9-a6e7-0e93dd2d175f POST /ml/companies/C044/forecast -> 200 510ms
+ml-1        | 2026-10-24 23:02:28,448 INFO ml.api: request_id=6cf4826d-2207-4633-a522-5c962657c4c8 POST /ml/companies/C044/forecast -> 200 509ms
+ml-1        | 2026-10-24 23:02:28,515 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 23:02:28,522 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 23:02:28,915 INFO ml.api: request_id=66cc219e-33a1-43ce-a564-875c03b6e490 POST /ml/companies/C044/forecast -> 200 941ms
+ml-1        | 2026-10-24 23:02:29,112 INFO categorizer: rules: 1987 / 1987 (100.0%)
+ml-1        | 2026-10-24 23:02:29,121 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 23:02:29,611 INFO categorizer: rules: 1987 / 1987 (100.0%)
+ml-1        | 2026-10-24 23:02:29,619 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 23:02:29,932 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 23:02:29,940 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 23:02:30,197 INFO ml.forecast.plan_fact: план-факт C044: дней 14, событий 5, missed 0/1, вне коридора 1
+ml-1        | 2026-10-24 23:02:30,198 INFO ml.api: request_id=53f9fbdc-5caa-49d0-8a5c-a5c819aa5780 GET /ml/companies/C044/plan-fact -> 200 1218ms
+ml-1        | 2026-10-24 23:03:01,039 INFO ml.api: request_id=4f44b830-1668-4b51-b4aa-4fd5db68cd86 POST /ml/companies/T001/forecast -> 404 1ms
+ml-1        | 2026-10-24 23:03:38,675 INFO ml.api: request_id=dd4af0b3-e141-456d-9b18-d46e1204e38d POST /ml/companies/T001/forecast -> 404 6ms
+ml-1        | 2026-10-24 23:04:45,727 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 23:04:45,736 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 23:04:46,122 INFO ml.api: request_id=det-0 POST /ml/companies/C044/forecast -> 200 485ms
+ml-1        | 2026-10-24 23:04:46,209 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 23:04:46,217 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 23:04:46,584 INFO ml.api: request_id=det-1 POST /ml/companies/C044/forecast -> 200 461ms
+ml-1        | 2026-10-24 23:04:46,658 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 23:04:46,666 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 23:04:47,034 INFO ml.api: request_id=det-2 POST /ml/companies/C044/forecast -> 200 449ms
+ml-1        | 2026-10-24 23:04:47,107 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 23:04:47,114 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 23:04:47,486 INFO ml.api: request_id=det-3 POST /ml/companies/C044/forecast -> 200 452ms
+ml-1        | 2026-10-24 23:04:47,571 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 23:04:47,579 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 23:04:47,943 INFO ml.api: request_id=det-4 POST /ml/companies/C044/forecast -> 200 455ms
+ml-1        | 2026-10-24 23:04:48,030 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 23:04:48,038 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 23:04:48,417 INFO ml.api: request_id=det-5 POST /ml/companies/C044/forecast -> 200 474ms
+ml-1        | 2026-10-24 23:05:42,816 INFO categorizer: rules: 62 / 62 (100.0%)
+ml-1        | 2026-10-24 23:05:42,819 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 23:05:43,083 INFO ml.api: request_id=21ef9c84-f504-4fc7-bf0a-65e5b1483637 POST /ml/companies/C049/forecast -> 200 328ms
+ml-1        | 2026-10-24 23:05:43,239 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 23:05:43,248 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 23:05:43,707 INFO ml.api: request_id=bc355cf7-efb3-4387-827b-55d14968e1e3 POST /ml/companies/C044/forecast -> 200 571ms
+ml-1        | 2026-10-24 23:05:43,809 INFO ml.api: request_id=c6399b27-28ef-4dd2-a7c2-c8b826e92208 POST /ml/companies/C036/forecast -> 422 56ms
+ml-1        | 2026-10-24 23:05:43,853 INFO ml.api: request_id=635fbc39-cdc3-4f86-ab8d-4edff985203f POST /ml/companies/C098/forecast -> 422 20ms
+ml-1        | 2026-10-24 23:05:44,028 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 23:05:44,037 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 23:05:44,495 INFO ml.api: request_id=5e9afc6e-3bb5-46c7-b96b-2921b3c127f8 POST /ml/companies/C044/forecast -> 200 573ms
+ml-1        | 2026-10-24 23:05:44,695 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 23:05:44,704 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 23:05:45,181 INFO ml.api: request_id=b6ca1d73-0168-4787-bb51-070f0c5433f0 POST /ml/companies/C044/forecast -> 200 611ms
+ml-1        | 2026-10-24 23:05:45,357 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 23:05:45,366 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 23:05:45,804 INFO ml.api: request_id=17f7e045-00d8-4ff3-9e0d-ef4bc5aa8b84 POST /ml/companies/C044/forecast -> 200 559ms
+ml-1        | INFO:     Shutting down
+ml-1        | INFO:     Waiting for application shutdown.
+ml-1        | INFO:     Application shutdown complete.
+ml-1        | INFO:     Finished server process [1]
+ml-1        | INFO:     Started server process [1]
+ml-1        | INFO:     Waiting for application startup.
+ml-1        | INFO:     Application startup complete.
+ml-1        | INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+ml-1        | 2026-10-24 23:06:32,935 INFO ml.api: request_id=df970dd9cf10 GET /ml/health -> 200 0ms
+ml-1        | 2026-10-24 23:06:35,975 INFO ml.api: request_id=4cb1b1a9609e GET /ml/health -> 200 12ms
+ml-1        | 2026-10-24 23:06:39,004 INFO ml.api: request_id=4e152afe5949 GET /ml/health -> 200 0ms
+ml-1        | 2026-10-24 23:06:41,719 INFO ml.worker: context loaded version=lgbm_net-v2 companies=150 sec=8.5
+ml-1        | 2026-10-24 23:06:41,719 INFO ml.api: workers ready n=2 version=lgbm_net-v2
+ml-1        | 2026-10-24 23:06:42,029 INFO ml.api: request_id=956edcaeccc7 GET /ml/health -> 200 0ms
+ml-1        | 2026-10-24 23:06:42,056 INFO ml.api: request_id=9b9f30e6310c GET /ml/health -> 200 0ms
+ml-1        | 2026-10-24 23:06:42,206 INFO ml.worker: context loaded version=lgbm_net-v2 companies=150 sec=9.0
+ml-1        | 2026-10-24 23:07:14,793 INFO ml.api: request_id=48bae37a79a4 GET /ml/health -> 200 0ms
+ml-1        | 2026-10-24 23:07:17,178 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 23:07:17,188 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 23:07:17,191 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 23:07:17,204 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 23:07:17,738 INFO ml.api: request_id=3a523a1e-00d4-4bfe-bf3d-194f1dc0ef0e POST /ml/companies/C044/forecast -> 200 763ms
+ml-1        | 2026-10-24 23:07:17,784 INFO ml.api: request_id=cd0f8e31-d32f-4225-be9e-46c479363c21 POST /ml/companies/C044/forecast -> 200 760ms
+ml-1        | 2026-10-24 23:07:17,838 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 23:07:17,848 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 23:07:18,336 INFO ml.api: request_id=f94410f3-9e49-4a5f-9d20-eb2950b8f50e POST /ml/companies/C044/forecast -> 200 1187ms
+ml-1        | 2026-10-24 23:07:18,631 INFO categorizer: rules: 1987 / 1987 (100.0%)
+ml-1        | 2026-10-24 23:07:18,641 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 23:07:19,265 INFO categorizer: rules: 1987 / 1987 (100.0%)
+ml-1        | 2026-10-24 23:07:19,275 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 23:07:19,644 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 23:07:19,654 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 23:07:19,958 INFO ml.forecast.plan_fact: план-факт C044: дней 14, событий 5, missed 0/1, вне коридора 1
+ml-1        | 2026-10-24 23:07:19,959 INFO ml.api: request_id=999cedd0-5bc6-4a63-8523-db97ff5e127e GET /ml/companies/C044/plan-fact -> 200 1496ms
+ml-1        | 2026-10-24 23:08:01,532 INFO ml.api: request_id=f08cf465900b GET /ml/health -> 200 1ms
+ml-1        | 2026-10-24 23:08:04,629 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 23:08:04,635 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 23:08:04,638 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 23:08:04,644 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 23:08:05,173 INFO ml.api: request_id=5f1fffd9-ad6c-49e9-b815-3d135f68be9e POST /ml/companies/C044/forecast -> 200 684ms
+ml-1        | 2026-10-24 23:08:05,182 INFO ml.api: request_id=c466b37a-3762-4caa-85aa-281019a3b628 POST /ml/companies/C044/forecast -> 200 746ms
+ml-1        | 2026-10-24 23:08:05,258 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 23:08:05,267 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 23:08:05,763 INFO ml.api: request_id=bc1f25ed-ece1-4afd-be10-0e1c3bb56f14 POST /ml/companies/C044/forecast -> 200 1195ms
+ml-1        | 2026-10-24 23:08:06,100 INFO categorizer: rules: 1987 / 1987 (100.0%)
+ml-1        | 2026-10-24 23:08:06,110 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 23:08:06,780 INFO categorizer: rules: 1987 / 1987 (100.0%)
+ml-1        | 2026-10-24 23:08:06,790 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 23:08:07,149 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 23:08:07,158 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 23:08:07,447 INFO ml.forecast.plan_fact: план-факт C044: дней 14, событий 5, missed 0/1, вне коридора 1
+ml-1        | 2026-10-24 23:08:07,448 INFO ml.api: request_id=fea14e12-973a-4b23-9e18-08b76a9c752b GET /ml/companies/C044/plan-fact -> 200 1517ms
+ml-1        | 2026-10-24 23:08:10,889 INFO categorizer: rules: 2028 / 2028 (100.0%)
+ml-1        | 2026-10-24 23:08:10,897 INFO categorizer: counterparty: 0
+ml-1        | 2026-10-24 23:08:11,367 INFO ml.api: request_id=b7dd4db3-a3f3-434a-8e8e-1c7eac871dd5 POST /ml/companies/C044/forecast -> 200 611ms
+ml-1        | 2026-10-24 23:08:39,255 INFO ml.api: request_id=aea1475851a8 POST /ml/companies/C044/forecast -> 401 1ms
+ml-1        | 2026-10-24 23:08:39,257 INFO ml.api: request_id=9c13b0143286 POST /ml/companies/C044/forecast -> 401 1ms
+llm-1       | INFO:     Waiting for application shutdown.
+llm-1       | INFO:     Application shutdown complete.
+llm-1       | INFO:     Finished server process [1]
+llm-1       | INFO:     Started server process [1]
+llm-1       | INFO:     Waiting for application startup.
+llm-1       | INFO:     Application startup complete.
+llm-1       | INFO:     Uvicorn running on http://0.0.0.0:8100 (Press CTRL+C to quit)

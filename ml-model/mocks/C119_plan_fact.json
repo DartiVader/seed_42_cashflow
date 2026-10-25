@@ -1,0 +1,205 @@
+{
+  "company_id": "C119",
+  "as_of": "2026-09-30",
+  "as_of_plan": "2026-09-16",
+  "model_version": "lgbm_net-v2",
+  "daily": [
+    {
+      "date": "2026-09-17",
+      "plan_p10": 2904332,
+      "plan_p50": 3120863,
+      "plan_p90": 3425406,
+      "fact": 3023966.16,
+      "deviation": -96896.56,
+      "outside": false
+    },
+    {
+      "date": "2026-09-18",
+      "plan_p10": 2931304,
+      "plan_p50": 3177852,
+      "plan_p90": 3519453,
+      "fact": 3096592.52,
+      "deviation": -81259.6,
+      "outside": false
+    },
+    {
+      "date": "2026-09-19",
+      "plan_p10": 2931304,
+      "plan_p50": 3177852,
+      "plan_p90": 3519453,
+      "fact": 3096592.52,
+      "deviation": -81259.6,
+      "outside": false
+    },
+    {
+      "date": "2026-09-20",
+      "plan_p10": 2931304,
+      "plan_p50": 3177852,
+      "plan_p90": 3519453,
+      "fact": 3096592.52,
+      "deviation": -81259.6,
+      "outside": false
+    },
+    {
+      "date": "2026-09-21",
+      "plan_p10": 2676159,
+      "plan_p50": 3133683,
+      "plan_p90": 3438545,
+      "fact": 3142940.52,
+      "deviation": 9257.44,
+      "outside": false
+    },
+    {
+      "date": "2026-09-22",
+      "plan_p10": 2708202,
+      "plan_p50": 3174551,
+      "plan_p90": 3509797,
+      "fact": 3247310.0,
+      "deviation": 72759.13,
+      "outside": false
+    },
+    {
+      "date": "2026-09-23",
+      "plan_p10": 2699228,
+      "plan_p50": 3231196,
+      "plan_p90": 3583725,
+      "fact": 3331346.93,
+      "deviation": 100151.29,
+      "outside": false
+    },
+    {
+      "date": "2026-09-24",
+      "plan_p10": 2860469,
+      "plan_p50": 3336309,
+      "plan_p90": 3769718,
+      "fact": 3375287.81,
+      "deviation": 38978.35,
+      "outside": false
+    },
+    {
+      "date": "2026-09-25",
+      "plan_p10": 2891814,
+      "plan_p50": 3384611,
+      "plan_p90": 3835438,
+      "fact": 3364725.21,
+      "deviation": -19885.91,
+      "outside": false
+    },
+    {
+      "date": "2026-09-26",
+      "plan_p10": 2891814,
+      "plan_p50": 3384611,
+      "plan_p90": 3835438,
+      "fact": 3364725.21,
+      "deviation": -19885.91,
+      "outside": false
+    },
+    {
+      "date": "2026-09-27",
+      "plan_p10": 2891814,
+      "plan_p50": 3384611,
+      "plan_p90": 3835438,
+      "fact": 3364725.21,
+      "deviation": -19885.91,
+      "outside": false
+    },
+    {
+      "date": "2026-09-28",
+      "plan_p10": 2453574,
+      "plan_p50": 3067287,
+      "plan_p90": 3654520,
+      "fact": 3131815.63,
+      "deviation": 64528.79,
+      "outside": false
+    },
+    {
+      "date": "2026-09-29",
+      "plan_p10": 2454496,
+      "plan_p50": 3183052,
+      "plan_p90": 3688059,
+      "fact": 3225718.76,
+      "deviation": 42666.79,
+      "outside": false
+    },
+    {
+      "date": "2026-09-30",
+      "plan_p10": 2029905,
+      "plan_p50": 2739643,
+      "plan_p90": 3291321,
+      "fact": 2808673.1,
+      "deviation": 69030.28,
+      "outside": false
+    }
+  ],
+  "events": [
+    {
+      "date": "2026-09-21",
+      "category": "revenue_client",
+      "amount_plan": 398037.29,
+      "amount_fact": 0.0,
+      "status": "missed",
+      "days_late": 7,
+      "stream_id": "0012458966|revenue_client|in",
+      "mandatory": false,
+      "confidence": 0.69,
+      "window_open": false
+    },
+    {
+      "date": "2026-09-21",
+      "category": "leasing",
+      "amount_plan": -144900.0,
+      "amount_fact": -144900.0,
+      "status": "paid",
+      "days_late": 0,
+      "stream_id": "0063986604|leasing|out",
+      "mandatory": true,
+      "confidence": 1.0,
+      "window_open": false
+    },
+    {
+      "date": "2026-09-23",
+      "category": "revenue_client",
+      "amount_plan": 24791.06,
+      "amount_fact": 0.0,
+      "status": "missed",
+      "days_late": 5,
+      "stream_id": "000485429577|revenue_client|s1|in",
+      "mandatory": false,
+      "confidence": 0.51,
+      "window_open": false
+    },
+    {
+      "date": "2026-09-28",
+      "category": "tax_enp",
+      "amount_plan": -444382.6,
+      "amount_fact": -292418.0,
+      "status": "partial",
+      "days_late": 0,
+      "stream_id": "7727406020|tax_enp|out",
+      "mandatory": true,
+      "confidence": 0.8,
+      "window_open": false
+    },
+    {
+      "date": "2026-09-30",
+      "category": "salary_settlement",
+      "amount_plan": -480722.14,
+      "amount_fact": -489493.4,
+      "status": "paid",
+      "days_late": 0,
+      "stream_id": "0068275202|salary_settlement|out",
+      "mandatory": true,
+      "confidence": 1.0,
+      "window_open": false
+    }
+  ],
+  "summary": {
+    "missed_in": 2,
+    "missed_out": 0,
+    "partial": 1,
+    "paid": 2,
+    "outside_days": 0,
+    "max_deviation": 100151.29,
+    "max_deviation_date": "2026-09-23"
+  }
+}

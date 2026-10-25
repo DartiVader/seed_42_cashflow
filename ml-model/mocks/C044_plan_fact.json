@@ -1,0 +1,207 @@
+{
+  "company_id": "C044",
+  "as_of": "2026-09-30",
+  "as_of_plan": "2026-09-16",
+  "model_version": "lgbm_net-v2",
+  "daily": [
+    {
+      "date": "2026-09-17",
+      "plan_p10": 651131,
+      "plan_p50": 840571,
+      "plan_p90": 1384219,
+      "fact": 645735.79,
+      "deviation": -194834.74,
+      "outside": true
+    },
+    {
+      "date": "2026-09-18",
+      "plan_p10": 547932,
+      "plan_p50": 919652,
+      "plan_p90": 1482827,
+      "fact": 653025.94,
+      "deviation": -266625.68,
+      "outside": false
+    },
+    {
+      "date": "2026-09-19",
+      "plan_p10": 547932,
+      "plan_p50": 919652,
+      "plan_p90": 1482827,
+      "fact": 653025.94,
+      "deviation": -266625.68,
+      "outside": false
+    },
+    {
+      "date": "2026-09-20",
+      "plan_p10": 547932,
+      "plan_p50": 919652,
+      "plan_p90": 1482827,
+      "fact": 653025.94,
+      "deviation": -266625.68,
+      "outside": false
+    },
+    {
+      "date": "2026-09-21",
+      "plan_p10": 545519,
+      "plan_p50": 965787,
+      "plan_p90": 1555273,
+      "fact": 732695.33,
+      "deviation": -233091.53,
+      "outside": false
+    },
+    {
+      "date": "2026-09-22",
+      "plan_p10": 494381,
+      "plan_p50": 1008246,
+      "plan_p90": 1657696,
+      "fact": 688036.39,
+      "deviation": -320209.22,
+      "outside": false
+    },
+    {
+      "date": "2026-09-23",
+      "plan_p10": 296454,
+      "plan_p50": 948593,
+      "plan_p90": 1563837,
+      "fact": 585321.63,
+      "deviation": -363271.26,
+      "outside": false
+    },
+    {
+      "date": "2026-09-24",
+      "plan_p10": 403455,
+      "plan_p50": 1037621,
+      "plan_p90": 1738997,
+      "fact": 612140.15,
+      "deviation": -425480.38,
+      "outside": false
+    },
+    {
+      "date": "2026-09-25",
+      "plan_p10": 72130,
+      "plan_p50": 846816,
+      "plan_p90": 1620306,
+      "fact": 365410.04,
+      "deviation": -481405.93,
+      "outside": false
+    },
+    {
+      "date": "2026-09-26",
+      "plan_p10": 72130,
+      "plan_p50": 846816,
+      "plan_p90": 1620306,
+      "fact": 365410.04,
+      "deviation": -481405.93,
+      "outside": false
+    },
+    {
+      "date": "2026-09-27",
+      "plan_p10": 72130,
+      "plan_p50": 846816,
+      "plan_p90": 1620306,
+      "fact": 365410.04,
+      "deviation": -481405.93,
+      "outside": false
+    },
+    {
+      "date": "2026-09-28",
+      "plan_p10": -497739,
+      "plan_p50": 442057,
+      "plan_p90": 1262101,
+      "fact": 36851.94,
+      "deviation": -405205.4,
+      "outside": false
+    },
+    {
+      "date": "2026-09-29",
+      "plan_p10": -562489,
+      "plan_p50": 447065,
+      "plan_p90": 1210773,
+      "fact": 58828.02,
+      "deviation": -388237.36,
+      "outside": false
+    },
+    {
+      "date": "2026-09-30",
+      "plan_p10": -573014,
+      "plan_p50": 450759,
+      "plan_p90": 1297366,
+      "fact": 74746.51,
+      "deviation": -376012.88,
+      "outside": false
+    }
+  ],
+  "events": [
+    {
+      "date": "2026-09-17",
+      "category": "utilities",
+      "amount_plan": -329994.9,
+      "amount_fact": -497171.32,
+      "status": "paid",
+      "days_late": 1,
+      "stream_id": "0007806199|utilities|out",
+      "mandatory": true,
+      "confidence": 1.0,
+      "window_open": false,
+      "overdue_from": "2026-09-16"
+    },
+    {
+      "date": "2026-09-17",
+      "category": "utilities",
+      "amount_plan": -92988.85,
+      "amount_fact": -89136.46,
+      "status": "paid",
+      "days_late": 0,
+      "stream_id": "0020721071|utilities|out",
+      "mandatory": true,
+      "confidence": 1.0,
+      "window_open": false
+    },
+    {
+      "date": "2026-09-17",
+      "category": "utilities",
+      "amount_plan": -76148.6,
+      "amount_fact": -0.0,
+      "status": "missed",
+      "days_late": 13,
+      "stream_id": "0086893850|utilities|out",
+      "mandatory": true,
+      "confidence": 1.0,
+      "window_open": false,
+      "overdue_from": "2026-09-11"
+    },
+    {
+      "date": "2026-09-25",
+      "category": "salary_advance",
+      "amount_plan": -293844.67,
+      "amount_fact": -244900.0,
+      "status": "paid",
+      "days_late": 0,
+      "stream_id": "0068275202|salary_advance|out",
+      "mandatory": true,
+      "confidence": 0.8,
+      "window_open": false
+    },
+    {
+      "date": "2026-09-28",
+      "category": "tax_enp",
+      "amount_plan": -423777.68,
+      "amount_fact": -382816.0,
+      "status": "paid",
+      "days_late": 0,
+      "stream_id": "7727406020|tax_enp|out",
+      "mandatory": true,
+      "confidence": 0.73,
+      "window_open": false
+    }
+  ],
+  "summary": {
+    "missed_in": 0,
+    "missed_out": 1,
+    "partial": 0,
+    "paid": 4,
+    "outside_days": 1,
+    "max_deviation": -481405.93,
+    "max_deviation_date": "2026-09-25"
+  }
+}

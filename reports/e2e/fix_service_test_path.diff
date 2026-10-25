@@ -1,0 +1,17 @@
+--- reports/e2e/.test_api.orig	2026-10-25 01:46:33.023089763 +0300
++++ service/tests/test_api.py	2026-10-25 01:46:33.035089552 +0300
+@@ -1,12 +1,13 @@
+ """Контрактные проверки на реальных данных (пропускаются, если датасета нет). Запуск из server/:
+ python -m pytest service/tests"""
++import os
+ import time
+ from pathlib import Path
+ 
+ import pytest
+ from fastapi.testclient import TestClient
+ 
+-DATA = Path("/home/kroshsn/PycharmProjects/hacaton_lm/server/cashflow_data/cashflow_dataset_participants")
++DATA = Path(os.environ.get("ML_TEST_DATA_DIR", "cashflow_data/cashflow_dataset_participants"))
+ pytestmark = pytest.mark.skipif(not (DATA / "companies.csv").exists(), reason="нет датасета")
+ H = {"X-Internal-Token": "test-token", "X-Request-Id": "rid-1"}
+ BODY = {"as_of": "2026-09-30", "horizon_days": 30, "seed": 42}

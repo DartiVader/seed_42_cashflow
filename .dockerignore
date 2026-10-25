@@ -1,0 +1,9 @@
+.venv
+.idea
+.env
+.pytest_cache
+__pycache__
+client
+seed42_backend_task
+tests
+service

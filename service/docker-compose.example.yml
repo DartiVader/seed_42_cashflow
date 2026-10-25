@@ -1,0 +1,20 @@
+# Пример для общего compose. Запуск из server/: docker compose -f service/docker-compose.example.yml up --build
+services:
+  ml-gateway:
+    build:
+      context: ..
+      dockerfile: service/Dockerfile
+    env_file: .env
+    environment:
+      ML_DATA_DIR: /data
+    volumes:
+      - ../cashflow_data/cashflow_dataset_participants:/data:ro
+      - ml-state:/var/lib/ml
+    expose: ["8000"]          # только внутренняя сеть compose
+    mem_limit: 3g             # ML_WORKERS × ~600 МБ + фоновые задачи
+    healthcheck:
+      test: ["CMD", "python", "-c", "import json,sys,urllib.request as u; sys.exit(0 if json.load(u.urlopen('http://127.0.0.1:8000/ml/health', timeout=2))['status']=='ok' else 1)"]
+      interval: 15s
+      start_period: 90s
+volumes:
+  ml-state:

@@ -1,0 +1,12 @@
+.amount {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.income {
+  color: var(--color-ok);
+}
+
+.nowrap {
+  white-space: nowrap;
+}

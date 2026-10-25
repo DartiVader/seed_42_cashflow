@@ -1,0 +1,7 @@
+# в образ шлюза идут только ml/, models/, reports/*.csv и backtest_residuals.parquet
+cashflow_data
+reports/control
+reports/control_foreign
+reports/figures
+**/__pycache__
+*.pyc

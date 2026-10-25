@@ -1,0 +1,54 @@
+2026-10-25 02:05:20,471 INFO ml.control: контекст загружен за 6 с: компаний 150, точек прогноза 2979
+2026-10-25 02:06:23,532 INFO ml.control: прогнозов 500/2979
+2026-10-25 02:07:22,450 INFO ml.control: прогнозов 1000/2979
+2026-10-25 02:08:21,963 INFO ml.control: прогнозов 1500/2979
+2026-10-25 02:09:14,775 INFO ml.control: прогнозов 2000/2979
+2026-10-25 02:10:06,522 INFO ml.control: прогнозов 2500/2979
+2026-10-25 02:10:54,685 INFO ml.control: прогнозы: 2979 за 334 с
+2026-10-25 02:11:05,765 INFO ml.control: trace | C027 на 31.08.2026: статус gap_expected
+2026-10-25 02:11:05,765 INFO ml.control: trace | Шаг 1. Очистка — 11 мс: history_days=473; gaps_in_data=2; oneoff_days=3; operations=370; duplicate=0; own_transfer=0; founder_financing=0; error_refund=0
+2026-10-25 02:11:05,765 INFO ml.control: trace | Шаг 2. Категории платежей — время — в шаге 3: categorized=370; categories=15; unknown_share=0.003; top: [suppliers 126, services_other 39, revenue_client 36, tax_enp 26, bank_fee 20, salary_advance 20, utilities 20, salary_settlement 20]
+2026-10-25 02:11:05,765 INFO ml.control: trace | Шаг 3. Регулярные платежи — 184 мс: streams=14; mandatory_streams=6; inflow_streams=2; regular_operations=226; regular_share=0.611; overdue_streams=0
+2026-10-25 02:11:05,765 INFO ml.control: trace | Шаг 4. Будущие события — 0 мс: events=6; mandatory=6; from_user=0; overdue=0; left_to_model=8
+2026-10-25 02:11:05,765 INFO ml.control: trace | Шаг 5. Модель прогноза — 77 мс: model_version=lgbm_net-v2; model=lgbm_net; working_days=22
+2026-10-25 02:11:05,765 INFO ml.control: trace | Шаг 6. Монте-Карло — 0 мс: paths=1000; seed=42; error_pool=industry; error_pool_size=408; widen=1.0
+2026-10-25 02:11:05,766 INFO ml.control: trace | Шаг 7. Кассовый разрыв — 8 мс: p_day_min=0.35; max_p_day=0.552; probability_raw=0.75; probability=0.351; calibrated=True; status=gap_expected; gap_date=2026-09-15
+2026-10-25 02:11:05,766 INFO ml.control: trace | Шаг 8. Сценарий «что если» — 0 мс: applied=False
+2026-10-25 02:11:05,766 INFO ml.control: trace | Шаг 9. План-факт — —: available=False; endpoint=/plan-fact
+2026-10-25 02:11:05,766 INFO ml.control: trace | Итого 281 мс
+2026-10-25 02:11:05,807 INFO ml.control: разрывы (CF, все точки):
+                         predictor    n  true_gaps  precision  recall    f1  roc_auc  brier   ece
+v2 (продукт: порог 0,35, isotonic) 2832        295      0.516   0.644 0.573    0.916  0.063 0.020
+                    v2, порог 0,30 2832        295      0.479   0.698 0.568    0.916  0.063 0.020
+      v2: сырая доля траекторий МК 2832        295        NaN     NaN   NaN    0.920  0.079 0.086
+               остаток не меняется 2832        295        NaN   0.000   NaN      NaN    NaN   NaN
+                     тренд 60 р.д. 2832        295      0.398   0.369 0.383    0.846    NaN   NaN
+       низкий остаток (только AUC) 2832        295        NaN     NaN   NaN    0.855    NaN   NaN
+климатология (знает долю разрывов) 2832        295        NaN     NaN   NaN      NaN  0.093 0.000
+2026-10-25 02:11:05,808 INFO ml.control: остаток, ошибка в оборотах (медиана по компаниям):
+                         fact  day           predictor  nmae_median  nmae_mean  coverage_p10_p90
+          фактический остаток    1              v2 P50        0.223      0.328             0.951
+          фактический остаток    1 остаток не меняется        0.131      0.215               NaN
+          фактический остаток    1            dow_mean        0.154      0.250               NaN
+          фактический остаток    7              v2 P50        1.049      1.851             0.894
+          фактический остаток    7 остаток не меняется        1.250      2.063               NaN
+          фактический остаток    7            dow_mean        1.373      2.319               NaN
+          фактический остаток   14              v2 P50        1.759      5.549             0.834
+          фактический остаток   14 остаток не меняется        1.814      5.656               NaN
+          фактический остаток   14            dow_mean        2.226      6.309               NaN
+          фактический остаток   30              v2 P50        2.465      6.575             0.840
+          фактический остаток   30 остаток не меняется        2.294      5.989               NaN
+          фактический остаток   30            dow_mean        3.525      7.846               NaN
+операционный (как в backtest)    1              v2 P50        0.223      0.322             0.953
+операционный (как в backtest)    1 остаток не меняется        0.133      0.218               NaN
+операционный (как в backtest)    1            dow_mean        0.156      0.247               NaN
+операционный (как в backtest)    7              v2 P50        1.006      1.581             0.901
+операционный (как в backtest)    7 остаток не меняется        1.393      1.958               NaN
+операционный (как в backtest)    7            dow_mean        1.409      2.127               NaN
+операционный (как в backtest)   14              v2 P50        1.667      5.136             0.849
+операционный (как в backtest)   14 остаток не меняется        2.127      5.740               NaN
+операционный (как в backtest)   14            dow_mean        2.369      6.051               NaN
+операционный (как в backtest)   30              v2 P50        1.994      5.692             0.901
+операционный (как в backtest)   30 остаток не меняется        2.898      6.742               NaN
+операционный (как в backtest)   30            dow_mean        3.576      7.560               NaN
+2026-10-25 02:11:05,808 INFO ml.control: готово за 5.9 мин, отчёт: /home/sergey/PycharmProjects/backend/reports/e2e/control_participants/summary.md

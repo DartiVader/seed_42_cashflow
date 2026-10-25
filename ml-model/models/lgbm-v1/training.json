@@ -1,0 +1,36 @@
+{
+  "holdout_companies": [
+    "C020",
+    "C047",
+    "C048",
+    "C058",
+    "C070",
+    "C076",
+    "C083",
+    "C089",
+    "C095",
+    "C103",
+    "C104",
+    "C119",
+    "C127",
+    "C135",
+    "C142"
+  ],
+  "trained_until": "2026-09-30",
+  "panel_config": {
+    "balance_tol": 1.0,
+    "oneoff_k": 20.0,
+    "scale_window": 60,
+    "scale_min_periods": 10,
+    "min_scale": 1000.0
+  },
+  "backtest_config": {
+    "horizon": 23,
+    "first_cutoff": "2025-09-30",
+    "last_origin": "2026-08-31",
+    "report_from": "2026-02-01",
+    "min_history": 20,
+    "holdout_per_industry": 1,
+    "seed": 42
+  }
+}

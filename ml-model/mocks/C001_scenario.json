@@ -1,0 +1,368 @@
+{
+  "company_id": "C001",
+  "as_of": "2026-09-30",
+  "model_version": "lgbm_net-v2",
+  "data_quality": {
+    "history_days": 494,
+    "short_history": false,
+    "gaps_in_data": 0,
+    "days_since_last_operation": 1
+  },
+  "status": "ok",
+  "daily": [
+    {
+      "date": "2026-10-01",
+      "p10": 1187016,
+      "p50": 1714863,
+      "p90": 2113063
+    },
+    {
+      "date": "2026-10-02",
+      "p10": 1107671,
+      "p50": 1681988,
+      "p90": 2100433
+    },
+    {
+      "date": "2026-10-03",
+      "p10": 1107671,
+      "p50": 1681988,
+      "p90": 2100433
+    },
+    {
+      "date": "2026-10-04",
+      "p10": 1107671,
+      "p50": 1681988,
+      "p90": 2100433
+    },
+    {
+      "date": "2026-10-05",
+      "p10": 1152940,
+      "p50": 1708916,
+      "p90": 2245284
+    },
+    {
+      "date": "2026-10-06",
+      "p10": 1032825,
+      "p50": 1669524,
+      "p90": 2210063
+    },
+    {
+      "date": "2026-10-07",
+      "p10": 921519,
+      "p50": 1681379,
+      "p90": 2401518
+    },
+    {
+      "date": "2026-10-08",
+      "p10": 746127,
+      "p50": 1719584,
+      "p90": 2478415
+    },
+    {
+      "date": "2026-10-09",
+      "p10": 728250,
+      "p50": 1695447,
+      "p90": 2455145
+    },
+    {
+      "date": "2026-10-10",
+      "p10": 728250,
+      "p50": 1695447,
+      "p90": 2455145
+    },
+    {
+      "date": "2026-10-11",
+      "p10": 728250,
+      "p50": 1695447,
+      "p90": 2455145
+    },
+    {
+      "date": "2026-10-12",
+      "p10": 453644,
+      "p50": 1400125,
+      "p90": 2256278
+    },
+    {
+      "date": "2026-10-13",
+      "p10": 286293,
+      "p50": 1358237,
+      "p90": 2181857
+    },
+    {
+      "date": "2026-10-14",
+      "p10": 315228,
+      "p50": 1408928,
+      "p90": 2306483
+    },
+    {
+      "date": "2026-10-15",
+      "p10": 280079,
+      "p50": 1456974,
+      "p90": 2363314
+    },
+    {
+      "date": "2026-10-16",
+      "p10": 298446,
+      "p50": 1436386,
+      "p90": 2365702
+    },
+    {
+      "date": "2026-10-17",
+      "p10": 298446,
+      "p50": 1436386,
+      "p90": 2365702
+    },
+    {
+      "date": "2026-10-18",
+      "p10": 298446,
+      "p50": 1436386,
+      "p90": 2365702
+    },
+    {
+      "date": "2026-10-19",
+      "p10": 272787,
+      "p50": 1472764,
+      "p90": 2441089
+    },
+    {
+      "date": "2026-10-20",
+      "p10": 203944,
+      "p50": 1367408,
+      "p90": 2338936
+    },
+    {
+      "date": "2026-10-21",
+      "p10": 171684,
+      "p50": 1543347,
+      "p90": 2497709
+    },
+    {
+      "date": "2026-10-22",
+      "p10": 264711,
+      "p50": 1616730,
+      "p90": 2639125
+    },
+    {
+      "date": "2026-10-23",
+      "p10": 365827,
+      "p50": 1652967,
+      "p90": 2597545
+    },
+    {
+      "date": "2026-10-24",
+      "p10": 365827,
+      "p50": 1652967,
+      "p90": 2597545
+    },
+    {
+      "date": "2026-10-25",
+      "p10": 365827,
+      "p50": 1652967,
+      "p90": 2597545
+    },
+    {
+      "date": "2026-10-26",
+      "p10": -26162,
+      "p50": 1407136,
+      "p90": 2417994
+    },
+    {
+      "date": "2026-10-27",
+      "p10": -92922,
+      "p50": 1370495,
+      "p90": 2435094
+    },
+    {
+      "date": "2026-10-28",
+      "p10": -500789,
+      "p50": 1092834,
+      "p90": 2200465
+    },
+    {
+      "date": "2026-10-29",
+      "p10": -478348,
+      "p50": 1092758,
+      "p90": 2277970
+    },
+    {
+      "date": "2026-10-30",
+      "p10": -434660,
+      "p50": 1089800,
+      "p90": 2330193
+    }
+  ],
+  "events": [
+    {
+      "date": "2026-10-02",
+      "amount": -990.0,
+      "category": "bank_fee",
+      "source": "regular",
+      "confidence": 1.0,
+      "stream_id": "0068275202|bank_fee|out"
+    },
+    {
+      "date": "2026-10-09",
+      "amount": -5959.2,
+      "category": "telecom",
+      "source": "regular",
+      "confidence": 1.0,
+      "stream_id": "0052516773|telecom|out"
+    },
+    {
+      "date": "2026-10-12",
+      "amount": -356967.06,
+      "category": "salary_settlement",
+      "source": "regular",
+      "confidence": 0.8,
+      "stream_id": "0068275202|salary_settlement|out"
+    },
+    {
+      "date": "2026-10-26",
+      "amount": -231576.23,
+      "category": "salary_advance",
+      "source": "regular",
+      "confidence": 1.0,
+      "stream_id": "0068275202|salary_advance|out"
+    },
+    {
+      "date": "2026-10-28",
+      "amount": -360181.03,
+      "category": "tax_enp",
+      "source": "regular",
+      "confidence": 1.0,
+      "stream_id": "7727406020|tax_enp|out"
+    }
+  ],
+  "gaps": [],
+  "trace": [
+    {
+      "step": 1,
+      "name": "Очистка",
+      "ms": 34.6,
+      "values": {
+        "history_days": 494,
+        "gaps_in_data": 0,
+        "oneoff_days": 0,
+        "operations": 1131,
+        "duplicate": 0,
+        "own_transfer": 68,
+        "founder_financing": 0,
+        "error_refund": 0
+      }
+    },
+    {
+      "step": 2,
+      "name": "Категории платежей",
+      "ms": null,
+      "values": {
+        "categorized": 1131,
+        "categories": 12,
+        "unknown_share": 0.0,
+        "top": {
+          "revenue_client": 657,
+          "transport": 128,
+          "suppliers": 74,
+          "own_transfer": 68,
+          "services_other": 48,
+          "bank_fee": 24,
+          "telecom": 24,
+          "salary_settlement": 24
+        }
+      }
+    },
+    {
+      "step": 3,
+      "name": "Регулярные платежи",
+      "ms": 546.8,
+      "values": {
+        "streams": 15,
+        "mandatory_streams": 5,
+        "inflow_streams": 4,
+        "regular_operations": 359,
+        "regular_share": 0.317,
+        "overdue_streams": 0
+      }
+    },
+    {
+      "step": 4,
+      "name": "Будущие события",
+      "ms": 0.3,
+      "values": {
+        "events": 5,
+        "mandatory": 5,
+        "from_user": 0,
+        "overdue": 0,
+        "inflow_sum": 0,
+        "outflow_sum": 955674,
+        "expected_net": -884637,
+        "left_to_model": 10
+      }
+    },
+    {
+      "step": 5,
+      "name": "Модель прогноза",
+      "ms": 155.7,
+      "values": {
+        "model_version": "lgbm_net-v2",
+        "model": "lgbm_net",
+        "working_days": 23,
+        "daily_turnover": 253854,
+        "irregular_inflow_sum": 3617894,
+        "irregular_outflow_sum": 2085071
+      }
+    },
+    {
+      "step": 6,
+      "name": "Монте-Карло",
+      "ms": 9.7,
+      "values": {
+        "paths": 1000,
+        "seed": 42,
+        "error_pool": "industry",
+        "error_pool_size": 381,
+        "widen": 1.0,
+        "end_p10": -434660,
+        "end_p50": 1089800,
+        "end_p90": 2330193,
+        "min_p50": 1089800
+      }
+    },
+    {
+      "step": 7,
+      "name": "Кассовый разрыв",
+      "ms": 1.2,
+      "values": {
+        "threshold": 0,
+        "p_day_min": 0.35,
+        "max_p_day": 0.154,
+        "probability_raw": 0.186,
+        "probability": 0.128,
+        "calibrated": true,
+        "status": "ok",
+        "gap_date": null,
+        "shortfall": null
+      }
+    },
+    {
+      "step": 8,
+      "name": "Сценарий «что если»",
+      "ms": 0.0,
+      "values": {
+        "applied": true,
+        "revenue_multiplier": 0.7,
+        "fixed_cost_multiplier": 1.0,
+        "delayed_counterparties": 0,
+        "extra_expenses": 0
+      }
+    },
+    {
+      "step": 9,
+      "name": "План-факт",
+      "ms": null,
+      "values": {
+        "available": false,
+        "endpoint": "/plan-fact"
+      }
+    }
+  ]
+}

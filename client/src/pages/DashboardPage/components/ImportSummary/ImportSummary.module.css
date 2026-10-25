@@ -1,0 +1,88 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  color: var(--color-on-dark);
+  background: var(--gradient-dark);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem 1rem;
+}
+
+.title {
+  font-size: 1.25rem;
+}
+
+.note {
+  font-size: 0.875rem;
+  color: var(--color-on-dark-muted);
+}
+
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.tile {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.875rem 1rem;
+  background: var(--color-on-dark-tile);
+  border: 1px solid var(--color-on-dark-line);
+  border-radius: var(--radius-md);
+}
+
+.value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.tile[data-alert] .value {
+  color: var(--color-danger-on-dark);
+}
+
+.label {
+  font-size: 0.8125rem;
+  color: var(--color-on-dark-muted);
+}
+
+.warning {
+  font-size: 0.875rem;
+  color: var(--color-danger-on-dark);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 0.75rem;
+}
+
+.select {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.8125rem;
+  color: var(--color-on-dark-muted);
+}
+
+.select select {
+  min-width: 10rem;
+}
+
+@media (max-width: 640px) {
+  .tiles {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

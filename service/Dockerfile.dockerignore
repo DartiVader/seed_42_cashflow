@@ -1,0 +1,13 @@
+**/__pycache__
+**/*.pyc
+.venv
+.idea
+.env
+.pytest_cache
+dist
+cashflow_data
+# отчёты: нужны только csv верхнего уровня и остаток backtest
+reports/*/
+reports/*.parquet
+reports/*.log
+!reports/backtest_residuals.parquet

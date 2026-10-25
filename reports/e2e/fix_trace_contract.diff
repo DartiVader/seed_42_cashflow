@@ -1,0 +1,156 @@
+--- reports/e2e/.forecastTrace.orig	2026-10-25 01:47:41.727881980 +0300
++++ client/src/utils/forecastTrace.ts	2026-10-25 01:47:48.627760414 +0300
+@@ -1,4 +1,4 @@
+-import type { Forecast, TraceStep } from '@/api/types';
++import type { Forecast } from '@/api/types';
+ import { categoryName, longDate, percent, shortMoney } from '@/utils/format';
+ 
+ export interface TraceView {
+@@ -11,20 +11,106 @@
+ /** Paths Монте-Карло в ML (ml/forecast/api.py: n_paths=1000) */
+ const PATHS = 1000
+ 
+-const detailLines = (details: TraceStep['details']): string[] => {
+-  if (details === undefined || details === null) {
+-    return []
++/** Подписи известных ключей values (README_SERVICE.md, таблица шагов); незнакомые ключи не показываем */
++const VALUE_LABELS: Record<string, string> = {
++  operations: 'Операций в выписке',
++  history_days: 'Дней истории',
++  gaps_in_data: 'Пропусков в выписке',
++  duplicate: 'Дублей',
++  own_transfer: 'Переводов между своими счетами',
++  founder_financing: 'Денег учредителя',
++  error_refund: 'Возвратов ошибочных платежей',
++  oneoff_days: 'Дней с разовыми крупными операциями',
++  categorized: 'Операций с категорией',
++  categories: 'Разных категорий',
++  unknown_share: 'Доля «прочее»',
++  top: 'Самые частые',
++  streams: 'Регулярных платежей',
++  mandatory_streams: 'Из них обязательных',
++  inflow_streams: 'Регулярных поступлений',
++  regular_operations: 'Операций в регулярных платежах',
++  regular_share: 'Доля регулярных операций',
++  overdue_streams: 'Просроченных регулярных',
++  events: 'Событий в календаре',
++  mandatory: 'Обязательных',
++  from_user: 'Добавлено вами',
++  overdue: 'Просроченных',
++  inflow_sum: 'Поступления по событиям',
++  outflow_sum: 'Списания по событиям',
++  expected_net: 'Итого с учётом уверенности',
++  left_to_model: 'Оставлено модели',
++  model_version: 'Версия модели',
++  working_days: 'Рабочих дней в горизонте',
++  daily_turnover: 'Обычный дневной оборот',
++  irregular_inflow_sum: 'Нерегулярные поступления за горизонт',
++  irregular_outflow_sum: 'Нерегулярные списания за горизонт',
++  paths: 'Вариантов будущего',
++  seed: 'Seed',
++  error_pool: 'Ошибки модели — по',
++  error_pool_size: 'Размер пула ошибок',
++  widen: 'Расширение коридора',
++  end_p10: 'Остаток в конце: P10',
++  end_p50: 'Остаток в конце: P50',
++  end_p90: 'Остаток в конце: P90',
++  min_p50: 'Минимум P50',
++  threshold: 'Порог (подушка)',
++  p_day_min: 'Порог тревоги дня',
++  max_p_day: 'Максимум доли провалов за день',
++  probability_raw: 'Вероятность до калибровки',
++  probability: 'Вероятность разрыва',
++  status: 'Итог',
++  gap_date: 'Дата разрыва',
++  shortfall: 'Может не хватить',
++  applied: 'Сценарий применён',
++  revenue_multiplier: 'Выручка, множитель',
++  fixed_cost_multiplier: 'Постоянные расходы, множитель',
++  delayed_counterparties: 'Задержанных контрагентов',
++  extra_expenses: 'Дополнительных расходов',
++  available: 'Считается в прогнозе',
++}
++
++const MONEY_KEYS = new Set(['inflow_sum', 'outflow_sum', 'expected_net', 'daily_turnover', 'irregular_inflow_sum',
++  'irregular_outflow_sum', 'end_p10', 'end_p50', 'end_p90', 'min_p50', 'threshold', 'shortfall'])
++const SHARE_KEYS = new Set(['unknown_share', 'regular_share', 'p_day_min', 'max_p_day', 'probability_raw', 'probability'])
++const VALUE_WORDS: Record<string, string> = {
++  industry: 'отрасли', all: 'всем компаниям', ok: 'денег хватает', gap_expected: 'возможен разрыв',
++  already_negative: 'счёт уже в минусе', below_cushion: 'ниже подушки',
++}
++
++const formatValue = (key: string, value: unknown): string | null => {
++  if (value === null || value === undefined) {
++    return null
++  }
++  if (typeof value === 'boolean') {
++    return value ? 'да' : 'нет'
+   }
+-  if (Array.isArray(details)) {
+-    return details.map(String)
++  if (typeof value === 'number') {
++    if (MONEY_KEYS.has(key)) {
++      return shortMoney(value)
++    }
++    return SHARE_KEYS.has(key) ? percent(value) : value.toLocaleString('ru-RU')
+   }
+-  if (typeof details === 'string') {
+-    return [details]
++  if (typeof value === 'string') {
++    if (key === 'gap_date') {
++      return longDate(value)
++    }
++    return VALUE_WORDS[value] ?? value
+   }
+-  return Object.entries(details).map(([key, value]) =>
+-    `${key}: ${typeof value === 'object' && value !== null ? JSON.stringify(value) : String(value)}`)
++  if (key === 'top' && typeof value === 'object') {
++    return Object.entries(value as Record<string, number>).slice(0, 5)
++      .map(([code, count]) => `${categoryName(code)} ${count}`).join(', ')
++  }
++  return null
+ }
+ 
++const valueLines = (values: Record<string, unknown> | undefined): string[] => Object.entries(values ?? {})
++  .filter(([key]) => key in VALUE_LABELS && key !== 'endpoint')
++  .map(([key, value]) => {
++    const text = formatValue(key, value)
++    return text === null ? '' : `${VALUE_LABELS[key]}: ${text}`
++  })
++  .filter(Boolean)
++
+ const fromTrace = (forecast: Forecast): TraceView | null => {
+   const trace = forecast.trace
+   if (!trace) {
+@@ -37,9 +123,9 @@
+   return {
+     steps: steps.map((item, index) => ({
+       step: item.step ?? index + 1,
+-      title: item.title,
+-      lines: detailLines(item.details),
+-      durationMs: item.duration_ms,
++      title: item.name,
++      lines: valueLines(item.values),
++      durationMs: item.ms ?? undefined,
+     })),
+     totalMs: Array.isArray(trace) ? null : trace.took_ms ?? null,
+     isTemplate: false,
+--- reports/e2e/.types.orig	2026-10-25 01:47:41.728881962 +0300
++++ client/src/api/types.ts	2026-10-25 01:47:41.747881627 +0300
+@@ -180,11 +180,13 @@
+   trace?: TraceStep[] | TraceReport
+ }
+ 
++/** Шаг «Как посчитано» из ML (README_SERVICE.md, «trace»): только агрегаты, ключи values могут добавляться */
+ export interface TraceStep {
+   step: number
+-  title: string
+-  details?: string[] | string | Record<string, unknown>
+-  duration_ms?: number
++  name: string
++  /** время шага, мс; null — шаг посчитан вместе с соседним */
++  ms: number | null
++  values: Record<string, unknown>
+ }
+ 
+ export interface TraceReport {

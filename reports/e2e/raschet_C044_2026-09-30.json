@@ -1,0 +1,487 @@
+{
+  "exported_at": "2026-10-24T22:56:37.798Z",
+  "company_id": "C044",
+  "forecast": {
+    "company_id": "C044",
+    "as_of": "2026-09-30",
+    "model_version": "lgbm_net-v2",
+    "data_quality": {
+      "history_days": 495,
+      "short_history": false,
+      "gaps_in_data": 1,
+      "days_since_last_operation": 0
+    },
+    "status": "gap_expected",
+    "daily": [
+      {
+        "date": "2026-10-01",
+        "p10": -54985,
+        "p50": 134044,
+        "p90": 676516
+      },
+      {
+        "date": "2026-10-02",
+        "p10": -177184,
+        "p50": 193003,
+        "p90": 754215
+      },
+      {
+        "date": "2026-10-03",
+        "p10": -177184,
+        "p50": 193003,
+        "p90": 754215
+      },
+      {
+        "date": "2026-10-04",
+        "p10": -177184,
+        "p50": 193003,
+        "p90": 754215
+      },
+      {
+        "date": "2026-10-05",
+        "p10": -180522,
+        "p50": 237877,
+        "p90": 826935
+      },
+      {
+        "date": "2026-10-06",
+        "p10": -277288,
+        "p50": 236017,
+        "p90": 884999
+      },
+      {
+        "date": "2026-10-07",
+        "p10": -388670,
+        "p50": 265282,
+        "p90": 875971
+      },
+      {
+        "date": "2026-10-08",
+        "p10": -265651,
+        "p50": 367981,
+        "p90": 1066828
+      },
+      {
+        "date": "2026-10-09",
+        "p10": -351135,
+        "p50": 418432,
+        "p90": 1162311
+      },
+      {
+        "date": "2026-10-10",
+        "p10": -351135,
+        "p50": 418432,
+        "p90": 1162311
+      },
+      {
+        "date": "2026-10-11",
+        "p10": -351135,
+        "p50": 418432,
+        "p90": 1162311
+      },
+      {
+        "date": "2026-10-12",
+        "p10": -780099,
+        "p50": 201990,
+        "p90": 976788
+      },
+      {
+        "date": "2026-10-13",
+        "p10": -777715,
+        "p50": 197426,
+        "p90": 945517
+      },
+      {
+        "date": "2026-10-14",
+        "p10": -852035,
+        "p50": 217044,
+        "p90": 987391
+      },
+      {
+        "date": "2026-10-15",
+        "p10": -931243,
+        "p50": 132841,
+        "p90": 910453
+      },
+      {
+        "date": "2026-10-16",
+        "p10": -1393968,
+        "p50": -219932,
+        "p90": 633230
+      },
+      {
+        "date": "2026-10-17",
+        "p10": -1393968,
+        "p50": -219932,
+        "p90": 633230
+      },
+      {
+        "date": "2026-10-18",
+        "p10": -1393968,
+        "p50": -219932,
+        "p90": 633230
+      },
+      {
+        "date": "2026-10-19",
+        "p10": -1522550,
+        "p50": -262524,
+        "p90": 579091
+      },
+      {
+        "date": "2026-10-20",
+        "p10": -1658529,
+        "p50": -356692,
+        "p90": 482672
+      },
+      {
+        "date": "2026-10-21",
+        "p10": -1859391,
+        "p50": -480918,
+        "p90": 502692
+      },
+      {
+        "date": "2026-10-22",
+        "p10": -1785360,
+        "p50": -436375,
+        "p90": 584607
+      },
+      {
+        "date": "2026-10-23",
+        "p10": -1678022,
+        "p50": -302292,
+        "p90": 776807
+      },
+      {
+        "date": "2026-10-24",
+        "p10": -1678022,
+        "p50": -302292,
+        "p90": 776807
+      },
+      {
+        "date": "2026-10-25",
+        "p10": -1678022,
+        "p50": -302292,
+        "p90": 776807
+      },
+      {
+        "date": "2026-10-26",
+        "p10": -1970635,
+        "p50": -576585,
+        "p90": 568520
+      },
+      {
+        "date": "2026-10-27",
+        "p10": -1927371,
+        "p50": -565722,
+        "p90": 549510
+      },
+      {
+        "date": "2026-10-28",
+        "p10": -2036925,
+        "p50": -538879,
+        "p90": 637133
+      },
+      {
+        "date": "2026-10-29",
+        "p10": -1978471,
+        "p50": -424155,
+        "p90": 617423
+      },
+      {
+        "date": "2026-10-30",
+        "p10": -1945542,
+        "p50": -284553,
+        "p90": 926139
+      }
+    ],
+    "events": [
+      {
+        "date": "2026-10-02",
+        "amount": -1490,
+        "category": "bank_fee",
+        "source": "regular",
+        "confidence": 0.8,
+        "stream_id": "0068275202|bank_fee|out",
+        "mandatory": true,
+        "counterparty_name": null,
+        "overdue_from": null
+      },
+      {
+        "date": "2026-10-05",
+        "amount": -1200,
+        "category": "rent",
+        "source": "regular",
+        "confidence": 0.8,
+        "stream_id": "0068275202|rent|out",
+        "mandatory": true,
+        "counterparty_name": null,
+        "overdue_from": null
+      },
+      {
+        "date": "2026-10-07",
+        "amount": -3814.36,
+        "category": "telecom",
+        "source": "regular",
+        "confidence": 0.8,
+        "stream_id": "0052516773|telecom|out",
+        "mandatory": true,
+        "counterparty_name": null,
+        "overdue_from": null
+      },
+      {
+        "date": "2026-10-12",
+        "amount": -461389.66,
+        "category": "salary_settlement",
+        "source": "regular",
+        "confidence": 0.73,
+        "stream_id": "0068275202|salary_settlement|out",
+        "mandatory": true,
+        "counterparty_name": null,
+        "overdue_from": null
+      },
+      {
+        "date": "2026-10-13",
+        "amount": -83289.54,
+        "category": "utilities",
+        "source": "regular",
+        "confidence": 0.8,
+        "stream_id": "0086893850|utilities|out",
+        "mandatory": true,
+        "counterparty_name": null,
+        "overdue_from": null
+      },
+      {
+        "date": "2026-10-16",
+        "amount": -355589.21,
+        "category": "utilities",
+        "source": "regular",
+        "confidence": 1,
+        "stream_id": "0007806199|utilities|out",
+        "mandatory": true,
+        "counterparty_name": null,
+        "overdue_from": null
+      },
+      {
+        "date": "2026-10-19",
+        "amount": -92399.06,
+        "category": "utilities",
+        "source": "regular",
+        "confidence": 1,
+        "stream_id": "0020721071|utilities|out",
+        "mandatory": true,
+        "counterparty_name": null,
+        "overdue_from": null
+      },
+      {
+        "date": "2026-10-26",
+        "amount": -286323.95,
+        "category": "salary_advance",
+        "source": "regular",
+        "confidence": 0.8,
+        "stream_id": "0068275202|salary_advance|out",
+        "mandatory": true,
+        "counterparty_name": null,
+        "overdue_from": null
+      }
+    ],
+    "gaps": [
+      {
+        "date": "2026-10-12",
+        "shortfall": 790863,
+        "shortfall_low": 179650,
+        "shortfall_high": 1997243,
+        "shortfall_at_gap": 790863,
+        "shortfall_at_gap_low": 178835,
+        "shortfall_at_gap_high": 1997243,
+        "probability": 0.57,
+        "reasons": [
+          "С 12.10 по 16.10 не хватит ~791 тыс. ₽ (от 179 тыс. ₽ до 2,0 млн ₽)",
+          "Зарплата 12.10 — ~461 тыс. ₽",
+          "Связь 07.10 — ~4 тыс. ₽"
+        ],
+        "actions": [
+          "Сократите на 20% закупки, услуги подрядчиков и рекламу до 19.10 (~207 тыс. ₽) — риск нехватки снизится с 57% до 44%, ближайший разрыв — 16.10",
+          "Чтобы не уйти в минус до 30.10, нужен лимит ~791 тыс. ₽, с запасом ~2,0 млн ₽; овердрафт понадобится примерно на 1 дн. (до 13.10)"
+        ],
+        "actions_detail": [
+          {
+            "type": "cut_discretionary",
+            "stream_id": null,
+            "category": null,
+            "counterparty_name": null,
+            "amount": 206853,
+            "date_from": "2026-10-01",
+            "date_to": "2026-10-19",
+            "categories": [
+              {
+                "category": "suppliers",
+                "name": "Закупки у поставщиков",
+                "amount": 117087
+              },
+              {
+                "category": "services_other",
+                "name": "Прочие услуги",
+                "amount": 53428
+              },
+              {
+                "category": "marketing",
+                "name": "Реклама",
+                "amount": 34560
+              }
+            ],
+            "prob_before": 0.57,
+            "prob_after": 0.44,
+            "prob_window_before": 0.77,
+            "prob_window_after": 0.68,
+            "prob_horizon_after": 0.44,
+            "shortfall_before": 790863,
+            "shortfall_after": 685726,
+            "gap_date_after": "2026-10-16"
+          },
+          {
+            "type": "overdraft",
+            "stream_id": null,
+            "category": null,
+            "counterparty_name": null,
+            "amount": 790863,
+            "amount_high": 1997243,
+            "date_from": "2026-10-12",
+            "date_to": "2026-10-13",
+            "prob_before": 0.57,
+            "prob_after": null,
+            "shortfall_before": 790863,
+            "shortfall_after": null,
+            "gap_date_after": null
+          }
+        ]
+      }
+    ],
+    "trace": [
+      {
+        "step": 1,
+        "name": "Очистка",
+        "ms": 29.6,
+        "values": {
+          "history_days": 495,
+          "gaps_in_data": 1,
+          "oneoff_days": 0,
+          "operations": 2041,
+          "duplicate": 0,
+          "own_transfer": 13,
+          "founder_financing": 0,
+          "error_refund": 0
+        }
+      },
+      {
+        "step": 2,
+        "name": "Категории платежей",
+        "ms": null,
+        "values": {
+          "categorized": 2041,
+          "categories": 18,
+          "unknown_share": 0,
+          "top": {
+            "revenue_acquiring": 690,
+            "revenue_sbp": 690,
+            "suppliers": 162,
+            "revenue_cash": 102,
+            "utilities": 71,
+            "services_other": 67,
+            "marketing": 47,
+            "tax_enp": 37
+          }
+        }
+      },
+      {
+        "step": 3,
+        "name": "Регулярные платежи",
+        "ms": 347.3,
+        "values": {
+          "streams": 12,
+          "mandatory_streams": 8,
+          "inflow_streams": 1,
+          "regular_operations": 275,
+          "regular_share": 0.135,
+          "overdue_streams": 0
+        }
+      },
+      {
+        "step": 4,
+        "name": "Будущие события",
+        "ms": 0.4,
+        "values": {
+          "events": 8,
+          "mandatory": 8,
+          "from_user": 0,
+          "overdue": 0,
+          "inflow_sum": 0,
+          "outflow_sum": 1285496,
+          "expected_net": -1086996,
+          "left_to_model": 4
+        }
+      },
+      {
+        "step": 5,
+        "name": "Модель прогноза",
+        "ms": 92.7,
+        "values": {
+          "model_version": "lgbm_net-v2",
+          "model": "lgbm_net",
+          "working_days": 22,
+          "daily_turnover": 226810,
+          "irregular_inflow_sum": 2277479,
+          "irregular_outflow_sum": 1665507
+        }
+      },
+      {
+        "step": 6,
+        "name": "Монте-Карло",
+        "ms": 0.6,
+        "values": {
+          "paths": 1000,
+          "seed": 42,
+          "error_pool": "industry",
+          "error_pool_size": 282,
+          "widen": 1,
+          "end_p10": -1945542,
+          "end_p50": -284553,
+          "end_p90": 926139,
+          "min_p50": -576585
+        }
+      },
+      {
+        "step": 7,
+        "name": "Кассовый разрыв",
+        "ms": 8,
+        "values": {
+          "threshold": 0,
+          "p_day_min": 0.35,
+          "max_p_day": 0.735,
+          "probability_raw": 0.933,
+          "probability": 0.571,
+          "calibrated": true,
+          "status": "gap_expected",
+          "gap_date": "2026-10-12",
+          "shortfall": 790863
+        }
+      },
+      {
+        "step": 8,
+        "name": "Сценарий «что если»",
+        "ms": 0,
+        "values": {
+          "applied": false
+        }
+      },
+      {
+        "step": 9,
+        "name": "План-факт",
+        "ms": null,
+        "values": {
+          "available": false,
+          "endpoint": "/plan-fact"
+        }
+      }
+    ]
+  }
+}

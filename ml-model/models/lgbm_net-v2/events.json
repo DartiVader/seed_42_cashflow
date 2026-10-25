@@ -1,0 +1,18 @@
+{
+  "variant": "mandatory",
+  "groups": [
+    "bank_fee",
+    "contractor_gph",
+    "leasing",
+    "loan_repayment",
+    "rent",
+    "salary",
+    "salary_advance",
+    "salary_settlement",
+    "tax_enp",
+    "tax_other",
+    "telecom",
+    "utilities"
+  ],
+  "residual_model": "4_mandatory"
+}

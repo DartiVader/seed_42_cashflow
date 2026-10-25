@@ -1,0 +1,121 @@
+# Всё одной командой: cp .env.example .env (заполнить JWT_SECRET) && docker compose up --build
+# Фронт: http://localhost:5173  ·  Swagger бэкенда: http://localhost:${BACKEND_PORT}/docs
+# Spring (server/) сюда не входит: его заменил backend.
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: seed
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-seed}
+      POSTGRES_DB: seed
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U seed -d seed"]
+      interval: 3s
+      retries: 20
+
+  # ML-сервис: шлюз service/ (воркеры) + код ml/, модели и отчёты из ml-model/ (ML_REPO).
+  # Сборка повторяет service/Dockerfile. Операции — из БД (get_operations_period), если задан DATABASE_URL;
+  # датасет (/data) — справочник компаний и запасной источник для компаний без операций в БД.
+  ml:
+    build:
+      context: ${ML_REPO:-./ml-model}
+      additional_contexts:
+        service: ./service
+      dockerfile_inline: |
+        FROM python:3.13-slim
+        ENV PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 PIP_NO_CACHE_DIR=1 PYTHONPATH=/app \
+            ML_DATA_DIR=/data ML_MODELS_DIR=/app/models ML_REPORTS_DIR=/app/reports ML_STATE_DIR=/var/lib/ml
+        RUN apt-get update && apt-get install -y --no-install-recommends libgomp1 && rm -rf /var/lib/apt/lists/* \
+            && useradd --system --uid 10001 --home-dir /app ml && mkdir -p /var/lib/ml /data && chown ml /var/lib/ml
+        WORKDIR /app
+        COPY --from=service requirements.txt service/requirements.txt
+        RUN pip install -r service/requirements.txt
+        COPY ml ml
+        COPY --from=service . service
+        COPY models models
+        COPY reports/*.csv reports/backtest_residuals.parquet reports/
+        RUN chmod -R a+rX /app && python -c "import service.main, ml.train" && chown -R ml /app/models
+        USER ml
+        CMD ["uvicorn", "service.main:app", "--host", "0.0.0.0", "--port", "8000", "--no-access-log"]
+    environment:
+      INTERNAL_TOKEN: ${ML_INTERNAL_TOKEN:?задайте ML_INTERNAL_TOKEN в .env}
+      # Та же БД, что у бэкенда: операции для прогноза — функцией get_operations_period
+      DATABASE_URL: ${DATABASE_URL:-postgresql://seed:${POSTGRES_PASSWORD:-seed}@postgres:5432/seed}
+      ML_WORKERS: ${ML_WORKERS:-2}
+      ML_MODEL_VERSION: lgbm_net-v2
+      MPLCONFIGDIR: /tmp/matplotlib  # кэш matplotlib (графики отчёта о качестве): /app только для чтения
+    volumes:
+      - ${ML_REPO:-./ml-model}/cashflow_data/cashflow_dataset_participants:/data:ro
+      - ml-state:/var/lib/ml
+    # прогноз: ML_WORKERS × ~600 МБ; отчёт о качестве: ML_QUALITY_WORKERS × ~700 МБ
+    mem_limit: 6g
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  llm:
+    build: ./llm_service
+    environment:
+      LLM_PROVIDER: anthropic
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      LLM_MODEL_FAST: claude-haiku-5-5
+      LLM_MODEL_SMART: claude-sonnet-5-5
+      LLM_TIMEOUT_S: 4
+      LLM_SEND_NAMES: "false"
+
+  backend:
+    build: .
+    environment:
+      # Общая БД (Виталия) — DATABASE_URL в .env; без него — локальный контейнер postgres
+      DATABASE_URL: ${DATABASE_URL:-postgresql://seed:${POSTGRES_PASSWORD:-seed}@postgres:5432/seed}
+      JWT_SECRET: ${JWT_SECRET:?задайте JWT_SECRET в .env}
+      JWT_TTL_HOURS: ${JWT_TTL_HOURS:-12}
+      JWT_COOKIE_SECURE: ${JWT_COOKIE_SECURE:-false}
+      ADMIN_EMAIL: ${ADMIN_EMAIL:-}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-}
+      ML_URL: http://ml:8000
+      ML_INTERNAL_TOKEN: ${ML_INTERNAL_TOKEN:?задайте ML_INTERNAL_TOKEN в .env}
+      # LLM: по умолчанию локальный контейнер llm; сетевой сервис — LLM_URL и LLM_INTERNAL_TOKEN в .env
+      LLM_URL: ${LLM_URL:-http://llm:8100}
+      LLM_INTERNAL_TOKEN: ${LLM_INTERNAL_TOKEN:-}
+      # API маркетплейсов (мок Влада): адрес в .env, свой на площадку — MARKETPLACE_OZON_URL и т. п.
+      MARKETPLACE_URL: ${MARKETPLACE_URL:-http://localhost:8000}
+      MARKETPLACE_OZON_URL: ${MARKETPLACE_OZON_URL:-}
+      MARKETPLACE_WB_URL: ${MARKETPLACE_WB_URL:-}
+      MARKETPLACE_YANDEX_URL: ${MARKETPLACE_YANDEX_URL:-}
+      # Нейросеть-классификатор категорий; CLASSIFIER_ENABLED=false — только правила
+      CLASSIFIER_URL: ${CLASSIFIER_URL:-http://192.168.88.60:8300}
+      CLASSIFIER_ENABLED: ${CLASSIFIER_ENABLED:-true}
+      TZ: Europe/Moscow  # localDateTime в ответах — местное время
+      # отчёт о качестве по компаниям администраторов: его считает ML-шлюз в своём каталоге состояния
+      QUALITY_DIR: /ml-state/quality
+      REPORTS_DIR: /reports  # отчёт по датасету участников (reports/control) — отдельной кнопкой
+    volumes:
+      - ml-state:/ml-state:ro
+      - ${ML_REPO:-./ml-model}/reports:/reports:ro
+    ports:
+      - "${BACKEND_PORT:-8080}:8080"
+      - "5173:5173"  # порт фронта: client живёт в сетевом пространстве backend
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  # Vite проксирует /api на localhost:8080 (vite.config.ts не трогаем) — поэтому общая сеть с backend
+  client:
+    image: node:22-alpine
+    working_dir: /app
+    volumes:
+      - ./client:/app
+      - client_node_modules:/app/node_modules
+    command: sh -c "npm ci && npm run dev -- --host 0.0.0.0 --port 5173"
+    network_mode: "service:backend"
+    depends_on:
+      - backend
+
+volumes:
+  pgdata:
+  ml-state:
+  client_node_modules:

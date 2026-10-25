@@ -1,0 +1,11 @@
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+.errors {
+  color: var(--color-danger);
+  background: var(--color-danger-soft);
+  font-size: 0.8125rem;
+}

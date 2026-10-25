@@ -1,0 +1,23 @@
+{
+ "results": [
+  {
+   "name": "2.10 «Качество модели»: метрики, обе матрицы, графики = summary.md",
+   "status": "PASS",
+   "seconds": 4.5,
+   "comment": "все: 90 % Accuracy; 90 % Accuracy; 90 %; Accuracy; Доля верных ответов «будет / не будет нехватки»; 51,6 % Precision | холдаут: 90,4 % Accuracy; 90,4 % Accuracy; 90,4 %; Accuracy; Доля верных ответов «будет / не будет нехватки»; 35,7 % Precision | матриц 3, картинок 4/4"
+  },
+  {
+   "name": "2.11 Тур обучения до конца без ошибок в консоли",
+   "status": "PASS",
+   "seconds": 15.3,
+   "comment": "шагов 16, ошибок консоли 0"
+  },
+  {
+   "name": "2.12 Печать отчёта: вёрстка в print",
+   "status": "PASS",
+   "seconds": 5.5,
+   "comment": "в печати: боковая панель видна=false, шапка видна=false; PDF reports/e2e/print_C044.pdf"
+  }
+ ],
+ "consoleErrors": []
+}

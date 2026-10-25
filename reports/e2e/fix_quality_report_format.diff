@@ -1,0 +1,351 @@
+--- reports/e2e/.quality.orig	2026-10-25 01:58:14.848591309 +0300
++++ app/routers/quality.py	2026-10-25 01:58:14.870590913 +0300
+@@ -44,8 +44,73 @@
+     return {"columns": rows[0], "rows": [[cell(v) for v in row] for row in rows[1:MAX_TABLE_ROWS + 1]]}
+ 
+ 
++def png_paths(folder: Path) -> dict[str, Path]:
++    """Картинки отчёта: в корне папки и в figures/ (так их кладёт ml.evaluation.control)."""
++    found = {}
++    for path in [*folder.glob("figures/*.png"), *folder.glob("*.png")]:
++        if SAFE_PNG.match(path.name):
++            found[path.name] = path
++    return found
++
++
+ def png_names(folder: Path) -> list[str]:
+-    return sorted(p.name for p in folder.glob("*.png") if SAFE_PNG.match(p.name))
++    return sorted(png_paths(folder))
++
++
++PRODUCT = "v2 (продукт"     # предиктор продукта в metrics_gaps.csv: «v2 (продукт: порог 0,35, isotonic)»
++LABELS = {"counterfactual": "shortfall", "strict": "negative"}
++BALANCE_FACT = "фактический остаток"
++
++
++def gap_metrics(row: dict) -> dict:
++    keys = ("accuracy", "precision", "recall", "f1", "roc_auc", "brier")
++    metrics = {k: float(row[k]) for k in keys if row.get(k) not in (None, "")}
++    metrics["confusion"] = {k: int(float(row[k])) for k in ("tp", "fp", "fn", "tn")}
++    return metrics
++
++
++def summary_from_report(folder: Path) -> dict | None:
++    """Сводка для страницы из отчёта ml.evaluation.control: metrics_gaps.csv, metrics_balance.csv, summary.md."""
++    gaps_path, balance_path = folder / "metrics_gaps.csv", folder / "metrics_balance.csv"
++    if not gaps_path.exists():
++        return None
++    with open(gaps_path, encoding="utf-8-sig", newline="") as f:
++        gaps = [r for r in csv.DictReader(f) if r["predictor"].startswith(PRODUCT)]
++    summary: dict = {"classification": {}, "classification_holdout": {}}
++    for row in gaps:
++        target = LABELS.get(row["label"])
++        if target and row["segment"] == "all":
++            summary["classification"][target] = gap_metrics(row)
++        elif target and row["segment"] == "holdout":
++            summary["classification_holdout"][target] = gap_metrics(row)
++    if balance_path.exists():
++        with open(balance_path, encoding="utf-8-sig", newline="") as f:
++            balance = [r for r in csv.DictReader(f) if r["fact"] == BALANCE_FACT]
++        summary["regression"] = [
++            {"horizon": int(r["day"]), "mae": float(r["mae_mean"]), "mse": float(r["mse_mean"]),
++             "rmse": float(r["rmse_mean"]),
++             **({"coverage_p10_p90": float(r["coverage_p10_p90"])} if r.get("coverage_p10_p90") else {})}
++            for r in balance if r["predictor"] == "v2 P50"]
++        models: dict[str, dict] = {}
++        for r in balance:
++            models.setdefault(r["predictor"], {"model": r["predictor"]})[f"mae_d{r['day']}"] = float(r["mae_mean"])
++        summary["baselines"] = list(models.values())
++        companies = next((int(r["companies"]) for r in balance if r["predictor"] == "v2 P50"), None)
++    else:
++        companies = None
++    origins = next((int(r["n"]) for r in gaps if r["segment"] == "all"), None)
++    text = (folder / "summary.md").read_text(encoding="utf-8") if (folder / "summary.md").exists() else ""
++    model = re.search(r"Модель: `([^`]+)`", text)
++    holdout = re.search(r"холдаут\w* компаний \((\d+) шт", text)
++    if model:
++        summary["model_version"] = model.group(1)
++    summary["method"] = {
++        "scheme": "Точки прогноза — последний рабочий день каждого месяца; прогноз строится только по данным "
++                  "до этой даты и сверяется с тем, что было потом (30 дней факта)",
++        "companies": companies, "origins": origins,
++        "holdout": f"{holdout.group(1)} компаний, которых модель не видела при обучении" if holdout else None,
++    }
++    return summary
+ 
+ 
+ @router.get("")
+@@ -61,6 +126,8 @@
+             summary = json.loads(summary_path.read_text(encoding="utf-8"))
+         except (OSError, ValueError):
+             log.warning("quality summary.json unreadable")
++    if summary is None:
++        summary = summary_from_report(folder)
+     tables = {}
+     for path in sorted(folder.glob("*.csv")):
+         try:
+@@ -82,6 +149,7 @@
+ async def get_quality_file(name: str, user: CurrentUser = Depends(current_user),
+                            settings: Settings = Depends(get_settings)) -> FileResponse:
+     folder = control_dir(settings)
+-    if not SAFE_PNG.match(name) or not folder.is_dir() or name not in png_names(folder):
++    images = png_paths(folder) if folder.is_dir() else {}
++    if not SAFE_PNG.match(name) or name not in images:
+         raise ApiError(404, "Такой картинки в отчёте нет")
+-    return FileResponse(folder / name, media_type="image/png")
++    return FileResponse(images[name], media_type="image/png")
+--- reports/e2e/.QualityPage.orig	2026-10-25 01:58:14.849591291 +0300
++++ client/src/pages/QualityPage/QualityPage.tsx	2026-10-25 01:58:42.172099968 +0300
+@@ -8,7 +8,7 @@
+ import HorizonErrors from '@/pages/QualityPage/components/HorizonErrors';
+ import ReportTable from '@/pages/QualityPage/components/ReportTable';
+ import {
+-  METRICS, REPORT_COMMAND, TARGETS, formatScore, formatShare, imageCaption, type Target,
++  METRICS, REPORT_COMMAND, SEGMENTS, TARGETS, formatScore, formatShare, imageCaption, type Segment, type Target,
+ } from '@/pages/QualityPage/qualityText';
+ import styles from './QualityPage.module.css';
+ 
+@@ -45,6 +45,7 @@
+   const [report, setReport] = useState<QualityReport | null>(null)
+   const [error, setError] = useState<string | null>(null)
+   const [target, setTarget] = useState<Target>('shortfall')
++  const [segment, setSegment] = useState<Segment>('all')
+ 
+   useEffect(() => {
+     let isActual = true
+@@ -57,7 +58,10 @@
+   }, [])
+ 
+   const summary = report?.summary ?? null
+-  const metrics = summary?.classification?.[target]
++  const classification = segment === 'holdout' && summary?.classification_holdout
++    ? summary.classification_holdout
++    : summary?.classification
++  const metrics = classification?.[target]
+   const coverage = summary ? coverageRows(summary) : []
+   const tables = Object.entries(report?.tables ?? {})
+ 
+@@ -79,8 +83,13 @@
+       {report?.available && (
+         <>
+           {summary?.classification && (
+-            <Card title="Предупреждения о нехватке денег" aside={
+-              <SegmentedControl options={TARGETS} value={target} onChange={setTarget} />
++            <Card title="Предупреждения о нехватке денег за 30 дней" aside={
++              <div className={styles.switches}>
++                {summary.classification_holdout && (
++                  <SegmentedControl options={SEGMENTS} value={segment} onChange={setSegment} />
++                )}
++                <SegmentedControl options={TARGETS} value={target} onChange={setTarget} />
++              </div>
+             }>
+               {metrics ? (
+                 <div className={styles.tiles}>
+@@ -101,10 +110,10 @@
+             </Card>
+           )}
+ 
+-          {(summary?.classification?.shortfall?.confusion || summary?.classification?.negative?.confusion) && (
++          {(classification?.shortfall?.confusion || classification?.negative?.confusion) && (
+             <div className={styles.twoColumns}>
+               {TARGETS.map(({ value, label }) => {
+-                const confusion = summary?.classification?.[value]?.confusion
++                const confusion = classification?.[value]?.confusion
+                 return confusion ? <ConfusionMatrix key={value} title={label} confusion={confusion} /> : null
+               })}
+             </div>
+@@ -162,9 +171,9 @@
+                     ? 'rolling-origin — прогноз строится на дату в прошлом только по данным до неё и сверяется с тем, что было потом; дата сдвигается шаг за шагом'
+                     : summary.method.scheme}
+                 </li>
+-                {summary.method.companies !== undefined && <li><b>Компаний:</b> {summary.method.companies}</li>}
+-                {summary.method.origins !== undefined && (
+-                  <li><b>Дат прогноза (origins):</b> {summary.method.origins.toLocaleString('ru-RU')}</li>
++                {summary.method.companies != null && <li><b>Компаний:</b> {summary.method.companies}</li>}
++                {summary.method.origins != null && (
++                  <li><b>Точек прогноза (origins):</b> {summary.method.origins.toLocaleString('ru-RU')}</li>
+                 )}
+                 {summary.method.holdout && <li><b>Холдаут:</b> {summary.method.holdout}</li>}
+                 {summary.method.notes && <li>{summary.method.notes}</li>}
+--- reports/e2e/.QualityPage.orig	2026-10-25 01:58:14.849591291 +0300
++++ client/src/pages/QualityPage/QualityPage.tsx	2026-10-25 01:58:42.172099968 +0300
+@@ -8,7 +8,7 @@
+ import HorizonErrors from '@/pages/QualityPage/components/HorizonErrors';
+ import ReportTable from '@/pages/QualityPage/components/ReportTable';
+ import {
+-  METRICS, REPORT_COMMAND, TARGETS, formatScore, formatShare, imageCaption, type Target,
++  METRICS, REPORT_COMMAND, SEGMENTS, TARGETS, formatScore, formatShare, imageCaption, type Segment, type Target,
+ } from '@/pages/QualityPage/qualityText';
+ import styles from './QualityPage.module.css';
+ 
+@@ -45,6 +45,7 @@
+   const [report, setReport] = useState<QualityReport | null>(null)
+   const [error, setError] = useState<string | null>(null)
+   const [target, setTarget] = useState<Target>('shortfall')
++  const [segment, setSegment] = useState<Segment>('all')
+ 
+   useEffect(() => {
+     let isActual = true
+@@ -57,7 +58,10 @@
+   }, [])
+ 
+   const summary = report?.summary ?? null
+-  const metrics = summary?.classification?.[target]
++  const classification = segment === 'holdout' && summary?.classification_holdout
++    ? summary.classification_holdout
++    : summary?.classification
++  const metrics = classification?.[target]
+   const coverage = summary ? coverageRows(summary) : []
+   const tables = Object.entries(report?.tables ?? {})
+ 
+@@ -79,8 +83,13 @@
+       {report?.available && (
+         <>
+           {summary?.classification && (
+-            <Card title="Предупреждения о нехватке денег" aside={
+-              <SegmentedControl options={TARGETS} value={target} onChange={setTarget} />
++            <Card title="Предупреждения о нехватке денег за 30 дней" aside={
++              <div className={styles.switches}>
++                {summary.classification_holdout && (
++                  <SegmentedControl options={SEGMENTS} value={segment} onChange={setSegment} />
++                )}
++                <SegmentedControl options={TARGETS} value={target} onChange={setTarget} />
++              </div>
+             }>
+               {metrics ? (
+                 <div className={styles.tiles}>
+@@ -101,10 +110,10 @@
+             </Card>
+           )}
+ 
+-          {(summary?.classification?.shortfall?.confusion || summary?.classification?.negative?.confusion) && (
++          {(classification?.shortfall?.confusion || classification?.negative?.confusion) && (
+             <div className={styles.twoColumns}>
+               {TARGETS.map(({ value, label }) => {
+-                const confusion = summary?.classification?.[value]?.confusion
++                const confusion = classification?.[value]?.confusion
+                 return confusion ? <ConfusionMatrix key={value} title={label} confusion={confusion} /> : null
+               })}
+             </div>
+@@ -162,9 +171,9 @@
+                     ? 'rolling-origin — прогноз строится на дату в прошлом только по данным до неё и сверяется с тем, что было потом; дата сдвигается шаг за шагом'
+                     : summary.method.scheme}
+                 </li>
+-                {summary.method.companies !== undefined && <li><b>Компаний:</b> {summary.method.companies}</li>}
+-                {summary.method.origins !== undefined && (
+-                  <li><b>Дат прогноза (origins):</b> {summary.method.origins.toLocaleString('ru-RU')}</li>
++                {summary.method.companies != null && <li><b>Компаний:</b> {summary.method.companies}</li>}
++                {summary.method.origins != null && (
++                  <li><b>Точек прогноза (origins):</b> {summary.method.origins.toLocaleString('ru-RU')}</li>
+                 )}
+                 {summary.method.holdout && <li><b>Холдаут:</b> {summary.method.holdout}</li>}
+                 {summary.method.notes && <li>{summary.method.notes}</li>}
+--- reports/e2e/.qualityText.orig	2026-10-25 01:58:14.850591273 +0300
++++ client/src/pages/QualityPage/qualityText.ts	2026-10-25 01:58:42.179099842 +0300
+@@ -3,9 +3,17 @@
+ 
+ export type Target = 'shortfall' | 'negative'
+ 
++/** Метки правды отчёта ml.evaluation.control: CF (основная) и strict */
+ export const TARGETS: { value: Target, label: string }[] = [
+-  { value: 'shortfall', label: 'Нехватка на обязательные платежи (основная)' },
+-  { value: 'negative', label: 'Уход в минус' },
++  { value: 'shortfall', label: 'Минус без денег владельца (основная)' },
++  { value: 'negative', label: 'Фактический минус на счёте' },
++]
++
++export type Segment = 'all' | 'holdout'
++
++export const SEGMENTS: { value: Segment, label: string }[] = [
++  { value: 'all', label: 'Все компании' },
++  { value: 'holdout', label: 'Новые для модели (холдаут)' },
+ ]
+ 
+ export const METRICS: { key: keyof Omit<QualityMetrics, 'confusion'>, label: string, hint: string, kind: 'share' | 'score' }[] = [
+@@ -24,6 +32,7 @@
+   ets: 'Сглаживание (ets)',
+   lgbm: 'Наша модель (lgbm)',
+   lgbm_net: 'Наша модель (lgbm_net)',
++  'v2 P50': 'Наша модель (P50)',
+ }
+ 
+ export const COLUMN_NAMES: Record<string, string> = {
+@@ -45,14 +54,16 @@
+ }
+ 
+ export const IMAGE_CAPTIONS: [RegExp, string][] = [
++  [/confusion/i, 'Матрицы ошибок: предупредили и было, ложные тревоги, пропуски'],
++  [/threshold/i, 'Как точность и полнота предупреждений зависят от порога тревоги'],
+   [/reliab/i, 'Надёжность вероятностей: когда сервис говорит «60%», проблема случается примерно в 60% случаев'],
+   [/compan|example/i, 'Примеры компаний: прогноз и то, что было на самом деле'],
+   [/horizon/i, 'Ошибка прогноза в зависимости от горизонта'],
+   [/pr|precision/i, 'Точность и полнота предупреждений'],
+ ]
+ 
+-/** Команда контрольного прогона в репозитории ML (сверить с фактической у Сергея). */
+-export const REPORT_COMMAND = 'make control'
++/** Команда контрольного прогона в репозитории ML (ml/evaluation/control.py) */
++export const REPORT_COMMAND = 'python -m ml.evaluation.control --data <папка датасета>'
+ 
+ const shareFormat = new Intl.NumberFormat('ru-RU', { style: 'percent', maximumFractionDigits: 1 })
+ const scoreFormat = new Intl.NumberFormat('ru-RU', { maximumFractionDigits: 3 })
+--- reports/e2e/.qualityText.orig	2026-10-25 01:58:14.850591273 +0300
++++ client/src/pages/QualityPage/qualityText.ts	2026-10-25 01:58:42.179099842 +0300
+@@ -3,9 +3,17 @@
+ 
+ export type Target = 'shortfall' | 'negative'
+ 
++/** Метки правды отчёта ml.evaluation.control: CF (основная) и strict */
+ export const TARGETS: { value: Target, label: string }[] = [
+-  { value: 'shortfall', label: 'Нехватка на обязательные платежи (основная)' },
+-  { value: 'negative', label: 'Уход в минус' },
++  { value: 'shortfall', label: 'Минус без денег владельца (основная)' },
++  { value: 'negative', label: 'Фактический минус на счёте' },
++]
++
++export type Segment = 'all' | 'holdout'
++
++export const SEGMENTS: { value: Segment, label: string }[] = [
++  { value: 'all', label: 'Все компании' },
++  { value: 'holdout', label: 'Новые для модели (холдаут)' },
+ ]
+ 
+ export const METRICS: { key: keyof Omit<QualityMetrics, 'confusion'>, label: string, hint: string, kind: 'share' | 'score' }[] = [
+@@ -24,6 +32,7 @@
+   ets: 'Сглаживание (ets)',
+   lgbm: 'Наша модель (lgbm)',
+   lgbm_net: 'Наша модель (lgbm_net)',
++  'v2 P50': 'Наша модель (P50)',
+ }
+ 
+ export const COLUMN_NAMES: Record<string, string> = {
+@@ -45,14 +54,16 @@
+ }
+ 
+ export const IMAGE_CAPTIONS: [RegExp, string][] = [
++  [/confusion/i, 'Матрицы ошибок: предупредили и было, ложные тревоги, пропуски'],
++  [/threshold/i, 'Как точность и полнота предупреждений зависят от порога тревоги'],
+   [/reliab/i, 'Надёжность вероятностей: когда сервис говорит «60%», проблема случается примерно в 60% случаев'],
+   [/compan|example/i, 'Примеры компаний: прогноз и то, что было на самом деле'],
+   [/horizon/i, 'Ошибка прогноза в зависимости от горизонта'],
+   [/pr|precision/i, 'Точность и полнота предупреждений'],
+ ]
+ 
+-/** Команда контрольного прогона в репозитории ML (сверить с фактической у Сергея). */
+-export const REPORT_COMMAND = 'make control'
++/** Команда контрольного прогона в репозитории ML (ml/evaluation/control.py) */
++export const REPORT_COMMAND = 'python -m ml.evaluation.control --data <папка датасета>'
+ 
+ const shareFormat = new Intl.NumberFormat('ru-RU', { style: 'percent', maximumFractionDigits: 1 })
+ const scoreFormat = new Intl.NumberFormat('ru-RU', { maximumFractionDigits: 3 })
+--- reports/e2e/.types2.orig	2026-10-25 01:58:14.851591255 +0300
++++ client/src/api/types.ts	2026-10-25 01:58:42.162100147 +0300
+@@ -301,6 +301,8 @@
+   model_version?: string
+   generated_at?: string
+   classification?: { shortfall?: QualityMetrics, negative?: QualityMetrics }
++  /** те же метрики на холдауте — компаниях, которых модель не видела при обучении */
++  classification_holdout?: { shortfall?: QualityMetrics, negative?: QualityMetrics }
+   regression?: QualityHorizon[]
+   coverage?: { p10_p90?: number, target?: number }
+   baselines?: Record<string, string | number | null>[]

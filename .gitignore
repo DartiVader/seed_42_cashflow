@@ -1,0 +1,38 @@
+# Секреты: только .env.example в репозитории
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+
+# Node / фронт
+node_modules/
+client/dist/
+dist/
+
+# IDE и система
+.idea/
+.vscode/
+*.swp
+.DS_Store
+
+# Состояние сервисов и логи
+state/
+*.log
+!ml-model/reports/control/run.log
+!ml-model/reports/control_foreign/run.log
+
+# ML: датасет кейса не публикуем (выдают организаторы) — положить в ml-model/cashflow_data/, см. README.
+# Модели (ml-model/models) и отчёты для шлюза и страницы «Качество модели» — в репозитории.
+ml-model/cashflow_data/
+ml-model/dist/
