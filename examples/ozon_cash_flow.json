@@ -1,0 +1,108 @@
+{
+  "result": {
+    "cash_flows": [
+      {
+        "commission_amount": 8452.34,
+        "currency_code": "RUB",
+        "item_delivery_and_return_amount": 53000.0,
+        "orders_amount": 282892.06,
+        "period": {
+          "begin": "2024-10-01T00:00:00.000Z",
+          "end": "2024-10-31T23:59:59.999Z",
+          "id": 202410
+        },
+        "returns_amount": -12500.0,
+        "services_amount": 12345.67
+      },
+      {
+        "commission_amount": 2218.89,
+        "currency_code": "RUB",
+        "item_delivery_and_return_amount": 32350.68,
+        "orders_amount": 74000.0,
+        "period": {
+          "begin": "2024-11-01T00:00:00.000Z",
+          "end": "2024-11-30T23:59:59.999Z",
+          "id": 202411
+        },
+        "returns_amount": -4500.0,
+        "services_amount": 5678.9
+      },
+      {
+        "commission_amount": 19076.81,
+        "currency_code": "RUB",
+        "item_delivery_and_return_amount": 0.0,
+        "orders_amount": 635893.83,
+        "period": {
+          "begin": "2024-12-01T00:00:00.000Z",
+          "end": "2024-12-31T23:59:59.999Z",
+          "id": 202412
+        },
+        "returns_amount": 0.0,
+        "services_amount": 8901.23
+      }
+    ],
+    "details": {
+      "period": {
+        "begin": "2024-10-01T00:00:00.000Z",
+        "end": "2024-10-31T23:59:59.999Z",
+        "id": 202410
+      },
+      "payments": [
+        { "payment": -990.0,     "currency_code": "RUB" },
+        { "payment": 170892.06,  "currency_code": "RUB" },
+        { "payment": 112000.0,   "currency_code": "RUB" },
+        { "payment": -53000.0,   "currency_code": "RUB" },
+        { "payment": -12345.67,  "currency_code": "RUB" },
+        { "payment": -8452.34,   "currency_code": "RUB" },
+        { "payment": -12500.0,   "currency_code": "RUB" }
+      ],
+      "begin_balance_amount": 1245811.98,
+      "delivery": {
+        "total": 53000.0,
+        "amount": 53000.0,
+        "delivery_services": {
+          "total": 53000.0,
+          "items": [
+            { "name": "ООО «Система взимания платы-516»", "price": 53000.0 }
+          ]
+        }
+      },
+      "return": {
+        "total": -12500.0,
+        "amount": -12500.0,
+        "return_services": {
+          "total": 500.0,
+          "items": [
+            { "name": "MarketplaceReturnStorageServiceAtThePickupPointFbsItem", "price": 500.0 }
+          ]
+        }
+      },
+      "loan": 15000.0,
+      "invoice_transfer": 220000.0,
+      "rfbs": {
+        "total": 3500.0,
+        "transfer_delivery": 4000.0,
+        "transfer_delivery_return": -200.0,
+        "compensation_delivery_return": -100.0,
+        "partial_compensation": -100.0,
+        "partial_compensation_return": -100.0
+      },
+      "services": {
+        "total": 12345.67,
+        "items": [
+          { "name": "MarketplaceServiceItemElectronicServicesPromotionInSearch", "price": 8000.0 },
+          { "name": "MarketplaceServiceItemMarketingServices", "price": 2456.78 },
+          { "name": "MarketplaceServiceItemTechnicalServicesAndOtherServices", "price": 1888.89 }
+        ]
+      },
+      "others": {
+        "total": 500.0,
+        "items": [
+          { "name": "MarketplaceSellerCorrectionOperation", "price": 500.0 }
+        ]
+      },
+      "end_balance_amount": 1474714.04
+    },
+    "page_count": 1
+  }
+}
